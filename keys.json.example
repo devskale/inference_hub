@@ -1,0 +1,22 @@
+{
+    "gemma7b": {
+        "api_key": "Bearer nvapi-qkEKpk--ZVqt1D29h9Tp1m",
+        "api_url": "https://api.nvcf.nvidia.com/v2/nvcf/pexec/functions/1361fa56-61d7-4a12-af32-69a3825746fa"
+    },
+    "mixtral": {
+        "api_key": "Bearer nvapi-qkEKpk--ZVqt1D29h9Tp1m",
+        "api_url": "https://api.nvcf.nvidia.com/v2/nvcf/pexec/functions/8f4118ba-60a8-4e6b-8574-e38a4067a4a3"
+    },
+    "mistral7b": {
+        "api_key": "Bearer nvapi--YitI",
+        "api_url": "https://api.nvcf.nvidia.com/v2/nvcf/pexec/functions/35ec3354-2681-4d0e-a8dd-80325dcf7c63"
+    },
+    "phi2": {
+        "api_key": "Bearer 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",
+        "api_url": "https://api.nvcf.nvidia.com/v2/nvcf/pexec/functions/6251d6d2-54ee-4486-90f4-2792bf0d3acd"
+    },
+    "yi34b": {
+        "api_key": "Bearer nvapi-A3HhRKOaD6Zt7xn--z1wqPCXT9Q9",
+        "api_url": "https://api.nvcf.nvidia.com/v2/nvcf/pexec/functions/347fa3f3-d675-432c-b844-669ef8ee53df"
+    }
+}
