@@ -2,27 +2,8 @@ import argparse
 import configparser
 import json
 import requests
+from getparams import load_api_credentials, load_model_parameters
 
-
-def load_api_credentials(model_name, filename='keys.json'):
-    with open(filename, 'r') as file:
-        keys = json.load(file)
-
-    if model_name not in keys:
-        raise ValueError(
-            f"API configuration for '{{{model_name}}}' not found in {filename}.")
-
-    return keys[model_name]['api_key'], keys[model_name]['api_url']
-
-
-def load_model_parameters(model_name, filename='models.json'):
-    with open(filename, 'r') as file:
-        models = json.load(file)
-
-    if model_name not in models:
-        raise ValueError(f"Model '{model_name}' not found in {filename}.")
-
-    return models[model_name]
 
 
 def invoke_api(api_key, api_url, model_parameters, user_input, choice="q"):
@@ -43,13 +24,13 @@ def invoke_api(api_key, api_url, model_parameters, user_input, choice="q"):
     if choice == "q":
         model_input = user_input
     elif choice == "s":
-        model_input = "Write a one paragraph summary for this article. Reply in the articles original language: "+user_input
+        model_input = "Write a one paragraph summary for this article: "+user_input
     elif choice == "l":
-        model_input = "Write a long elaborative summary spanning over several paragraphs for this article. reply in the articles original language: "+user_input
+        model_input = "Write a long elaborative summary spanning over several paragraphs for this article: "+user_input
     elif choice == "t":
-        model_input = "Write a short tweet pointing to this article in the articles original language. reply in the articles original language: "+user_input
+        model_input = "Write a short tweet pointing to this article in the articles original language: "+user_input
     elif choice == "b":
-        model_input = "Write a bullet list summarizing this article in the articles original language. reply in the articles original language: "+user_input
+        model_input = "Write a bullet list summarizing this article in the articles original language: "+user_input
 
 
     payload = {
@@ -127,13 +108,22 @@ def main():
                         default="mixtral", help='Name of the LLM model.')
     parser.add_argument('-q', '--question', required=False,
                         help='Question to ask the model.')
+    parser.add_argument('-f', '--filename', required=False,
+                        help='Filename input.')
     args = parser.parse_args()
 
     try:
         api_key, api_url = load_api_credentials(args.llm)
         model_parameters = load_model_parameters(args.llm)
         print(f"model_parameters {args.llm}")
-        if args.question:
+        if args.filename:
+            # Read content from the file specified by the user
+            with open(args.filename, 'r', encoding='utf-8') as file:
+                user_input = file.read().strip()
+            print(f"\nFile content: {user_input[:50]}...")  # Print the first 50 characters for confirmation
+            invoke_api(api_key, api_url, model_parameters, user_input)
+            exit(0)
+        elif args.question:
             user_input = args.question
             print(f"\nq: {user_input}")
             invoke_api(api_key, api_url, model_parameters, user_input)
