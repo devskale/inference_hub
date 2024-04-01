@@ -1,8 +1,11 @@
 from langchain_community.llms import HuggingFaceEndpoint
+from getparams import load_api_credentials, load_model_parameters
 
-HUGGINGFACEHUB_API_TOKEN = "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"
+api_token = load_api_credentials('huggingface')
+#HUGGINGFACEHUB_API_TOKEN = "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"
 
-repo_id = "mistralai/Mistral-7B-Instruct-v0.2"
+#repo_id = "mistralai/Mistral-7B-Instruct-v0.2"
+repo_id = "mistralai/Mixtral-8x7B-Instruct-v0.1"
 
 """ llm = HuggingFaceEndpoint(
                 endpoint_url=repo_id,
@@ -31,7 +34,16 @@ llm = HuggingFaceEndpoint(
     repetition_penalty=1.03,
     callbacks=callbacks,
     streaming=True,
-    huggingfacehub_api_token=HUGGINGFACEHUB_API_TOKEN
+    huggingfacehub_api_token=api_token
     )
 
-llm.invoke("What is Deep Learning?")
+
+#llm.invoke("What is Deep Learning?")
+
+while True:
+    user_input = input("\nq: ")
+    if user_input.lower() == 'exit':
+        break  # Exit the loop and program if the user types 'exit'.
+    print("\n--\n\na: ", end='')
+    llm.invoke(user_input)
+#    print(output[0]['generated_text'])

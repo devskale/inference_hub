@@ -34,8 +34,9 @@ def main(question=None, model="mixtral-8x7b-32768"):
     Parameters:
     - question: An optional initial question provided as a script argument.
     """
-    api_key, api_url = load_api_credentials(model)
-    model_parameters = load_model_parameters(model)
+    hoster = 'groq'
+    api_key = load_api_credentials(hoster)
+    model_parameters, api_url = load_model_parameters(hoster, model)
 
     client = Groq(api_key=api_key)
 
@@ -62,7 +63,7 @@ if __name__ == "__main__":
     parser.add_argument('-q', '--question', type=str,
                         help='A question to ask the model', default=None)
     parser.add_argument('-m', '--model', type=str,
-                        help='model', default="mixtral-8x7b-32768")
+                        help='model', default="mixtral")
     args = parser.parse_args()
 
     # Run the main routine with the provided question, if any.

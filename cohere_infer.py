@@ -1,44 +1,31 @@
 import cohere 
+from getparams import load_api_credentials, load_model_parameters
 
 
 the_message= input("Enter your message: ")
 if the_message == '':
    the_message='whats the latest news from austria'
-COHERE_KEY = 'abc'
+
+#COHERE_KEY = 'abc'
+
+provider = 'cohere'
+model = 'command-r'
+
+api_key = load_api_credentials(provider)
+params, api_url = load_model_parameters(provider, model)
 
 co = cohere.Client(
-    api_key=COHERE_KEY,
+    api_key=api_key,
 )
 
-# chat = co.chat(
-#     message=the_message,
-#     model="command"
-# )
-
-# print(chat)
-
-# response = co.chat_stream( 
-#   model='command-r',
-#   message=the_message,
-#   temperature=0.3,
-#   chat_history=[],
-#   prompt_truncation='AUTO',
-#   citation_quality='accurate',
-#   connectors=[{"id":"web-search"}],
-#   documents=[]
-# ) 
-
-# print(response)
-
 stream = co.chat_stream(
-  model='command-r',
   message=the_message,
-  temperature=0.3,
-  chat_history=[],
-  prompt_truncation='AUTO',
-#  citation_quality='accurate',
   connectors=[{"id":"web-search"}],
-  documents=[]
+  documents=[],
+  chat_history=[],
+  model=model,
+  temperature=0.3,
+  prompt_truncation='AUTO',
 )
 
 for event in stream:

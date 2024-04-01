@@ -1,15 +1,18 @@
 import requests
+from getparams import load_api_credentials, load_model_parameters
 
-API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2"
-headers = {"Authorization": "Bearer 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"}
-# add more headers if needed like 'content-type': 'application/json'
+hoster = 'huggingface'
+model_name = 'mixtral'
 
+api_key = load_api_credentials(hoster)
+model_parameters, api_url = load_model_parameters(hoster,model_name)
 
+print(f"api_key: {api_key}, inference_url: {api_url}")
+headers = {"Authorization": "Bearer " + api_key}
 
 def query(payload):
-    response = requests.post(API_URL, headers=headers, json=payload)
+    response = requests.post(api_url, headers=headers, json=payload)
     return response.json()
-
 
 
 while True:
@@ -20,5 +23,5 @@ while True:
         "inputs": user_input,
     })
     print("\n--\n\na: ", end='')
-    #print(output[0]['generated_text'])
-    print(output)
+    print(output[0]['generated_text'])
+    #print(output)

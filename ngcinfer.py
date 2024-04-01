@@ -105,7 +105,7 @@ def main():
         description='Call LLM API with model parameters.')
     # default llm is mixtral7x8
     parser.add_argument('-llm', required=False,
-                        default="mixtral", help='Name of the LLM model.')
+                        default="ngc_mixtral", help='Name of the LLM model.')
     parser.add_argument('-q', '--question', required=False,
                         help='Question to ask the model.')
     parser.add_argument('-f', '--filename', required=False,

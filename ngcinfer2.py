@@ -4,6 +4,9 @@ import json
 import requests
 from getparams import load_api_credentials, load_model_parameters
 
+provider = 'ngc'
+model = 'mixtral'
+
 
 def invoke_api(api_key, api_url, model_parameters, user_input):
     """
@@ -89,8 +92,8 @@ def main():
     args = parser.parse_args()
 
     try:
-        api_key, api_url = load_api_credentials(args.llm)
-        model_parameters = load_model_parameters(args.llm)
+        api_key = load_api_credentials('ngc')
+        model_parameters = load_model_parameters('ngc',args.llm)
 #        print(api_key, api_url, model_parameters)
         if args.question:
             user_input = args.question
