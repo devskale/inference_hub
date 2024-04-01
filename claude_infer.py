@@ -1,8 +1,11 @@
 import anthropic
 from getparams import load_api_credentials, load_model_parameters
 
-api_key, api_url = load_api_credentials('anthropic')
-model = 'claude-3-haiku-20240307'
+provider = 'anthropic'
+model = 'haiku'
+
+api_key = load_api_credentials(provider)
+model_params, api_url = load_model_parameters(provider, model)
 
 client = anthropic.Anthropic(
     # defaults to os.environ.get("ANTHROPIC_API_KEY")
@@ -20,12 +23,8 @@ while True:
         break
 
     message = client.messages.create(
-        model=model,
-        max_tokens=1024,
-        temperature=0.5,
-        top_p=0.4,
-        messages=[
-            {"role": "user", "content": user_input}
-        ]
+        messages=[{"role": "user", "content": user_input}],
+        **model_params,
     )
+
     print(message.content[0].text)
