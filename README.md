@@ -1,33 +1,30 @@
-# NVIDIA Invocation API Utility
+# SKALE.DEV LLM Inference Examples
 
-This utility script is tailored for making API requests to NVIDIA's Large Language Models (LLMs). It facilitates the process by reading API credentials and model parameters from JSON files, constructing and sending requests, and managing streaming JSON responses.
+This script compilation is demonstrating inference of severel LLMs on several providers.
 
-Please register at https://ngc.nvidia.com/signin to being able to infer state of the art open source LLMs.
+## Providers
 
-## Features
+- [NVIDIA GPU Cloud](https://catalog.ngc.nvidia.com/) (NGC) API
+- [Huggingface Hub Models](https://huggingface.co/docs/api-inference/index) API
+- [Groq](https://console.groq.com/) API
+- [Anthropic](https://console.anthropic.com/) API
+- [Cohere](https://coral.cohere.com/) API
+- [OpenRouter](https://openrouter.ai/playground) API
+- [Ollama](https://ollama.com/) Self Hosted
+- [ ] LM-Studio Self Hosted
+- [ ] Jan Self Hosted
+- liteLLM OpenAI API Wrapper
 
-- Load NVIDIA API credentials from a JSON file.
-- Load NVIDIA model parameters from a JSON file.
-- Support for multiple NVIDIA models including gemma7b, mixtral, mistral7b, phi2, and yi34b.
-- Send requests to NVIDIA's API endpoint.
-- Handle streaming JSON responses.
+## Model Parameters and Keyfiles
 
-## Supported Models and Parameters
+The parameters for each model are pre-configured in the `models.json` file with optimal settings for general use. API keys are loaded at runtime from `keys.json`.
 
-The script currently supports the following NVIDIA models with specified parameters:
-
-- `gemma7b`: Moderate creativity with a focus on relevance.
-- `mixtral`: Balanced approach for creativity and relevance.
-- `mistral7b`: Similar to mixtral with a different parameter tuning.
-- `phi2`: Designed for tasks requiring precise language understanding.
-- `yi34b`: For applications that benefit from a very large model size.
-
-The parameters for each model are pre-configured in the `models.json` file with optimal settings for general use.
 
 ## Requirements
 
 - Python 3.6+
 - `requests` module
+
 
 ## Setup
 
@@ -41,14 +38,14 @@ Create keys.json with your NVIDIA API credentials and models.json for model para
 Example models.json:
 
 ## Usage
-Run the script with:
+Run the ngc infer script example with:
 
 ```bash
 python ngcinfer.py [-llm MODEL_NAME] [-q QUESTION]
 ````
 
 ```text
-python ngcinfer.py -llm phi2 -q "what are some hipster breakfast spots in san francisco"
+python ngcinfer.py -q "what are some hipster breakfast spots in san francisco"
 
 q: what are some hipster breakfast spots in san francisco
 
