@@ -44,18 +44,24 @@ if args.file:
         print(f"Error: The file {args.file} was not found.")
         exit(1)
 else:
-    user_input = input('\nEnter your message: ')
+    user_input = input('\nEnter your message /s(ummarize) /t(weet) /l(ongsummary) /n(icify) : ')
 
-command = check_command(user_input)
-if command != '/q':
-    user_input = user_input[3:]
+while True:
+    if user_input == '':
+        user_input = input('\nEnter your message /s(ummarize) /t(weet) /l(ongsummary) /n(icify) : ')
 
-# calculate the number of tokens / maxtokens (=32k)
-tokennum = len(user_input) / 4
-maxtokens = 32000
-tokenpercent = tokennum / maxtokens * 100
-if tokennum > maxtokens:
-    print(f"Error: The input text is too long {tokennum}. The maximum number of tokens is {maxtokens}.")
-    exit(1)
-print(f'{command} chars: {str(len(user_input))},   tokens: {str(len(user_input)/4)}   {tokenpercent}%\n{user_input[:50]} ... {user_input[(len(user_input)-50):]}----\n')
-asyncio.run(chat(command, user_input))
+    command = check_command(user_input)
+    if command != '/q':
+        user_input = user_input[3:]
+
+    # calculate the number of tokens / maxtokens (=32k)
+    tokennum = len(user_input) / 4
+    maxtokens = 32000
+    tokenpercent = tokennum / maxtokens * 100
+    if tokennum > maxtokens:
+        print(f"Error: The input text is too long {tokennum}. The maximum number of tokens is {maxtokens}.")
+        exit(1)
+    print(f'{command} chars: {str(len(user_input))},   tokens: {str(len(user_input)/4)}   {tokenpercent}%\n{user_input[:50]} ... {user_input[(len(user_input)-50):]}----\n')
+    asyncio.run(chat(command, user_input))
+    user_input = ''
+
