@@ -1,7 +1,25 @@
 # Chat with an intelligent assistant in your terminal
 from openai import OpenAI
 import argparse
+from pynput import keyboard
+import threading
 
+# Define a flag to control the loop
+key_pressed = False
+
+def on_press(key):
+    global key_pressed
+    try:
+        # pls check if any key is pressed
+#        if key.char:
+        if key.char == 'q':  # Exit loop if 'q' is pressed
+            key_pressed = True
+    except AttributeError:
+        pass
+
+# Set up the listener for keypresses
+listener = keyboard.Listener(on_press=on_press)
+listener.start()
 
 # Parse arguments
 parser = argparse.ArgumentParser(description="Chat with an intelligent assistant in your terminal")
@@ -32,12 +50,25 @@ while True:
 
     new_message = {"role": "assistant", "content": ""}
     
+    # for chunk in completion:
+    #     if chunk.choices[0].delta.content:
+    #         print(chunk.choices[0].delta.content, end="", flush=True)
+    #         new_message["content"] += chunk.choices[0].delta.content
+
     for chunk in completion:
         if chunk.choices[0].delta.content:
             print(chunk.choices[0].delta.content, end="", flush=True)
             new_message["content"] += chunk.choices[0].delta.content
 
-    history.append(new_message)
+        if key_pressed:
+            # print("...\n\n")
+            break
+
+    # skip
+    if key_pressed:
+        key_pressed = False
+    else:
+        history.append(new_message)
     
     # Uncomment to see chat history
     # import json
