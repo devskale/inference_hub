@@ -63,6 +63,11 @@ Dive into the versatility and power of our inference scripts, designed to simpli
 - Python 3.6+
 - `requests` module
 
+It is suggested to create a venv environment.  
+```python -m venv envllm```  
+ activate it with  
+```source envllm/bin/activate```
+
 
 ## Setup
 
