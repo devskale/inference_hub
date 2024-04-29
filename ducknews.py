@@ -38,6 +38,9 @@ def search_translate(topic, to_language):
         return []
 
 def format_results_news(results):
+    for result in results:
+        result['age'] = age_of_article(result['date'])
+    results = sorted(results, key=lambda x: x['age'])
     for counter, result in enumerate(results, start=1):
         print(f"\n\033[94m\033[1m{counter}. {result['title']}\033[0m    {age_of_article(result['date'])}")
         print(f"   \033[90m{format_text(result['body'], 100)}\033[0m")
