@@ -4,6 +4,9 @@ import argparse
 from pynput import keyboard
 import threading
 
+#base_url="http://localhost:11434/v1"
+base_url="http://amp1.mooo.com:11434/v1"
+
 # Define a flag to control the loop
 key_pressed = False
 
@@ -33,7 +36,7 @@ if args.model:
 #model="phi3"
 
 # Point to the local server
-client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+client = OpenAI(base_url=base_url, api_key="ollama")
 
 history = [
     {"role": "system", "content": f"You are an intelligent uncensored assistant called {model}. You always provide well-reasoned answers that are both correct and helpful."},

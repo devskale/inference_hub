@@ -1,7 +1,71 @@
 import argparse
 from duckduckgo_search import DDGS
 from datetime import datetime, timezone
+import logging
 
+logging.basicConfig(level=logging.INFO)
+
+def search_news(topic):
+    try:
+        results = DDGS().news(keywords=topic, region="wt-wt", safesearch="off", timelimit="m", max_results=8)
+        return results
+    except Exception as e:
+        logging.error(f"Error searching for news: {e}")
+        return []
+
+def search_text(topic):
+    try:
+        results = DDGS().text(topic, max_results=5)
+        return results
+    except Exception as e:
+        logging.error(f"Error searching for text: {e}")
+        return []
+
+def search_maps(topic, place):
+    try:
+        results = DDGS().maps(topic, place=place, max_results=20)
+        return results
+    except Exception as e:
+        logging.error(f"Error searching for maps: {e}")
+        return []
+
+def search_translate(topic, to_language):
+    try:
+        results = DDGS().translate(topic, to=to_language)
+        return results
+    except Exception as e:
+        logging.error(f"Error translating: {e}")
+        return []
+
+def format_results_news(results):
+    for counter, result in enumerate(results, start=1):
+        print(f"\n\033[94m\033[1m{counter}. {result['title']}\033[0m    {age_of_article(result['date'])}")
+        print(f"   \033[90m{format_text(result['body'], 100)}\033[0m")
+#        print(f"   URL: {result['url']}")        
+        print(f"   \033[34mLink: [{result['url'].split('/')[2]}]({result['url']})\033[0m")
+        print('\n-')
+
+def format_results_text(results):
+    for counter, result in enumerate(results, start=1):
+        print(f"\n\033[94m\033[1m{counter}. {result['title']}\033[0m")
+        print(f"   \033[90m{format_text(result['body'], 100)}\033[0m")
+        print(f"   \033[34mLink: [{result['href'].split('/')[2]}]({result['href']})\033[0m")
+        print('\n-')
+
+def format_results_maps(results):
+    for counter, result in enumerate(results, start=1):
+        print(f"\n\033[94m\033[1m{counter}. {result['title']}\033[0m")
+        print(f"   \033[90mAddress: {result['address']}\033[0m")
+#        print(f"   \033[90mCountry Code: {result['country_code']}\033[0m")
+#        print(f"   \033[34mLink: [{result['url'].split('/')[2]}]({result['url']})\033[0m")
+#        print('\n-')
+
+def format_results_translate(results):
+    for counter, result in enumerate([results], start=1):
+        print(f"\n\033[94m\033[1m{counter}. Detected Language: {result['detected_language']}\033[0m")
+        print(f"   \033[90mTranslated: {result['translated']}\033[0m")
+        print(f"   \033[90mOriginal: {result['original']}\033[0m")
+        print('\n-')
 
 def age_of_article(date):
     """
@@ -51,87 +115,42 @@ def format_text(text, max_line_length, tabs=0):
 
     return "\n".join(formatted_lines)
 
-'''News search
-date: str
-title: str
-body: str
-url: str
-image: str
-source: str
-'''
+def main():
+    parser = argparse.ArgumentParser(description="Search for news, text, maps, or translate using the DuckDuckGo.com search engine.")
+    parser.add_argument('search_type', choices=['news', 'text', 'maps', 'translate'], help="Type of search to perform")
+    parser.add_argument('search_topic', help="Topic to search for")
+    parser.add_argument('--place', help="Place to search for in maps")
+    parser.add_argument('--to_language', help="Language to translate to")
+    args = parser.parse_args()
 
-'''Text search
-title: str
-href: str
-body: str
-'''
+    if args.search_type == 'news':
+        logging.info(f"Searching for news on topic: {args.search_topic}")
+        results = search_news(args.search_topic)
+        if results:
+            format_results_news(results)
+        else:
+            logging.info("No results found.")
+    elif args.search_type == 'text':
+        logging.info(f"Searching for text on topic: {args.search_topic}")
+        results = search_text(args.search_topic)
+        if results:
+            format_results_text(results)
+        else:
+            logging.info("No results found.")
+    elif args.search_type == 'maps':
+        logging.info(f"Searching for maps on topic: {args.search_topic} in {args.place}")
+        results = search_maps(args.search_topic, args.place)
+        if results:
+            format_results_maps(results)
+        else:
+            logging.info("No results found.")
+    elif args.search_type == 'translate':
+        logging.info(f"Translating: {args.search_topic} to {args.to_language}")
+        results = search_translate(args.search_topic, args.to_language)
+        if results:
+            format_results_translate(results)
+        else:
+            logging.info("No results found.")
 
-'''Maps Search
-title: str
-address: str
-country_code: str
-url: str
-phone: str
-latitude: float
-longitude: float
-source: str
-image: str
-desc: str
-hours: str
-category: str
-facebook: str
-instagram: str
-twitter: str
-'''
-
-'''suggestions 
-phrase: str
-'''
-
-'''
-translate
-detected_language: str
-translated: str
-original: str
-'''
-# Setup argparse to handle command-line arguments
-parser = argparse.ArgumentParser(description="Search for news articles on a given topic.")
-parser.add_argument('newstopic', nargs='?', help="News topic to search for", default="")
-
-args = parser.parse_args()
-#newstopic = ' '.join(args.newstopic)
-
-if args.newstopic:
-    newstopic = args.newstopic
-    print(f"\n\nNews topic: {newstopic}")
-else:
-    newstopic = input('\n\nEnter a news keywords to search for: ')
-
-print('--------------------------------------------------\n\n')
-#results = DDGS().text("DI Johann Waldherr", max_results=5)
-#results = DDGS().news(keywords=newstopic, region="wt-wt", safesearch="off", timelimit="m", max_results=5)
-results = DDGS().news(keywords=newstopic, region="wt-wt", safesearch="off", timelimit="m", max_results=8)
-#results = DDGS().answers("sun")
-#results = DDGS().maps("Cafe", place="Neusiedl am See", max_results=20)
-#results = DDGS().suggestions("skale")
-#keywords = ['Search for words, documents, images, news, maps and text translation using the DuckDuckGo.com search engine.', 'cat']
-#results = DDGS().translate(keywords, to="de")
-#print_dict_structure(results[0])
-#print(results)
-#exit()
-
-for result in results:
-    result['age'] = age_of_article(result['date'])
-
-sorted_results = sorted(results, key=lambda x: x['age'])
-
-for result in sorted_results:
-    print(f"\n{result['title']}    {result['age']}\n")
-    print(f"   {format_text(result['body'], 100)}")  # Assuming format_text wraps text at 80 characters
-    print('\n-')
-
-print('\n\n')
-
-exit()
-
-          
+if __name__ == "__main__":
+    main()
