@@ -16,6 +16,16 @@ document.getElementById('chatForm').addEventListener('submit', async function (e
     // Scroll to the bottom of the response div
     responseDiv.scrollTop = responseDiv.scrollHeight;
 
+    // Add spinner
+    const spinner = document.createElement('div');
+    spinner.className = 'spinner-border text-primary';
+    spinner.role = 'status';
+    const spinnerSpan = document.createElement('span');
+    spinnerSpan.className = 'visually-hidden';
+    spinnerSpan.textContent = 'Loading...';
+    spinner.appendChild(spinnerSpan);
+    responseDiv.appendChild(spinner);
+
     const data = {
         model: 'phi3',
         messages: [
@@ -82,8 +92,9 @@ document.getElementById('chatForm').addEventListener('submit', async function (e
             assistantMessage.textContent += '..';
         }
     } finally {
-        // Hide the stop button when streaming is done
+        // Hide the stop button and remove spinner when streaming is done
         stopButton.style.display = 'none';
+        responseDiv.removeChild(spinner);
     }
 
     document.getElementById('inputField').value = ''; // Clear the input field
