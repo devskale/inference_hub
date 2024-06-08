@@ -31,7 +31,7 @@ document.getElementById('chatForm').addEventListener('submit', async function (e
     stopButton.style.display = 'inline-block';
 
     try {
-        const response = await fetch('http://localhost:11434/api/chat', {
+        const response = await fetch('http://amp1.mooo.com:11434/api/chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

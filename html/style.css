@@ -1,0 +1,31 @@
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+#response {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    height: 400px;
+    overflow-y: auto;
+}
+.message {
+    margin: 10px 0;
+}
+.user {
+    color: blue;
+}
+.assistant {
+    color: rgb(31, 30, 30);
+}
+.message.user::before {
+    content: "User: ";
+    font-weight: bold;
+}
+.message.assistant::before {
+    content: "Assistant: ";
+    font-weight: bold;
+}
+</style>
