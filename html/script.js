@@ -1,13 +1,16 @@
+let controller;
+
 document.getElementById('chatForm').addEventListener('submit', async function (event) {
     event.preventDefault(); // Prevent the form from submitting the traditional way
 
     const inputField = document.getElementById('inputField').value;
     const responseDiv = document.getElementById('response');
+    const stopButton = document.getElementById('stopButton');
 
     // Display user's message
     const userMessage = document.createElement('div');
     userMessage.className = 'message user';
-    userMessage.textContent = `User: ${inputField}`;
+    userMessage.textContent = inputField;
     responseDiv.appendChild(userMessage);
 
     // Scroll to the bottom of the response div
@@ -21,8 +24,11 @@ document.getElementById('chatForm').addEventListener('submit', async function (e
         ]
     };
 
-    const controller = new AbortController();
+    controller = new AbortController();
     const signal = controller.signal;
+
+    // Show the stop button
+    stopButton.style.display = 'inline-block';
 
     try {
         const response = await fetch('http://localhost:11434/api/chat', {
@@ -42,7 +48,6 @@ document.getElementById('chatForm').addEventListener('submit', async function (e
         const decoder = new TextDecoder();
         let assistantMessage = document.createElement('div');
         assistantMessage.className = 'message assistant';
-        assistantMessage.textContent = 'Assistant: ';
         responseDiv.appendChild(assistantMessage);
         let result = '';
 
@@ -61,7 +66,7 @@ document.getElementById('chatForm').addEventListener('submit', async function (e
                     const json = JSON.parse(line);
                     if (json.done === false) {
                         result += json.message.content;
-                        assistantMessage.textContent = `Assistant: ${result}`;
+                        assistantMessage.textContent = result;
 
                         // Scroll to the bottom of the response div
                         responseDiv.scrollTop = responseDiv.scrollHeight;
@@ -73,11 +78,19 @@ document.getElementById('chatForm').addEventListener('submit', async function (e
         }
     } catch (error) {
         console.error('Error:', error);
-        const errorMessage = document.createElement('div');
-        errorMessage.className = 'message error';
-        errorMessage.textContent = `Error: ${error.message}`;
-        responseDiv.appendChild(errorMessage);
+        if (error.name === 'AbortError') {
+            assistantMessage.textContent += '..';
+        }
+    } finally {
+        // Hide the stop button when streaming is done
+        stopButton.style.display = 'none';
     }
 
     document.getElementById('inputField').value = ''; // Clear the input field
+});
+
+document.getElementById('stopButton').addEventListener('click', function () {
+    if (controller) {
+        controller.abort(); // Abort the fetch request
+    }
 });

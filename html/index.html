@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ollama Chat</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,7 +15,7 @@
             padding: 10px;
             border: 1px solid #ccc;
             background-color: #f9f9f9;
-            height: 300px;
+            height: 400px;
             overflow-y: auto;
         }
         .message {
@@ -26,17 +27,32 @@
         .assistant {
             color: green;
         }
+        .message.user::before {
+            content: "User: ";
+            font-weight: bold;
+        }
+        .message.assistant::before {
+            content: "Assistant: ";
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <h1>Ollama Chat</h1>
-    <form id="chatForm">
-        <label for="inputField">Enter your question:</label>
-        <input type="text" id="inputField" name="inputField" required>
-        <br>
-        <button type="submit">Submit</button>
-    </form>
-    <div id="response"></div>
+    <div class="container">
+        <h1 class="my-4">Ollama Chat</h1>
+        <form id="chatForm" class="mb-3">
+            <div class="form-group">
+                <label for="inputField">Enter your question:</label>
+                <input type="text" id="inputField" name="inputField" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" id="stopButton" class="btn btn-danger" style="display:none;">Stop</button>
+        </form>
+        <div id="response" class="border rounded p-3"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
