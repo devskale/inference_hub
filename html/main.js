@@ -1,5 +1,4 @@
 // main.js
-
 import { displayUserMessage, addSpinner, removeSpinner, displayAssistantMessage, handleError } from './utils.js';
 import { sendOllamaRequest } from './ollama.js';
 import { sendLlamaRequest } from './llamacpp.js';
@@ -25,11 +24,13 @@ document.getElementById('chatForm').addEventListener('submit', async function (e
 
     stopButton.style.display = 'inline-block';
 
+    const startTime = performance.now();
+
     try {
         if (apiType.includes('ollama')) {
-            await sendOllamaRequest(selectedURL, inputField, responseDiv, signal);
+            await sendOllamaRequest(selectedURL, inputField, responseDiv, signal, startTime);
         } else if (apiType.includes('llama')) {
-            await sendLlamaRequest(selectedURL, inputField, responseDiv, signal);
+            await sendLlamaRequest(selectedURL, inputField, responseDiv, signal, startTime);
         }
     } catch (error) {
         handleError(responseDiv, error);

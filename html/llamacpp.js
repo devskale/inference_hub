@@ -2,7 +2,7 @@
 
 import { displayAssistantMessage } from './utils.js';
 
-export async function sendLlamaRequest(url, input, responseDiv, signal) {
+export async function sendLlamaRequest(url, input, responseDiv, signal, startTime) {
     const data = {
         "messages": [
             { "role": "system", "content": "You are a helpful assistant." },
@@ -30,6 +30,8 @@ export async function sendLlamaRequest(url, input, responseDiv, signal) {
         let assistantMessage = displayAssistantMessage(responseDiv, '', true);
         let result = '';
 
+        let firstCharTime = null;
+
         while (true) {
             const { done, value } = await reader.read();
             if (done) break;
@@ -44,6 +46,9 @@ export async function sendLlamaRequest(url, input, responseDiv, signal) {
                         if (parsedChunk.choices && parsedChunk.choices.length > 0) {
                             const content = parsedChunk.choices[0].delta.content;
                             if (content) {
+                                if (!firstCharTime) {
+                                    firstCharTime = performance.now();
+                                }
                                 result += content;
                                 assistantMessage.innerText = result;
                             }
@@ -53,6 +58,17 @@ export async function sendLlamaRequest(url, input, responseDiv, signal) {
                     }
                 }
             }
+        }
+
+        const endTime = performance.now();
+        if (firstCharTime) {
+            const tfc = (firstCharTime - startTime).toFixed(2);
+            const totalTime = (endTime - startTime) / 1000; // in seconds
+            const cps = (result.length / totalTime).toFixed(2);
+
+            const statsDiv = document.createElement('div');
+            statsDiv.innerHTML = `<p>TFC: ${tfc} ms, CPS: ${cps} chars/sec</p>`;
+            responseDiv.appendChild(statsDiv);
         }
     } catch (error) {
         if (error.name === 'AbortError') {
