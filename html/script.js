@@ -39,9 +39,12 @@ document.getElementById('chatForm').addEventListener('submit', async function (e
 
     // Show the stop button
     stopButton.style.display = 'inline-block';
+    // Get the selected URL
+    var optionField = document.getElementById('optionField');
+    var selectedURL = optionField.options[optionField.selectedIndex].value;
 
     try {
-        const response = await fetch('http://amp1.mooo.com:11434/api/chat', {
+        const response = await fetch(selectedURL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

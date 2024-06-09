@@ -10,10 +10,23 @@
 <body>
     <div class="container">
         <h1 class="my-4">Der Chat</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="optionField" class="form-label">Choose inference URL:</label>
+                    <select id="optionField" name="optionField" class="form-control" required>
+                        <option value="">--Please choose an option--</option>
+                        <option value="http://amp1.mooo.com:11434/api/chat" selected>amp1 ollama phi3</option>
+                        <option value="http://localhost:11434/api/chat">localhost ollama phi3</option>
+                        <option value="http://localhost:8080/chat/completions">localhost llama.cpp phi3</option>
+                    </select>
+                </div>
+            </div>
+        </div>
         <form id="chatForm" class="mb-3">
             <div class="mb-3">
                 <label for="inputField" class="form-label">Enter your question:</label>
-                <input type="text" id="inputField" name="inputField" class="form-control" required>
+                <textarea id="inputField" name="inputField" class="form-control" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="button" id="stopButton" class="btn btn-secondary" style="display:none;">Stop</button>
