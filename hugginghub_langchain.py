@@ -23,6 +23,8 @@ print(llm.invoke("What is Deep Learning?"))
 
 from langchain_core.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 
+print(f"loading {repo_id}")
+
 callbacks = [StreamingStdOutCallbackHandler()]
 llm = HuggingFaceEndpoint(
     endpoint_url=repo_id,

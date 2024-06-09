@@ -5,7 +5,11 @@ from pynput import keyboard
 import threading
 
 #base_url="http://localhost:11434/v1"
-base_url="http://amp1.mooo.com:11434/v1"
+base_url="http://localhost:8080"
+#base_url="http://amp1.mooo.com:11434/v1"
+#base_url="http://192.168.0.111:11434/v1"
+#base_url="http://pind.mooo.com:11434/v1"
+#base_url="http://194.96.255.239:11434/v1"
 
 # Define a flag to control the loop
 key_pressed = False
@@ -31,7 +35,7 @@ parser.add_argument("--model", "-m", type=str, default="phi3", help="Model name"
 args = parser.parse_args()
 if args.model:
     model = args.model
-    print("loading model: ", model)
+    print("loading model: ", model, "from", base_url)
 #model="dolphin-mistral:latest"
 #model="phi3"
 
