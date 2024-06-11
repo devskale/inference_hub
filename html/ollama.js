@@ -2,9 +2,9 @@
 
 import { displayAssistantMessage } from './utils.js';
 
-export async function sendOllamaRequest(url, input, responseDiv, signal, startTime) {
+export async function sendOllamaRequest(url, model, input, responseDiv, signal, startTime) {
     const data = {
-        model: 'phi3',
+        model: model,
         messages: [
             { role: 'system', content: 'You are a helpful AI agent.' },
             { role: 'user', content: input }

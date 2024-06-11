@@ -28,7 +28,13 @@ document.getElementById('chatForm').addEventListener('submit', async function (e
 
     try {
         if (apiType.includes('ollama')) {
-            await sendOllamaRequest(selectedURL, inputField, responseDiv, signal, startTime);
+            // add a model for the ollama api
+            if (apiType.includes('llama3')) {
+                var model = 'llama3';
+            } else {
+                var model = 'phi3';
+            }
+            await sendOllamaRequest(selectedURL, model, inputField, responseDiv, signal, startTime);
         } else if (apiType.includes('llama')) {
             await sendLlamaRequest(selectedURL, inputField, responseDiv, signal, startTime);
         }
