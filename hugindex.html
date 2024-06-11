@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<!-- polyfill for firefox + import maps -->
+		<script src="https://unpkg.com/es-module-shims@1.7.0/dist/es-module-shims.js"></script>
+		<script type="importmap">
+			{
+				"imports": {
+					"@huggingface/inference": "https://cdn.jsdelivr.net/npm/@huggingface/inference@1.7.1/+esm"
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<form class="w-[90%] mx-auto pt-8" onsubmit="launch(); return false;">
+			<h1 class="text-3xl font-bold">
+				<span
+					class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500"
+				>
+					Streaming text generation demo with
+					<a href="https://github.com/huggingface/huggingface.js">
+						<kbd>@huggingface/inference</kbd>
+					</a>
+				</span>
+			</h1>
+
+			<p class="mt-8">
+				First, input your token if you have one! Otherwise, you may encounter
+				rate limiting. You can create a token for free at
+				<a
+					target="_blank"
+					href="https://huggingface.co/settings/tokens"
+					class="underline text-blue-500"
+					>hf.co/settings/tokens</a
+				>
+			</p>
+
+			<input
+				type="text"
+				id="token"
+				class="rounded border-2 border-blue-500 shadow-md px-3 py-2 w-96 mt-6"
+				placeholder="token (optional)"
+			/>
+
+			<p class="mt-8">
+				Pick the model you want to run. Check out over 10k models for text to
+				text generation
+				<a
+					href="https://huggingface.co/models?pipeline_tag=text2text-generation&sort=likes"
+					class="underline text-blue-500"
+					target="_blank"
+				>
+					here</a
+				>
+			</p>
+
+			<!-- Default model: https://huggingface.co/google/flan-t5-xxl -->
+			<input
+				type="text"
+				id="model"
+				class="rounded border-2 border-blue-500 shadow-md px-3 py-2 w-96 mt-6"
+				value="google/flan-t5-xxl"
+				required
+			/>
+
+			<p class="mt-8">Finally the prompt</p>
+
+			<textarea
+				class="rounded border-blue-500 shadow-md px-3 py-2 w-96 mt-6 block"
+				rows="5"
+				id="prompt"
+			>
+Q: How is butter made? 
+
+Describe the process from the beginning
+			</textarea
+			>
+
+			<button
+				id="submit"
+				class="my-8 bg-green-500 rounded py-3 px-5 text-white shadow-md disabled:bg-slate-300"
+			>
+				Run
+			</button>
+
+			<p class="text-gray-400 text-sm">Output logs</p>
+			<div id="logs" class="bg-gray-100 rounded p-3 mb-8 text-sm">
+				Output will be here
+			</div>
+
+			<p>Check out the <a class="underline text-blue-500" href="https://huggingface.co/spaces/huggingfacejs/streaming-text-generation/blob/main/index.html" target="_blank">source code</a></p>
+		</form>
+
+		<script type="module">
+			import { HfInference } from "@huggingface/inference";
+
+			let running = false;
+			async function launch() {
+				if (running) {
+					return;
+				}
+				running = true;
+				try {
+					const hf = new HfInference(
+						document.getElementById("token").value.trim() || undefined
+					);
+					const model = document.getElementById("model").value.trim();
+					const prompt = document.getElementById("prompt").value.trim();
+					document.getElementById("logs").textContent = "";
+
+					for await (const output of hf.textGenerationStream({
+						model,
+						inputs: prompt,
+						parameters: { max_new_tokens: 250 }
+					}, {
+						use_cache: false
+					})) {
+						document.getElementById("logs").textContent += output.token.text;
+					}
+				} catch (err) {
+					alert("Error: " + err.message);
+				} finally {
+					running = false;
+				}
+			}
+			window.launch = launch;
+		</script>
+	</body>
+</html>
