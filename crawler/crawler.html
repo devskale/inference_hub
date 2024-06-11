@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search and Crawl</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        #search-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        #search-term {
+            padding: 10px;
+            font-size: 16px;
+            width: 60%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        #search-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #search-container button:hover {
+            background-color: #0056b3;
+        }
+        #results-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        #results-container h3 {
+            margin-bottom: 10px;
+        }
+        #results-list {
+            list-style: none;
+            padding: 0;
+            max-height: 150px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        #results-list li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #results-list li:last-child {
+            border-bottom: none;
+        }
+        #results-list button {
+            padding: 5px 10px;
+            font-size: 14px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #results-list button:hover {
+            background-color: #218838;
+        }
+        #crawl-results {
+            display: flex;
+            border: 1px solid #ccc;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            height: 400px;
+        }
+        #left-box, #right-box {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+        }
+        #left-box {
+            border-right: 1px solid #ccc;
+        }
+        #next-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #next-button:hover {
+            background-color: #0056b3;
+        }
+        #crawled-website {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        .loading {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="search-container">
+        <input type="text" id="search-term" placeholder="Enter search term">
+        <button onclick="search()">Search</button>
+    </div>
+    <div id="results-container">
+        <h3>Search Results</h3>
+        <ul id="results-list"></ul>
+    </div>
+    <div id="crawled-website"></div>
+    <div id="crawl-results">
+        <div id="left-box">
+            <h4>w3m</h4>
+            <div class="loading" id="w3m-loading">Loading...</div>
+            <pre id="w3m-results"></pre>
+        </div>
+        <div id="right-box">
+            <h4>Markdown</h4>
+            <div class="loading" id="markdown-loading">Loading...</div>
+            <pre id="markdown-results"></pre>
+        </div>
+    </div>
+    <button id="next-button" onclick="nextPage()">Next</button>
+
+    <script>
+        async function search() {
+            const term = document.getElementById('search-term').value;
+            console.log(`Search term: ${term}`);
+            const response = await fetch(`http://127.0.0.1:5000/search?term=${term}&num_results=5`);
+            const results = await response.json();
+            console.log('Search results:', results);
+            
+            const resultsList = document.getElementById('results-list');
+            resultsList.innerHTML = ''; // Clear previous results
+
+            results.forEach(result => {
+                const li = document.createElement('li');
+                li.textContent = result;
+                
+                const button = document.createElement('button');
+                button.textContent = 'Crawl';
+                button.onclick = () => crawl(result);
+                
+                li.appendChild(button);
+                resultsList.appendChild(li);
+            });
+        }
+
+        async function crawl(result) {
+            console.log(`Crawling result: ${result}`);
+            document.getElementById('w3m-loading').style.display = 'block';
+            document.getElementById('markdown-loading').style.display = 'block';
+            const w3mResults = document.getElementById('w3m-results');
+            const markdownResults = document.getElementById('markdown-results');
+            w3mResults.textContent = '';
+            markdownResults.textContent = '';
+
+            try {
+                const response = await fetch(`http://127.0.0.1:5000/crawl?result=${result}`, { timeout: 15000 });
+                const data = await response.json();
+                console.log('Crawl data:', data);
+
+                document.getElementById('crawled-website').textContent = `Crawled Website: ${result}`;
+                w3mResults.textContent = data.w3m || `Error: ${data.error}`;
+                markdownResults.textContent = data.markdown || `Error: ${data.error}`;
+            } catch (error) {
+                w3mResults.textContent = `Error: ${error.message}`;
+                markdownResults.textContent = `Error: ${error.message}`;
+            } finally {
+                document.getElementById('w3m-loading').style.display = 'none';
+                document.getElementById('markdown-loading').style.display = 'none';
+            }
+        }
+
+        async function nextPage() {
+            const currentResult = document.getElementById('w3m-results').textContent.split('\n')[0];
+            console.log(`Next page for result: ${currentResult}`);
+            document.getElementById('w3m-loading').style.display = 'block';
+            document.getElementById('markdown-loading').style.display = 'block';
+            const w3mResults = document.getElementById('w3m-results');
+            const markdownResults = document.getElementById('markdown-results');
+
+            try {
+                const response = await fetch(`http://127.0.0.1:5000/next?result=${currentResult}`, { timeout: 15000 });
+                const data = await response.json();
+                console.log('Next page data:', data);
+
+                w3mResults.textContent += `\n${data.w3m}`;
+                markdownResults.textContent += `\n${data.markdown}`;
+            } catch (error) {
+                w3mResults.textContent += `\nError: ${error.message}`;
+                markdownResults.textContent += `\nError: ${error.message}`;
+            } finally {
+                document.getElementById('w3m-loading').style.display = 'none';
+                document.getElementById('markdown-loading').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
