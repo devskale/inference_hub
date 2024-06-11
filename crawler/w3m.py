@@ -20,7 +20,7 @@ def fetch_webpage(url):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python markdowner.py <url>")
+        print("Usage: w3m.py <url>")
         sys.exit(1)
     
     url = sys.argv[1]

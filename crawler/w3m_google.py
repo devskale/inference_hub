@@ -24,7 +24,7 @@ def google_search(query, num_results=3):
 if __name__ == "__main__":
     # Example usage
     query = "python web scraping"
-    urls = google_search(query, num_results=3)
+    urls = google_search(query, num_results=5)
     print("Search results:")
     for url in urls:
         print(url)
