@@ -1,0 +1,6 @@
+keys.json
+models.json
+*.pyc
+*.bak
+infer.txt
+__pycache__/
