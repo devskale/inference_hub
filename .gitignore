@@ -4,3 +4,4 @@ models.json
 *.bak
 infer.txt
 __pycache__/
+RAGUI/uploads/
