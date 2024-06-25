@@ -1,3 +1,13 @@
+# TODOs
+[x] add break option to interrupt (too) long (misguided) answers. pynput threads globvars.
+[] add multiline option, strg+enter for instance
+[] add commands like /sum or /tweet
+[] make a executable (pyinstaller)
+[] add web input
+[] autocheck the best ollama model
+[] use phi3 for german, its supposedly good
+[] add numchars/numtokens as bottom status line
+
 # SKALE.DEV LLM Inference Examples
 
 This repository is a collection of scripts demonstrating the inference capabilities of several Large Language Models (LLMs) across a variety of providers.
@@ -52,6 +62,11 @@ Dive into the versatility and power of our inference scripts, designed to simpli
 
 - Python 3.6+
 - `requests` module
+
+It is suggested to create a venv environment.  
+```python -m venv envllm```  
+ activate it with  
+```source envllm/bin/activate```
 
 
 ## Setup

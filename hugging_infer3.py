@@ -2,7 +2,7 @@ import requests
 from getparams import load_api_credentials, load_model_parameters
 
 hoster = 'huggingface'
-model_name = 'mixtral'
+model_name = 'mistral7b'
 
 api_key = load_api_credentials(hoster)
 model_parameters, api_url = load_model_parameters(hoster,model_name)

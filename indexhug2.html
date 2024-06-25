@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Text generation huggingface.js Mistral-7B-Instruct-v0.1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="container mx-auto p-3 max-w-xl">
+    <script type="module">
+      import { HfInference } from "https://cdn.skypack.dev/@huggingface/inference@2.6.4";
+      async function* textStreamRes(hf, controller, input) {
+        let tokens = [];
+        for await (const output of hf.textGenerationStream(
+          {
+            model: "mistralai/Mistral-7B-Instruct-v0.1",
+            inputs: "<s>[INST]Write an essay about Sartre[/INST]",
+            parameters: { max_new_tokens: 1000 },
+          },
+          {
+            use_cache: false,
+            signal: controller.signal,
+          }
+        )) {
+          tokens.push(output);
+          yield tokens;
+        }
+      }
+
+      let controller;
+      async function run() {
+        controller = new AbortController();
+        const message = `<s>[INST]{:}[/INST]`;
+        const textInput = document.querySelector("#input").value;
+        const input = message.replace("{:}", textInput);
+        const token = document.querySelector("#token").value;
+        const hf = new HfInference(token);
+
+        const gen = document.querySelector("#generation");
+        gen.innerHTML = "";
+        try {
+          for await (const tokens of textStreamRes(hf, controller, input)) {
+            const lastToken = tokens[tokens.length - 1];
+            const span = document.createElement("span");
+            span.innerText = lastToken.token.text;
+            gen.appendChild(span);
+          }
+        } catch (e) {
+          console.log("aborted");
+        }
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        const token = localStorage.getItem("token");
+        if (token) {
+          document.querySelector("#token").value = token;
+        }
+      });
+      document.querySelector("#token").addEventListener("change", (e) => {
+        localStorage.setItem("token", e.target.value);
+      });
+      document.querySelector("#run").addEventListener("click", run);
+      document.querySelector("#abort").addEventListener("click", () => {
+        controller.abort();
+      });
+    </script>
+    <div class="grid grid-cols-1 gap-2">
+      <header>
+        <h1 class="text-3xl">Mistral-7B-Instruct-v0.1</h1>
+        <h2 class="text-xl">huggingface.js</h2>
+      </header>
+      <input
+        id="token"
+        class="border-2 border-gray-500 rounded-md"
+        placeholder="HF-TOKEN"
+        type="password"
+      />
+      <textarea
+        id="input"
+        class="border-2 border-gray-500 rounded-md"
+        style="width: 100%; height: 100px"
+      >
+ Write an essay about Sartre</textarea
+      >
+      <div class="flex gap-2">
+        <button
+          id="run"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          GENERATE
+        </button>
+        <button
+          id="abort"
+          class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+        >
+          ABORT
+        </button>
+      </div>
+    </div>
+    <div id="generation" class="py-3"></div>
+  </body>
+</html>

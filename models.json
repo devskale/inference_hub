@@ -8,7 +8,7 @@
                 "seed": 42,
                 "stream": true            
             },
-            "inference_api": "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2"
+            "inference_api": "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3"
         },
         "mixtral":{
             "params": {
@@ -19,7 +19,28 @@
                 "stream": true            
             },
             "inference_api": "https://api-inference.huggingface.co/models/mistralai/Mixtral-8x7B-Instruct-v0.1"
+        },
+        "llama3":{
+            "params": {
+                "temperature": 0.6,
+                "top_p": 0.4,
+                "max_tokens": 512,
+                "seed": 42,
+                "stream": true            
+            },
+            "inference_api": "https://api-inference.huggingface.co/models/meta-llama/Meta-Llama-3-8B-Instruct"
+        },
+        "stabilityai/stablelm-zephyr-3b":{
+            "params": {
+                "temperature": 0.6,
+                "top_p": 0.4,
+                "max_tokens": 512,
+                "seed": 42,
+                "stream": true            
+            },
+            "inference_api": "https://api-inference.huggingface.co/models/stabilityai/stablelm-zephyr-3b"
         }
+        
     },
     "groq": {
         "mixtral":{

@@ -4,8 +4,12 @@ from getparams import load_api_credentials, load_model_parameters
 api_token = load_api_credentials('huggingface')
 #HUGGINGFACEHUB_API_TOKEN = "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"
 
-#repo_id = "mistralai/Mistral-7B-Instruct-v0.2"
-repo_id = "mistralai/Mixtral-8x7B-Instruct-v0.1"
+
+repo_id = "mistralai/Mistral-7B-Instruct-v0.3"
+#repo_id = "mistralai/Mixtral-8x7B-Instruct-v0.1"
+#repo_id="stabilityai/stablelm-zephyr-3b"
+#repo_id="01-ai/Yi-1.5-34B-Chat"
+#repo_id="microsoft/Phi-3-mini-4k-instruct"
 
 """ llm = HuggingFaceEndpoint(
                 endpoint_url=repo_id,
@@ -22,6 +26,8 @@ print(llm.invoke("What is Deep Learning?"))
  """
 
 from langchain_core.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+
+print(f"loading {repo_id}")
 
 callbacks = [StreamingStdOutCallbackHandler()]
 llm = HuggingFaceEndpoint(
