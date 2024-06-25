@@ -13,13 +13,21 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="mb-3">
-                    <label for="optionField" class="form-label">Choose inference URL:</label>
-                    <select id="optionField" name="optionField" class="form-control" required>
-                        <option value="">--Please choose an option--</option>
-                        <option value="http://amp1.mooo.com:11434/api/chat" selected>amp1 phi3@ollama</option>
-                        <option value="http://amp1.mooo.com:11434/api/chat" selected>amp1 llama3@ollama</option>
-                        <option value="http://localhost:11434/api/chat">localhost phi3@ollama</option>
-                        <option value="http://localhost:8080/chat/completions">localhost phi3@llama.cpp</option>
+                    <label for="serverField" class="form-label">Choose server:</label>
+                    <select id="serverField" name="serverField" class="form-control" required>
+                        <option value="">--Please choose a server--</option>
+                        <option value="http://example1.com" data-description="ollama">amp1 ollama</option>
+                        <option value="http://amp1.mooo.com:11434" data-description="ollama">amp1 ollama</option>
+                        <option value="http://localhost:11434" data-description="ollama">localhost ollama</option>
+                        <option value="http://localhost:8080" data-description="llama.cpp">localhost llama.cpp</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="modelField" class="form-label">Choose model:</label>
+                    <select id="modelField" name="modelField" class="form-control" required>
+                        <option value="">--Please choose a server first--</option>
                     </select>
                 </div>
             </div>

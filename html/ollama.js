@@ -11,6 +11,7 @@ export async function sendOllamaRequest(url, model, input, responseDiv, signal, 
         ]
     };
 
+
     try {
         const response = await fetch(url, {
             method: 'POST',
