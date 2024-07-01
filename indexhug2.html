@@ -12,7 +12,7 @@
         let tokens = [];
         for await (const output of hf.textGenerationStream(
           {
-            model: "mistralai/Mistral-7B-Instruct-v0.1",
+            model: "mistralai/Mistral-7B-Instruct-v0.3",
             inputs: "<s>[INST]Write an essay about Sartre[/INST]",
             parameters: { max_new_tokens: 1000 },
           },
