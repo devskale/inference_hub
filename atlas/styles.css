@@ -1,0 +1,141 @@
+body {
+    background-color: #f9fafb;
+    color: #1f2937;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-8 {
+    margin-bottom: 2rem;
+}
+
+.text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.space-x-4 > * + * {
+    margin-left: 1rem;
+}
+
+.h-10 {
+    height: 2.5rem;
+}
+
+.grid {
+    display: grid;
+}
+
+.grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.gap-6 {
+    gap: 1.5rem;
+}
+
+.box {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bg-yellow-100 {
+    background-color: #fefcbf;
+}
+
+.bg-yellow-100:hover {
+    background-color: #fef08a;
+}
+
+.bg-gray-100 {
+    background-color: #f3f4f6;
+}
+
+.bg-gray-100:hover {
+    background-color: #e5e7eb;
+}
+
+.bg-green-100 {
+    background-color: #d1fae5;
+}
+
+.bg-green-100:hover {
+    background-color: #a7f3d0;
+}
+
+.bg-red-100 {
+    background-color: #fee2e2;
+}
+
+.bg-red-100:hover {
+    background-color: #fecaca;
+}
+
+.p-4 {
+    padding: 1rem;
+}
+
+.rounded-lg {
+    border-radius: 0.5rem;
+}
+
+.shadow-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.mt-8 {
+    margin-top: 2rem;
+}
+
+.text-blue-500 {
+    color: #3b82f6;
+}
+
+.hover\:underline:hover {
+    text-decoration: underline;
+}
