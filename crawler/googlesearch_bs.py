@@ -4,6 +4,10 @@ import urllib.parse
 import argparse
 
 def google_search(query, num_results=4):
+    # Ensure query is a string
+    if not isinstance(query, str):
+        query = str(query)
+
     # URL encode the query
     encoded_query = urllib.parse.quote(query)
     # Construct the Google search URL
@@ -17,7 +21,7 @@ def google_search(query, num_results=4):
         response = requests.get(search_url, headers=headers)
         response.raise_for_status()
         
-        # Print the response status and part of the HTML content for debugging
+        # Debugging output
         print(f"Response Status Code: {response.status_code}")
 
         # Parse the response HTML with BeautifulSoup
@@ -49,9 +53,12 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Perform Google search
-    urls = google_search(args.searchterm, num_results=args.numresults)
+    if args.searchterm:
+        urls = google_search(args.searchterm, num_results=args.numresults)
     
-    # Print the search results
-    print("Search results:")
-    for url in urls:
-        print(url)
+        # Print the search results
+        print("Search results:")
+        for url in urls:
+            print(url)
+    else:
+        print("Please provide a search term using the -s or --searchterm argument.")

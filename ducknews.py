@@ -44,7 +44,6 @@ def format_results_news(results):
     for counter, result in enumerate(results, start=1):
         print(f"\n\033[94m\033[1m{counter}. {result['title']}\033[0m    {age_of_article(result['date'])}")
         print(f"   \033[90m{format_text(result['body'], 100)}\033[0m")
-#        print(f"   URL: {result['url']}")        
         print(f"   \033[34mLink: [{result['url'].split('/')[2]}]({result['url']})\033[0m")
         print('\n-')
 

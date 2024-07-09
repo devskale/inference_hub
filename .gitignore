@@ -5,3 +5,6 @@ models.json
 infer.txt
 __pycache__/
 RAGUI/uploads/
+venv/
+venv
+*.txt
