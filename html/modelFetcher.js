@@ -1,4 +1,3 @@
-// modelFetcher.js
 export async function fetchAvailableModels(serverUrl, serverType) {
     const modelField = document.getElementById('modelField');
     modelField.innerHTML = '<option value="">Loading models...</option>';
@@ -7,11 +6,26 @@ export async function fetchAvailableModels(serverUrl, serverType) {
         let models;
 
         if (serverType === 'ollama') {
-            console.log('Fetching Ollama models from:', `${serverUrl}/api/tags`);
-            const response = await fetch(`${serverUrl}/api/tags`);
+            const fetchUrl = `${serverUrl}/api/tags`;
+            console.log('Fetching Ollama models from:', fetchUrl);
+
+            // Ensure using HTTP
+            const response = await fetch(fetchUrl, {
+                method: 'GET',
+                mode: 'cors',
+                cache: 'no-cache',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                redirect: 'follow',
+                referrerPolicy: 'no-referrer',
+            });
+
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
+
             const data = await response.json();
             console.log('Received data:', data);
             models = data.models.map(model => model.name);
@@ -23,12 +37,9 @@ export async function fetchAvailableModels(serverUrl, serverType) {
             throw new Error(`Unsupported server type: ${serverType}`);
         }
 
-        console.log('Available models:', models); // Debug output
+        console.log('Available models:', models);
 
-        // Clear existing options and add the placeholder
         modelField.innerHTML = '<option value="">--Please choose a model--</option>';
-
-        // Add new model options to the dropdown
         models.forEach(model => {
             const option = document.createElement('option');
             option.value = model;
@@ -40,3 +51,12 @@ export async function fetchAvailableModels(serverUrl, serverType) {
         modelField.innerHTML = `<option value="">Error: ${error.message}</option>`;
     }
 }
+
+document.getElementById('serverField').addEventListener('change', async function() {
+    const serverField = document.getElementById('serverField');
+    const selectedOption = serverField.options[serverField.selectedIndex];
+    const serverUrl = selectedOption.value;
+    const serverType = selectedOption.getAttribute('data-description');
+
+    await fetchAvailableModels(serverUrl, serverType);
+});
