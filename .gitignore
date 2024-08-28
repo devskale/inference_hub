@@ -8,3 +8,5 @@ RAGUI/uploads/
 venv/
 venv
 *.txt
+.env
+envllm
