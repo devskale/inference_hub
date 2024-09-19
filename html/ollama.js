@@ -98,8 +98,7 @@ export async function sendOllamaRequest(url, model, input, responseDiv, signal, 
             const statsElement = document.createElement('p');
 
             statsElement.className = 'status-light';
-            //statsElement.textContent = `1st: ${tfc} s, ${cps} ch/s,<br>T ${totalTime.toFixed(1)} s`;
-            statsElement.innerHTML = `1st: ${tfc} s, tot ${totalTime.toFixed(1)} s<br>${cps} char/s,`;
+            statsElement.innerHTML = `1st: ${tfc} s, tot ${totalTime.toFixed(1)} s<br>${cps} char/s`;
             statsDiv.appendChild(statsElement);
 
             responseDiv.appendChild(statsDiv);
