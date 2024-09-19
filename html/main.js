@@ -88,7 +88,7 @@ document.getElementById('chatForm').addEventListener('submit', async function(ev
             await sendOllamaRequest(`${selectedServer}/api/chat`, selectedModel, inputField, responseDiv, signal, startTime);
         } else if (description.includes('llama.cpp')) {
             await sendLlamaRequest(`${selectedServer}/chat/completions`, inputField, responseDiv, signal, startTime);
-        } else if (description.includes('gemopenai')) {
+        } else if (description.includes('openai')) {
             await sendGemOpenAIRequest(`${selectedServer}/v1/chat/completions`, selectedModel, inputField, responseDiv, signal, startTime);
         } else {
             throw new Error('Unsupported server type');
