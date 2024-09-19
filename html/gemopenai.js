@@ -72,21 +72,30 @@ export async function sendGemOpenAIRequest(url, model, input, responseDiv, signa
         }
 
         const endTime = performance.now();
+
         if (firstCharTime) {
-            const tfc = (firstCharTime - startTime).toFixed(2);
+            const tfc = ((firstCharTime - startTime) / 1000).toFixed(1); // in seconds
             const totalTime = (endTime - startTime) / 1000; // in seconds
-            const cps = (result.length / totalTime).toFixed(2);
+            const cps = (result.length / totalTime).toFixed(1);
 
             const statsDiv = document.createElement('div');
-            statsDiv.innerHTML = `<p>TFC: ${tfc} ms, CPS: ${cps} chars/sec</p>`;
+            const statsElement = document.createElement('p');
+
+            statsElement.className = 'status-light';
+            //statsElement.textContent = `1st: ${tfc} s, ${cps} ch/s,<br>T ${totalTime.toFixed(1)} s`;
+            statsElement.innerHTML = `1st: ${tfc} s, tot ${totalTime.toFixed(1)} s, ${cps} char/s,`;
+            if (usage) {
+                const usageStats = `<br>Tokens used: ${usage.total_tokens} (Prompt: ${usage.prompt_tokens}, Completion: ${usage.completion_tokens})`;
+                statsElement.innerHTML += usageStats;
+            }
+                statsDiv.appendChild(statsElement);
+
             responseDiv.appendChild(statsDiv);
         }
         console.log(`Inference time: ${endTime - startTime} ms`);
 
-        if (usage) {
-            const usageStats = `\n\nTokens used: ${usage.total_tokens} (Prompt: ${usage.prompt_tokens}, Completion: ${usage.completion_tokens})`;
-            assistantMessage.innerHTML += marked.parse(usageStats);
-        }
+
+
     } catch (error) {
         console.error('Error in sendGemOpenAIRequest:', error);
         responseDiv.textContent = `Error: ${error.message}`;

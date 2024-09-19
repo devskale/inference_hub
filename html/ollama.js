@@ -90,12 +90,18 @@ export async function sendOllamaRequest(url, model, input, responseDiv, signal, 
 
         const endTime = performance.now();
         if (firstCharTime) {
-            const tfc = (firstCharTime - startTime).toFixed(2);
+            const tfc = ((firstCharTime - startTime) / 1000).toFixed(1); // in seconds
             const totalTime = (endTime - startTime) / 1000; // in seconds
-            const cps = (result.length / totalTime).toFixed(2);
+            const cps = (result.length / totalTime).toFixed(1);
 
             const statsDiv = document.createElement('div');
-            statsDiv.innerHTML = `<p>TFC: ${tfc} ms, CPS: ${cps} chars/sec</p>`;
+            const statsElement = document.createElement('p');
+
+            statsElement.className = 'status-light';
+            //statsElement.textContent = `1st: ${tfc} s, ${cps} ch/s,<br>T ${totalTime.toFixed(1)} s`;
+            statsElement.innerHTML = `1st: ${tfc} s, tot ${totalTime.toFixed(1)} s<br>${cps} char/s,`;
+            statsDiv.appendChild(statsElement);
+
             responseDiv.appendChild(statsDiv);
         }
     } catch (error) {
