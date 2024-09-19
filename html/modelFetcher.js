@@ -32,6 +32,12 @@ export async function fetchAvailableModels(serverUrl, serverType) {
         } else if (serverType === 'llama.cpp') {
             console.log('Using fixed model list for llama.cpp');
             models = ['llama-2-7b', 'llama-2-13b', 'llama-2-70b'];
+        } else if (serverType === 'openai') {
+            console.log('Using fixed model list for openai');
+            models = ['llama-2-7b', 'llama-2-13b', 'llama-2-70b'];
+        } else if (serverType === 'gemopenai') {
+            console.log('Using fixed model list for gemopenai');
+            models = ['gemini-1.5-pro-latest', 'gemini-1.5-flash-latest', 'gemini-1.5-pro-latest'];
         } else {
             console.error(`Unsupported server type: ${serverType}`);
             throw new Error(`Unsupported server type: ${serverType}`);

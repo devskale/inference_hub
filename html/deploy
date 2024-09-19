@@ -1,0 +1,66 @@
+  echo "Usage: $0 <source_path> <relative_dest_path> [backup_directory]"
+  echo ""
+  echo "This script deploys HTML files from the specified source path"
+  echo "to the destination directory for Nginx."
+  echo ""
+  echo "Arguments:"
+  echo "  <source_path>         The path to the HTML file or directory to be deployed."
+  echo "  <relative_dest_path>  The relative path under the base destination directory."
+  echo "  [backup_directory]    Optional. The directory where the backup will be stored."
+  echo ""
+  echo "Examples:"
+  echo "  sudo $0 ./wwwdev amd1.mooo.com"
+  echo "  sudo $0 ./wwwdev/index.html amd1.mooo.com"
+  echo "  sudo $0 ./wwwdev amd1.mooo.com /home/ubuntu/backup"
+}
+
+# Check if the source path and relative destination path are provided
+if [ -z "$1" ] || [ -z "$2" ]; then
+  show_help
+  exit 1
+fi
+
+# Define source path and base destination directory
+SRC_PATH=$(realpath "$1")
+BASE_DEST_DIR="/home/ubuntu/code/www/amd1.mooo.com/"
+REL_DEST_PATH="$2"
+DEST_DIR=$(realpath "$BASE_DEST_DIR/$REL_DEST_PATH")
+
+# Define the user and group for Nginx
+USER="www-data"
+GROUP="www-data"
+
+# Check if backup directory is provided
+if [ -n "$3" ]; then
+  BACKUP_DIR=$(realpath "$3")
+  BACKUP_DEST="${BACKUP_DIR}/$(basename ${DEST_DIR})_backup_$(date +'%Y%m%d%H%M%S')"
+  mkdir -p $BACKUP_DIR
+  cp -r $DEST_DIR $BACKUP_DEST
+  echo "Backup of $DEST_DIR created at $BACKUP_DEST"
+else
+  echo "No backup directory specified, skipping backup."/home/ubuntu/code/www/amd1.mooo.com/
+fi
+
+# Check if source is a file or directory and sync accordingly
+if [ -d "$SRC_PATH" ]; then
+  # Sync directory
+  rsync -av "$SRC_PATH/" "$DEST_DIR/"
+elif [ -f "$SRC_PATH" ]; then
+  # Sync single file
+  rsync -av "$SRC_PATH" "$DEST_DIR/"
+else
+  echo "Error: Source path is neither a file nor a directory"
+  exit 1
+fi
+
+# Change ownership and permissions
+chown -R $USER:$GROUP $DEST_DIR
+find $DEST_DIR -type d -exec chmod 755 {} \;
+find $DEST_DIR -type f -exec chmod 644 {} \;
+
+echo "Files moved from $SRC_PATH to $DEST_DIR and permissions set"
+
+# Reload Nginx to apply any changes
+systemctl reload nginx
+
+echo "Nginx reloaded"
