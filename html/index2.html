@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Interface</title>
+    <style>
+        /* Add any necessary styles here */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="der-chat" class="my-4">Der Chat</h1>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="serverField">Choose server:</label>
+                    <select id="serverField">
+                        <option value="">--Please choose a server--</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="modelField">Choose model:</label>
+                    <select id="modelField">
+                        <option value="">--Please choose a server first--</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="inputField">Enter your question:</label>
+            <input type="text" id="inputField">
+        </div>
+
+        <button id="submitButton">Submit</button>
+        <button id="stopButton" style="display:none;">Stop</button>
+
+        <div id="response" class="border rounded p-3"></div>
+
+        <div id="loading" class="lds-facebook" style="display:none;">
+            <div></div><div></div><div></div>
+        </div>
+    </div>
+
+    <script>
+        // Debug: Log when the script starts executing
+        console.log('Script execution started');
+
+        // Inline config
+        const servers = [
+            { url: "https://amp1.mooo.com:11444", description: "ollama" },
+            { url: "https://my-openai-gemini-demo.vercel.app", description: "gemopenai" },
+            { url: "http://pind.mooo.com:11434", description: "ollama" },
+            { url: "http://localhost:11434", description: "ollama" },
+            { url: "http://localhost:8080", description: "llama.cpp" }
+        ];
+
+        // Debug: Log the servers array
+        console.log('Servers config:', servers);
+
+        // Populate server field with options from config
+        const serverField = document.getElementById('serverField');
+        if (serverField) {
+            console.log('Server field found, populating options');
+            servers.forEach(server => {
+                const option = document.createElement('option');
+                option.value = server.url;
+                option.textContent = server.url;
+                option.setAttribute('data-description', server.description);
+                serverField.appendChild(option);
+            });
+            console.log('Server options populated');
+        } else {
+            console.error('Server field not found in the DOM');
+        }
+
+        // Event listener for server field change
+        serverField.addEventListener('change', function() {
+            console.log('Server selection changed');
+            const selectedOption = this.options[this.selectedIndex];
+            const serverUrl = selectedOption.value;
+            const description = selectedOption.getAttribute('data-description');
+            console.log('Selected server:', serverUrl, 'Description:', description);
+
+            const modelField = document.getElementById('modelField');
+            // Here you would normally fetch available models
+            // For this example, we'll just update the text
+            modelField.innerHTML = '<option value="">Models would be fetched here</option>';
+        });
+
+        // Add other necessary event listeners and functions here
+
+        // Debug: Log when the script finishes executing
+        console.log('Script execution completed');
+    </script>
+</body>
+</html>
