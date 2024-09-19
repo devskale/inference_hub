@@ -27,6 +27,27 @@ body {
   padding: 2rem;
   border-right: 1px solid var(--border-color);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .card {
+  margin-top: auto;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.sidebar .card p {
+  margin: 0;
+  color: var(--text-color);
 }
 
 main {
@@ -210,4 +231,11 @@ h3 {
   .sidebar.show {
     left: 0;
   }
+}
+
+/* Add this to your CSS file */
+.status-light {
+  text-align: right;
+  font-weight: 100;
+  font-size: 0.8em; /* Add this line to make the font a bit smaller */
 }
