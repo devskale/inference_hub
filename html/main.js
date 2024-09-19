@@ -18,6 +18,22 @@ servers.forEach(server => {
     serverField.appendChild(option);
 });
 
+// Set default server and fetch models
+const defaultServer = serverField.getAttribute('data-default');
+if (defaultServer) {
+    serverField.value = defaultServer;
+    const selectedOption = serverField.options[serverField.selectedIndex];
+    const serverType = selectedOption.getAttribute('data-description');
+    fetchAvailableModels(defaultServer, serverType).then(() => {
+        // Set default model after models are fetched
+        const modelField = document.getElementById('modelField');
+        const defaultModel = modelField.getAttribute('data-default');
+        if (defaultModel) {
+            modelField.value = defaultModel;
+        }
+    });
+}
+
 // Event listener for server field change
 serverField.addEventListener('change', async function() {
     const selectedOption = this.options[this.selectedIndex];
@@ -105,5 +121,19 @@ document.getElementById('chatForm').addEventListener('submit', async function(ev
 document.getElementById('stopButton').addEventListener('click', function() {
     if (controller) {
         controller.abort();
+    }
+});
+
+// Toggle sidebar on mobile
+document.getElementById('settingsToggle').addEventListener('click', function() {
+    document.getElementById('sidebar').classList.toggle('show');
+});
+
+// Close sidebar when clicking outside on mobile
+document.addEventListener('click', function(event) {
+    const sidebar = document.getElementById('sidebar');
+    const settingsToggle = document.getElementById('settingsToggle');
+    if (!sidebar.contains(event.target) && event.target !== settingsToggle) {
+        sidebar.classList.remove('show');
     }
 });

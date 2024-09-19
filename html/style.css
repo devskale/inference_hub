@@ -1,63 +1,77 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #121212;
+    background-color: #1a1a1a;
     color: #e0e0e0;
 }
 
-.container {
-    margin-top: 50px;
+.sidebar {
+    background-color: #2a2a2a;
+    min-height: 100vh;
+    padding: 20px;
+    border-right: 1px solid #3a3a3a;
+}
+
+main {
+    background-color: #1a1a1a;
+    min-height: 100vh;
 }
 
 h1 {
     font-size: 2.5rem;
-    font-weight: 300;
-    text-align: center;
-    margin-bottom: 30px;
-    color: #e0e0e0;
+    font-weight: 700;
+    color: #76c7c0;
+}
+
+h3 {
+    color: #76c7c0;
 }
 
 #chatForm {
-    background-color: #1e1e1e;
-    border: 1px solid #333;
-    border-radius: 5px;
+    background-color: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #inputField {
     border-radius: 5px;
     padding: 10px 15px;
-    border: 1px solid #333;
+    border: 1px solid #3a3a3a;
     background-color: #333;
     color: #e0e0e0;
-    height: calc(1.5em * 3 + 1rem + 2px); /* Adjust height for 3 lines */
+    height: calc(1.5em * 3 + 1rem + 2px);
     line-height: 1.5em;
-    resize: none; /* Prevent resizing */
-    overflow-y: auto; /* Add vertical scroll if content exceeds */
+    resize: none;
+    overflow-y: auto;
 }
 
 #response {
     margin-top: 20px;
     padding: 20px;
-    border: 1px solid #333;
+    border: 1px solid #3a3a3a;
     border-radius: 10px;
-    background-color: #1e1e1e;
+    background-color: #2a2a2a;
     height: 400px;
     overflow-y: auto;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .message {
     margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .user {
+    background-color: #333;
     color: #76c7c0;
 }
 
 .assistant {
+    background-color: #2a2a2a;
     color: #ffa500;
 }
 
@@ -71,6 +85,93 @@ h1 {
     font-weight: bold;
 }
 
+.btn-primary {
+    background-color: #76c7c0;
+    border-color: #76c7c0;
+}
+
+.btn-primary:hover {
+    background-color: #5fb5ae;
+    border-color: #5fb5ae;
+}
+
+.btn-secondary {
+    background-color: #ffa500;
+    border-color: #ffa500;
+}
+
+.btn-secondary:hover {
+    background-color: #e69500;
+    border-color: #e69500;
+}
+
+.form-select {
+    background-color: #333;
+    color: #e0e0e0;
+    border-color: #3a3a3a;
+}
+
+.form-select:focus {
+    background-color: #333;
+    color: #e0e0e0;
+    border-color: #76c7c0;
+    box-shadow: 0 0 0 0.25rem rgba(118, 199, 192, 0.25);
+}
+
 .lds-facebook {
-    color: #76c7c0;
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-facebook div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: #76c7c0;
+    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.lds-facebook div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+}
+
+.lds-facebook div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
+}
+
+.lds-facebook div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0;
+}
+
+@keyframes lds-facebook {
+    0% {
+        top: 8px;
+        height: 64px;
+    }
+    50%, 100% {
+        top: 24px;
+        height: 32px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        height: 100%;
+        z-index: 1000;
+        transition: left 0.3s ease-in-out;
+    }
+
+    .sidebar.show {
+        left: 0;
+    }
 }
