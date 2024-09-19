@@ -2,6 +2,24 @@
 
 import { displayAssistantMessage } from './utils.js';
 
+// Configure marked to use highlight.js for code syntax highlighting
+marked.setOptions({
+    highlight: function(code, lang) {
+        const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+        return hljs.highlight(code, { language }).value;
+    },
+    langPrefix: 'hljs language-'
+});
+
+// Configure marked to use highlight.js for code syntax highlighting
+marked.setOptions({
+    highlight: function(code, lang) {
+        const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+        return hljs.highlight(code, { language }).value;
+    },
+    langPrefix: 'hljs language-'
+});
+
 export async function sendOllamaRequest(url, model, input, responseDiv, signal, startTime) {
     const data = {
         model: model,
@@ -10,7 +28,6 @@ export async function sendOllamaRequest(url, model, input, responseDiv, signal, 
             { role: 'user', content: input }
         ]
     };
-
 
     try {
         const response = await fetch(url, {
@@ -41,7 +58,7 @@ export async function sendOllamaRequest(url, model, input, responseDiv, signal, 
                     const json = JSON.parse(line);
                     if (json.done === false) {
                         result += json.message.content;
-                        assistantMessage.innerText = result;
+                        assistantMessage.innerHTML = marked.parse(result);
                         responseDiv.scrollTop = responseDiv.scrollHeight;
                     }
                 } catch (error) {
@@ -62,7 +79,7 @@ export async function sendOllamaRequest(url, model, input, responseDiv, signal, 
                     const json = JSON.parse(line);
                     if (json.done === false) {
                         result += json.message.content;
-                        assistantMessage.innerText = result;
+                        assistantMessage.innerHTML = marked.parse(result);
                         responseDiv.scrollTop = responseDiv.scrollHeight;
                     }
                 } catch (error) {

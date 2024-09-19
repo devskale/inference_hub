@@ -72,6 +72,15 @@ export async function sendGemOpenAIRequest(url, model, input, responseDiv, signa
         }
 
         const endTime = performance.now();
+        if (firstCharTime) {
+            const tfc = (firstCharTime - startTime).toFixed(2);
+            const totalTime = (endTime - startTime) / 1000; // in seconds
+            const cps = (result.length / totalTime).toFixed(2);
+
+            const statsDiv = document.createElement('div');
+            statsDiv.innerHTML = `<p>TFC: ${tfc} ms, CPS: ${cps} chars/sec</p>`;
+            responseDiv.appendChild(statsDiv);
+        }
         console.log(`Inference time: ${endTime - startTime} ms`);
 
         if (usage) {
