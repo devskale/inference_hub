@@ -1,177 +1,213 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+:root {
+  --primary-color: #4dabf7;
+  --secondary-color: #748ffc;
+  --background-color: #1e1e1e;
+  --text-color: #e0e0e0;
+  --sidebar-bg: #252525;
+  --input-bg: #2a2a2a;
+  --border-color: #3a3a3a;
+  --message-user-bg: #1c3d5d;
+  --message-user-color: #8ecaff;
+  --message-assistant-bg: #2d2d2d;
+  --message-assistant-color: #b8b8b8;
+}
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #1a1a1a;
-    color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
 }
 
 .sidebar {
-    background-color: #2a2a2a;
-    min-height: 100vh;
-    padding: 20px;
-    border-right: 1px solid #3a3a3a;
+  background-color: var(--sidebar-bg);
+  min-height: 100vh;
+  padding: 2rem;
+  border-right: 1px solid var(--border-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 main {
-    background-color: #1a1a1a;
-    min-height: 100vh;
+  background-color: var(--background-color);
+  min-height: 100vh;
+  padding: 2rem;
 }
 
 h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #76c7c0;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
 }
 
 h3 {
-    color: #76c7c0;
+  color: var(--secondary-color);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
 }
 
 #chatForm {
-    background-color: #2a2a2a;
-    border: 1px solid #3a3a3a;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
 }
 
 #inputField {
-    border-radius: 5px;
-    padding: 10px 15px;
-    border: 1px solid #3a3a3a;
-    background-color: #333;
-    color: #e0e0e0;
-    height: calc(1.5em * 3 + 1rem + 2px);
-    line-height: 1.5em;
-    resize: none;
-    overflow-y: auto;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  height: calc(1.5em * 3 + 1.5rem);
+  line-height: 1.5em;
+  resize: none;
+  overflow-y: auto;
+  transition: border-color 0.3s ease;
+}
+
+#inputField:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(77, 171, 247, 0.2);
 }
 
 #response {
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #3a3a3a;
-    border-radius: 10px;
-    background-color: #2a2a2a;
-    height: 400px;
-    overflow-y: auto;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--input-bg);
+  height: 400px;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .message {
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 6px;
 }
 
 .user {
-    background-color: #333;
-    color: #76c7c0;
+  background-color: var(--message-user-bg);
+  color: var(--message-user-color);
 }
 
 .assistant {
-    background-color: #2a2a2a;
-    color: #ffa500;
+  background-color: var(--message-assistant-bg);
+  color: var(--message-assistant-color);
+}
+
+.message.user::before,
+.message.assistant::before {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
 .message.user::before {
-    content: "User: ";
-    font-weight: bold;
+  content: "You";
+  color: var(--primary-color);
 }
 
 .message.assistant::before {
-    content: "Assistant: ";
-    font-weight: bold;
+  content: "Assistant";
+  color: var(--secondary-color);
 }
 
 .btn-primary {
-    background-color: #76c7c0;
-    border-color: #76c7c0;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  transition: background-color 0.3s ease;
 }
 
 .btn-primary:hover {
-    background-color: #5fb5ae;
-    border-color: #5fb5ae;
+  background-color: #3c96e0;
+  border-color: #3c96e0;
 }
 
 .btn-secondary {
-    background-color: #ffa500;
-    border-color: #ffa500;
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  transition: background-color 0.3s ease;
 }
 
 .btn-secondary:hover {
-    background-color: #e69500;
-    border-color: #e69500;
+  background-color: #637ae7;
+  border-color: #637ae7;
 }
 
 .form-select {
-    background-color: #333;
-    color: #e0e0e0;
-    border-color: #3a3a3a;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border-color: var(--border-color);
+  transition: border-color 0.3s ease;
 }
 
 .form-select:focus {
-    background-color: #333;
-    color: #e0e0e0;
-    border-color: #76c7c0;
-    box-shadow: 0 0 0 0.25rem rgba(118, 199, 192, 0.25);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(77, 171, 247, 0.2);
 }
 
 .lds-facebook {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px;
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
 }
 
 .lds-facebook div {
-    display: inline-block;
-    position: absolute;
-    left: 8px;
-    width: 16px;
-    background: #76c7c0;
-    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: var(--primary-color);
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
 
 .lds-facebook div:nth-child(1) {
-    left: 8px;
-    animation-delay: -0.24s;
+  left: 8px;
+  animation-delay: -0.24s;
 }
 
 .lds-facebook div:nth-child(2) {
-    left: 32px;
-    animation-delay: -0.12s;
+  left: 32px;
+  animation-delay: -0.12s;
 }
 
 .lds-facebook div:nth-child(3) {
-    left: 56px;
-    animation-delay: 0;
+  left: 56px;
+  animation-delay: 0;
 }
 
 @keyframes lds-facebook {
-    0% {
-        top: 8px;
-        height: 64px;
-    }
-    50%, 100% {
-        top: 24px;
-        height: 32px;
-    }
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%, 100% {
+    top: 24px;
+    height: 32px;
+  }
 }
 
 @media (max-width: 767.98px) {
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: -100%;
-        width: 80%;
-        height: 100%;
-        z-index: 1000;
-        transition: left 0.3s ease-in-out;
-    }
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100%;
+    z-index: 1000;
+    transition: left 0.3s ease-in-out;
+  }
 
-    .sidebar.show {
-        left: 0;
-    }
+  .sidebar.show {
+    left: 0;
+  }
 }
