@@ -5,41 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Der Chat</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1 class="my-4">Der Chat</h1>
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
+            <!-- Sidebar -->
+            <div id="sidebar" class="col-md-3 d-none d-md-block sidebar">
+                <h3 class="mb-4">Settings</h3>
                 <div class="mb-3">
-                    <label for="serverField" class="form-label">Choose server:</label>
-                    <select id="serverField" name="serverField" class="form-control" required data-default="https://my-openai-gemini-demo.vercel.app">
+                    <label for="serverField" class="form-label">Server:</label>
+                    <select id="serverField" name="serverField" class="form-select" required data-default="https://amp1.mooo.com:11444">
                         <option value="">--Please choose a server--</option>
                     </select>
                 </div>
-            </div>
-            <div class="col-md-6">
                 <div class="mb-3">
-                    <label for="modelField" class="form-label">Choose model:</label>
-                    <select id="modelField" name="modelField" class="form-control" required data-default="gemini-1.5-flash-latest">
+                    <label for="modelField" class="form-label">Model:</label>
+                    <select id="modelField" name="modelField" class="form-select" required data-default="gemma2:2b">
                         <option value="">--Please choose a server first--</option>
                     </select>
                 </div>
             </div>
+            
+            <!-- Main content -->
+            <main class="col-md-9 ms-sm-auto col-lg-9 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1>Der Chat</h1>
+                    <button id="settingsToggle" class="btn btn-outline-secondary d-md-none">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+                
+                <form id="chatForm" class="mb-3">
+                    <div class="mb-3">
+                        <label for="inputField" class="form-label">Enter your question:</label>
+                        <textarea id="inputField" name="inputField" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" id="stopButton" class="btn btn-secondary" style="display:none;">Stop</button>
+                </form>
+                <div id="response" class="border rounded p-3"></div>
+                <div id="loading" class="lds-facebook" style="display:none;"><div></div><div></div><div></div></div>
+            </main>
         </div>
-        <form id="chatForm" class="mb-3">
-            <div class="mb-3">
-                <label for="inputField" class="form-label">Enter your question:</label>
-                <textarea id="inputField" name="inputField" class="form-control" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <button type="button" id="stopButton" class="btn btn-secondary" style="display:none;">Stop</button>
-        </form>
-        <div id="response" class="border rounded p-3"></div>
-        <div id="loading" class="lds-facebook" style="display:none;"><div></div><div></div><div></div></div>
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="main.js"></script>
 </body>
