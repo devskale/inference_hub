@@ -1,11 +1,18 @@
-// gemopenai.js
-
 import { displayAssistantMessage } from './utils.js';
-import { GEMINI_TOKEN } from './config.js'; // Import the bearer token from config
+import { GEMINI_TOKEN } from './config.js';
+
+// Configure marked to use highlight.js for code syntax highlighting
+marked.setOptions({
+    highlight: function(code, lang) {
+        const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+        return hljs.highlight(code, { language }).value;
+    },
+    langPrefix: 'hljs language-'
+});
 
 export async function sendGemOpenAIRequest(url, model, input, responseDiv, signal, startTime) {
     const data = {
-        "model": model, // Specify the model you want to use
+        "model": model,
         "messages": [{"role": "user", "content": input}],
         "temperature": 0.7,
         "max_tokens": 512,
@@ -17,7 +24,7 @@ export async function sendGemOpenAIRequest(url, model, input, responseDiv, signa
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${GEMINI_TOKEN}` // Include the Bearer token
+                'Authorization': `Bearer ${GEMINI_TOKEN}`
             },
             body: JSON.stringify(data),
             signal: signal
@@ -50,7 +57,8 @@ export async function sendGemOpenAIRequest(url, model, input, responseDiv, signa
                     const delta = json.choices[0].delta;
                     if (delta && delta.content) {
                         result += delta.content;
-                        assistantMessage.textContent += delta.content;
+                        // Convert markdown to HTML and update the display
+                        assistantMessage.innerHTML = marked.parse(result);
                     }
                     if (json.usage) {
                         usage = json.usage;
@@ -68,7 +76,7 @@ export async function sendGemOpenAIRequest(url, model, input, responseDiv, signa
 
         if (usage) {
             const usageStats = `\n\nTokens used: ${usage.total_tokens} (Prompt: ${usage.prompt_tokens}, Completion: ${usage.completion_tokens})`;
-            assistantMessage.textContent += usageStats;
+            assistantMessage.innerHTML += marked.parse(usageStats);
         }
     } catch (error) {
         console.error('Error in sendGemOpenAIRequest:', error);
