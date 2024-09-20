@@ -32,11 +32,6 @@ body {
 
 
 
-main {
-  background-color: var(--background-color);
-  min-height: 100vh;
-  padding: 2rem;
-}
 
 h1 {
   font-size: 2.5rem;
@@ -79,6 +74,7 @@ h3 {
   box-shadow: 0 0 0 2px rgba(77, 171, 247, 0.2);
 }
 
+/*
 #response {
   margin-top: 1.5rem;
   padding: 1.5rem;
@@ -88,6 +84,28 @@ h3 {
   height: 400px;
   overflow-y: auto;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+*/
+
+main {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+
+#response {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--input-bg);
+  overflow-y: auto;
+
+  flex: 1;
+  overflow-y: auto;
 }
 
 .message {
