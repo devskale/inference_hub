@@ -103,8 +103,8 @@ main {
   border-radius: 8px;
   background-color: var(--input-bg);
   overflow-y: auto;
-
-  flex: 1;
+  flex-grow: 1;
+  max-height: 480px;
   overflow-y: auto;
 }
 
