@@ -124,10 +124,20 @@ document.getElementById('stopButton').addEventListener('click', function() {
     }
 });
 
-// Toggle sidebar on mobile
-document.getElementById('settingsToggle').addEventListener('click', function() {
+// Function to toggle the sidebar
+function toggleSidebar() {
     document.getElementById('sidebar').classList.toggle('show');
+}
+
+// Event listener for the button
+document.getElementById('settingsToggle').addEventListener('click', toggleSidebar);
+
+// Event listener for the icon inside the button
+document.querySelector('#settingsToggle i').addEventListener('click', function(event) {
+    event.stopPropagation();  // Prevent the event from bubbling
+    toggleSidebar();
 });
+
 
 // Close sidebar when clicking outside on mobile
 document.addEventListener('click', function(event) {
