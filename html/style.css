@@ -21,34 +21,16 @@ body {
   line-height: 1.6;
 }
 
-.sidebar {
-  background-color: var(--sidebar-bg);
-  min-height: 100vh;
-  padding: 2rem;
-  border-right: 1px solid var(--border-color);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+.container {
   display: flex;
-  flex-direction: column;
 }
 
-.sidebar-content {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+#card {
+  flex: 1 0 auto;
 }
 
-.sidebar .card {
-  margin-top: auto;
-  background-color: var(--input-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 1rem;
-}
 
-.sidebar .card p {
-  margin: 0;
-  color: var(--text-color);
-}
 
 main {
   background-color: var(--background-color);
@@ -238,4 +220,60 @@ h3 {
   text-align: right;
   font-weight: 100;
   font-size: 0.8em; /* Add this line to make the font a bit smaller */
+}
+.sidebar {
+  background-color: var(--sidebar-bg);
+  min-height: 100vh;
+  padding: 2rem;
+  border-right: 1px solid var(--border-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  transition: transform 0.3s ease-in-out;
+}
+
+#sidebar {
+  flex: 0 0 auto;
+}
+
+.sidebar .card {
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  flex-grow: 0; /* Don't grow */
+  flex-shrink: 0; /* Don't shrink */
+}
+
+.sidebar .card p {
+  margin: 0;
+  color: var(--text-color);
+}
+
+@media (max-width: 767.98px) {
+  .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 80%;
+      z-index: 1000;
+      transform: translateX(-100%);
+  }
+
+  .sidebar.show {
+      transform: translateX(0);
+  }
+}
+
+#sidebarToggle {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border: none;
+  background: none;
+}
+
+#sidebarToggle:hover {
+  color: var(--secondary-color);
 }
