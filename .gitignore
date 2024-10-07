@@ -12,3 +12,4 @@ venv
 *.txt
 .env
 envllm
+data/
