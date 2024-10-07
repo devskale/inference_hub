@@ -7,6 +7,8 @@ __pycache__/
 RAGUI/uploads/
 venv/
 venv
+.venv/
+.venv
 *.txt
 .env
 envllm

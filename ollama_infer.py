@@ -28,7 +28,10 @@ async def chat(command: str, user_input: str):
     elif command == '/n':
         message = {'role': 'user', 'content': 'Improve this text for better readability:\n BEGIN_OF_TEXT:\n' + user_input + '\nEND_OF_TEXT. \nreturn only the improved text.'}
 
-    async for part in await AsyncClient().chat(model='dolphin-mistral', messages=[message], stream=True):
+    ollamaClient = AsyncClient(
+        host='https://amp1.mooo.com:11444'
+    )
+    async for part in await ollamaClient.chat(model='llama3.2:1b', messages=[message], stream=True):
         print(part['message']['content'], end='', flush=True)
 
 # Argument parsing to allow for file input
