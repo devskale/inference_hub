@@ -9,7 +9,7 @@ import asyncio
 
 # List of document categories
 DATEIKLASSEN = [
-    "Angebot", "Produktbeschreibung", "Zertifikat",
+    "Angebot", "Referenzen", "Produktbeschreibung", "Zertifikat",
     "Firmenauskunft", "Finanzinformation", "Strafregisterauszug", "Versicherungsvertrag", 
     "Bestätigung", "Sonstiges"
 ]
@@ -22,10 +22,14 @@ Das Dokument kann aufgrund des Scan Vorgangs einige Textfehler und geschwärzte 
 Beschreibung: (Beschreibe kurz den Inhalt und fasse die Kernaussage zusammen. Nenne wichtige Details und Schlüsselwörter sowie den Dokumentersteller.)
 Dateiname: (beschreibender Dateiname mit Endung .md)
   """,
-    'k': f"""
+    'k0': f"""
     Basierend auf dem folgenden Inhalt, kategorisiere den Inhalt in eine der folgenden Klassen:
     {', '.join(DATEIKLASSEN)}
     Antworte nur mit dem Namen der Klasse. Sollte keine der Klassen passen, antworte mit 'Sonstiges'.
+    """,
+    'k': f"""
+    Basierend auf dem folgenden Inhalt, kategorisiere den Inhalt in eine Dokumentenkategorie:
+    Antworte nur mit dem Namen der Kategorie.
     """
 }
 
@@ -161,6 +165,7 @@ def parse_arguments():
     parser.add_argument("filepath", help="Path to the text file to analyze")
     parser.add_argument("-s", action="store_true", help="Generate filename and summary")
     parser.add_argument("-k", action="store_true", help="Classify the content")
+    parser.add_argument("-v", action="store_true", help="Verbose Mode")
     parser.add_argument("-n", type=int, default=1000, help="Number of characters to read from the beginning of the file")
     parser.add_argument("--provider", choices=['huggingface', 'ollama', 'openai', 'google'], default='huggingface', help="Choose the model provider")
     parser.add_argument("--model", help="Specify the model name for the chosen provider")
@@ -205,6 +210,9 @@ async def main():
     for mode in modes_to_run:
         description = 'filename and summary' if mode == 's' else 'classification'
         print(f"\nGenerating {description}...")
+        if args.v:
+            print(f"Analyzing {args.filepath} with {provider.__class__.__name__}({model_name}):")
+            print(f"Content: {content[:1000]}")
         result = await provider.analyze(content, mode)
 #        print(result)
 
