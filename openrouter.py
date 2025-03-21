@@ -1,13 +1,15 @@
 # openrouter.py
 from openai import OpenAI
 from getparams import load_api_credentials, load_model_parameters
+from credgoo import get_api_key
+
 
 class OpenRouter:
     def __init__(self, provider='openrouter', model='mistral7b'):
         self.provider = provider
         self.model = model
-        self.api_key = self.load_api_credentials()
-        self.model_parameters, self.api_url = self.load_model_parameters()
+        self.api_key = get_api_key(provider)
+        # self.model_parameters, self.api_url = self.load_model_parameters()
         self.client = self.initialize_client()
 
     def load_api_credentials(self):
@@ -21,7 +23,7 @@ class OpenRouter:
     def initialize_client(self):
         """Initialize the OpenAI client with the loaded API key and URL."""
         return OpenAI(
-            base_url=self.api_url,
+            base_url='https://openrouter.ai/api/v1',
             api_key=self.api_key
         )
 
@@ -29,7 +31,7 @@ class OpenRouter:
         """Perform inference using the specified user message."""
         completion = self.client.chat.completions.create(
             messages=[{"role": "user", "content": user_message}],
-            **self.model_parameters,
+            # **self.model_parameters,
             stream=True
         )
 
