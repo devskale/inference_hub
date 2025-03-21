@@ -13,3 +13,4 @@ venv
 .env
 envllm
 data/
+.aider*
