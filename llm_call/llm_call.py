@@ -21,6 +21,24 @@ models = {
 }
 
 
+def make_api_call(url, api_key, payload):
+    try:
+        response = requests.request(
+            "POST",
+            url,
+            headers={
+                'Content-Type': 'application/json',
+                'Authorization': f"Bearer {api_key}"
+            },
+            data=payload
+        )
+        print(f"Status code: {response.status_code}")
+        return response
+    except Exception as e:
+        print(f"\nAPI Call Error: {e}")
+        raise
+
+
 if __name__ == '__main__':
     # Example usage
     provider = 'arli'
@@ -56,31 +74,18 @@ if __name__ == '__main__':
         try:
             print(f"Sending request to: {models[provider]['url']}")
 
-            response = requests.request(
-                "POST",
-                models[provider]['url'],
-                headers={
-                    'Content-Type': 'application/json',
-                    'Authorization': f"Bearer {api_key}"
-                },
-                data=payload_json
-            )
-
-            print(f"Status code: {response.status_code}")
+            response = make_api_call(
+                models[provider]['url'], api_key, payload_json)
 
             if response.status_code == 200:
-                # Parse the JSON response
                 response_json = response.json()
-
-                # Extract assistant response
                 assistant_message = response_json['choices'][0]['message']['content']
                 conversation.append(
                     {"role": "assistant", "content": assistant_message})
-
                 print(f"\nAI: {assistant_message}")
             else:
-                print(f"Error: {response.status_code}")
-                print(f"Response: {response.text}")
+                print(
+                    f"Error: {response.status_code}\nResponse: {response.text}")
 
         except Exception as e:
             print(f"\nError: {e}")
