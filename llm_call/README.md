@@ -285,6 +285,27 @@ This pattern allows UniInfer to work even if the dependency for your provider is
 
 ## Supported Providers
 
+### Upstage AI
+
+```python
+# Requires openai package
+# pip install openai
+
+provider = ProviderFactory.get_provider("upstage", api_key="your-api-key")
+
+request = ChatCompletionRequest(
+    messages=[
+        ChatMessage(role="user", content="Hi, how are you?")
+    ],
+    model="solar-pro",  # Upstage's Solar model
+    temperature=0.7
+)
+
+# Stream the response
+for chunk in provider.stream_complete(request):
+    print(chunk.message.content, end="", flush=True)
+```
+
 ### SambaNova
 
 ```python

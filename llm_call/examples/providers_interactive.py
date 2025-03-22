@@ -3,7 +3,6 @@ Interactive example to select a provider and ask a question with streaming outpu
 
 This script uses the inquirer library for interactive prompts.
 """
-from uniinfer import ChatMessage, ChatCompletionRequest, ProviderFactory
 import sys
 import os
 import inquirer
@@ -19,6 +18,7 @@ except ImportError:
     HAS_CREDGOO = False
     print("Note: credgoo not found, you'll need to provide API keys manually")
 
+from uniinfer import ChatMessage, ChatCompletionRequest, ProviderFactory
 
 # Check if HuggingFace support is available
 try:
@@ -26,28 +26,28 @@ try:
     HAS_HUGGINGFACE = True
 except ImportError:
     HAS_HUGGINGFACE = False
-
+    
 # Check if Cohere support is available
 try:
     from uniinfer import CohereProvider
     HAS_COHERE = True
 except ImportError:
     HAS_COHERE = False
-
+    
 # Check if Moonshot support is available
 try:
     from uniinfer import MoonshotProvider
     HAS_MOONSHOT = True
 except ImportError:
     HAS_MOONSHOT = False
-
+    
 # Check if OpenAI client is available (for StepFun)
 try:
     from openai import OpenAI
     HAS_OPENAI = True
 except ImportError:
     HAS_OPENAI = False
-
+    
 # Check if Groq support is available
 try:
     from uniinfer import GroqProvider
@@ -106,8 +106,12 @@ PROVIDER_CONFIGS = {
     },
     'sambanova': {
         'name': 'SambaNova',
-        #        'default_model': 'Meta-Llama-3.1-8B-Instruct',
-        'default_model': 'DeepSeek-R1',
+        'default_model': 'Meta-Llama-3.1-8B-Instruct',
+        'needs_api_key': True,
+    },
+    'upstage': {
+        'name': 'Upstage AI',
+        'default_model': 'solar-pro',
         'needs_api_key': True,
     }
 }
@@ -140,7 +144,7 @@ if HAS_MOONSHOT:
 if HAS_GROQ:
     PROVIDER_CONFIGS['groq'] = {
         'name': 'Groq',
-        'default_model': 'qwen-2.5-32b',
+        'default_model': 'llama-3.1-8b',
         'needs_api_key': True,
     }
 
@@ -150,7 +154,7 @@ DEFAULT_QUESTION = "Explain how transformers work in machine learning in simple 
 def select_provider():
     """
     Prompt the user to select a provider from the list of available providers.
-
+    
     Returns:
         str: The selected provider ID.
     """
@@ -159,14 +163,14 @@ def select_provider():
         (f"{config['name']} ({provider_id})", provider_id)
         for provider_id, config in PROVIDER_CONFIGS.items()
     ]
-
+    
     questions = [
         inquirer.List('provider',
-                      message="Select a provider:",
-                      choices=choices,
-                      carousel=True)
+                     message="Select a provider:",
+                     choices=choices,
+                     carousel=True)
     ]
-
+    
     answers = inquirer.prompt(questions)
     return answers['provider']
 
@@ -174,17 +178,17 @@ def select_provider():
 def get_provider_instance(provider_id):
     """
     Get a provider instance with the appropriate API key.
-
+    
     Args:
         provider_id (str): The provider ID.
-
+        
     Returns:
         tuple: (provider, model) - The provider instance and default model.
     """
     config = PROVIDER_CONFIGS[provider_id]
     provider_kwargs = config.get('extra_params', {})
     model = config['default_model']
-
+    
     # Handle API key for providers that need one
     if config['needs_api_key']:
         if HAS_CREDGOO:
@@ -200,70 +204,68 @@ def get_provider_instance(provider_id):
             api_key = inquirer.text(
                 message=f"Enter your {config['name']} API key:"
             )
-
+        
         # Get model options for this provider if desired
         # For simplicity, we'll use the default model
-
-        provider = ProviderFactory.get_provider(
-            provider_id, api_key=api_key, **provider_kwargs)
+        
+        provider = ProviderFactory.get_provider(provider_id, api_key=api_key, **provider_kwargs)
     else:
         # For providers like Ollama that don't need an API key
         provider = ProviderFactory.get_provider(provider_id, **provider_kwargs)
-
+    
     return provider, model
 
 
 def get_user_question():
     """
     Get the user's question.
-
+    
     Returns:
         str: The user's question.
     """
     question = inquirer.text(
         message="What's your question? (press Enter for default):",
     )
-
+    
     if not question:
         question = DEFAULT_QUESTION
         print(f"Using default question: {question}")
-
+    
     return question
 
 
 def main():
     """Main function to run the interactive provider example."""
     print("=== UniInfer Interactive Provider Example ===\n")
-
+    
     # Get the user to select a provider
     provider_id = select_provider()
     config = PROVIDER_CONFIGS[provider_id]
     print(f"\nYou selected: {config['name']}")
-
+    
     # Get the provider instance
     try:
         provider, model = get_provider_instance(provider_id)
     except Exception as e:
         print(f"Error initializing provider: {str(e)}")
         return
-
+    
     # Get the user's question
     question = get_user_question()
-
+    
     # Create the request
     messages = [
-        ChatMessage(role="system",
-                    content="You are a helpful, knowledgeable assistant."),
+        ChatMessage(role="system", content="You are a helpful, knowledgeable assistant."),
         ChatMessage(role="user", content=question)
     ]
-
+    
     request = ChatCompletionRequest(
         messages=messages,
         model=model,
         temperature=0.7,
         streaming=True
     )
-
+    
     # Provider-specific parameters
     provider_specific_params = {}
     if provider_id == 'arli':
@@ -276,43 +278,43 @@ def main():
         provider_specific_params = {
             "top_p": 0.9
         }
-
+    
     # Execute the request
     print("\n=== Response ===\n")
     try:
         # Stream the response
         start_time = time.time()
         response_text = ""
-
+        
         for chunk in provider.stream_complete(request, **provider_specific_params):
             content = chunk.message.content
             print(content, end="", flush=True)
             response_text += content
-
+        
         # Calculate elapsed time
         elapsed_time = time.time() - start_time
-
+        
         print(f"\n\n=== Completed in {elapsed_time:.2f} seconds ===")
-
+        
         # Ask if the user wants to save the response
         save_response = inquirer.confirm(
             message="Would you like to save this response to a file?",
             default=False
         )
-
+        
         if save_response:
             filename = inquirer.text(
                 message="Enter filename (or press Enter for default):",
                 default=f"{provider_id}_response.txt"
             )
-
+            
             with open(filename, 'w') as f:
                 f.write(f"Question: {question}\n\n")
                 f.write(f"Response from {config['name']} ({model}):\n\n")
                 f.write(response_text)
-
+            
             print(f"Response saved to {filename}")
-
+    
     except Exception as e:
         print(f"\nError: {str(e)}")
         print("Make sure the provider is correctly configured and accessible.")

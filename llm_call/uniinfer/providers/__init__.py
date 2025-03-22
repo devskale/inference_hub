@@ -10,6 +10,7 @@ from .arli import ArliAIProvider
 from .internlm import InternLMProvider
 from .stepfun import StepFunProvider
 from .sambanova import SambanovaProvider
+from .upstage import UpstageProvider
 
 # Import providers with optional dependencies
 try:
@@ -46,7 +47,8 @@ __all__ = [
     'ArliAIProvider',
     'InternLMProvider',
     'StepFunProvider',
-    'SambanovaProvider'
+    'SambanovaProvider',
+    'UpstageProvider'
 ]
 
 # Add optional providers to __all__ if available
