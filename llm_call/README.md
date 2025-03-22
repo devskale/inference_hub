@@ -160,6 +160,129 @@ response, provider_used = fallback.complete(request)
 print(f"Response from {provider_used}: {response.message.content}")
 ```
 
+## Adding a New Provider
+
+UniInfer is designed to be easily extensible with new providers. Here's how to add a new LLM provider to the library:
+
+### 1. Create the Provider Class
+
+Create a new file in `uniinfer/providers/` (e.g., `myprovider.py`) with your provider implementation:
+
+```python
+from typing import Dict, Any, Iterator, Optional
+from ..core import ChatProvider, ChatCompletionRequest, ChatCompletionResponse, ChatMessage
+
+class MyProvider(ChatProvider):
+    """Provider for MyLLM API."""
+    
+    def __init__(self, api_key: Optional[str] = None, **kwargs):
+        super().__init__(api_key)
+        # Initialize any client libraries or connection details
+        # self.client = SomeClient(api_key=self.api_key)
+    
+    def complete(self, request: ChatCompletionRequest, **provider_specific_kwargs) -> ChatCompletionResponse:
+        # Implement standard completion method
+        # 1. Prepare messages/parameters for your API
+        # 2. Make the API call
+        # 3. Process the response
+        # 4. Return a ChatCompletionResponse object
+        
+        # Example implementation:
+        message = ChatMessage(
+            role="assistant", 
+            content="Response from API"
+        )
+        
+        return ChatCompletionResponse(
+            message=message,
+            provider='myprovider',
+            model=request.model,
+            usage={},  # Token usage if available
+            raw_response={}  # The raw API response
+        )
+    
+    def stream_complete(self, request: ChatCompletionRequest, **provider_specific_kwargs) -> Iterator[ChatCompletionResponse]:
+        # Implement streaming completion method
+        # Yield ChatCompletionResponse objects for each chunk
+        
+        # Example implementation:
+        yield ChatCompletionResponse(
+            message=ChatMessage(role="assistant", content="Streamed chunk"),
+            provider='myprovider',
+            model=request.model,
+            usage={},
+            raw_response={}
+        )
+```
+
+### 2. Update `providers/__init__.py`
+
+Add your provider to the `__init__.py` file in the providers directory:
+
+```python
+from .myprovider import MyProvider
+
+# Add to __all__
+__all__ = [
+    # existing providers
+    'MyProvider'
+]
+```
+
+### 3. Register the Provider in `__init__.py`
+
+Register your provider in the main `__init__.py` file:
+
+```python
+from .providers import MyProvider
+
+# Register the provider
+ProviderFactory.register_provider("myprovider", MyProvider)
+
+# Add to __all__
+__all__ = [
+    # existing exports
+    'MyProvider'
+]
+```
+
+### 4. Use Your Provider
+
+Now you can use your provider with the unified interface:
+
+```python
+from uniinfer import ChatMessage, ChatCompletionRequest, ProviderFactory
+
+provider = ProviderFactory.get_provider("myprovider", api_key="your-api-key")
+
+request = ChatCompletionRequest(
+    messages=[ChatMessage(role="user", content="Hello!")],
+    model="your-model-name"
+)
+
+response = provider.complete(request)
+```
+
+### 5. Advanced: Conditional Dependencies
+
+If your provider requires an optional package, make it conditional:
+
+```python
+# In providers/__init__.py
+try:
+    from .myprovider import MyProvider
+    HAS_MYPROVIDER = True
+except ImportError:
+    HAS_MYPROVIDER = False
+
+# In main __init__.py
+if HAS_MYPROVIDER:
+    ProviderFactory.register_provider("myprovider", MyProvider)
+    __all__.append('MyProvider')
+```
+
+This pattern allows UniInfer to work even if the dependency for your provider isn't installed.
+
 ## Supported Providers
 
 ### StepFun AI
