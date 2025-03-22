@@ -44,6 +44,12 @@ try:
 except ImportError:
     HAS_GROQ = False
 
+try:
+    from .providers import AI21Provider
+    HAS_AI21 = True
+except ImportError:
+    HAS_AI21 = False
+
 # Register built-in providers
 ProviderFactory.register_provider("mistral", MistralProvider)
 ProviderFactory.register_provider("anthropic", AnthropicProvider)
@@ -68,6 +74,9 @@ if HAS_MOONSHOT:
 
 if HAS_GROQ:
     ProviderFactory.register_provider("groq", GroqProvider)
+
+if HAS_AI21:
+    ProviderFactory.register_provider("ai21", AI21Provider)
 
 __version__ = "0.1.0"
 
@@ -110,3 +119,6 @@ if HAS_MOONSHOT:
 
 if HAS_GROQ:
     __all__.append('GroqProvider')
+
+if HAS_AI21:
+    __all__.append('AI21Provider')

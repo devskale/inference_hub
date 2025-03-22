@@ -37,6 +37,12 @@ try:
 except ImportError:
     HAS_GROQ = False
 
+try:
+    from .ai21 import AI21Provider
+    HAS_AI21 = True
+except ImportError:
+    HAS_AI21 = False
+
 # Import all provider classes here so they can be easily imported from uniinfer.providers
 __all__ = [
     'MistralProvider', 
@@ -63,3 +69,6 @@ if HAS_MOONSHOT:
 
 if HAS_GROQ:
     __all__.append('GroqProvider')
+
+if HAS_AI21:
+    __all__.append('AI21Provider')

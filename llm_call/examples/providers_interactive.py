@@ -55,6 +55,13 @@ try:
 except ImportError:
     HAS_GROQ = False
 
+# Check if AI21 support is available
+try:
+    from uniinfer import AI21Provider
+    HAS_AI21 = True
+except ImportError:
+    HAS_AI21 = False
+
 
 # Provider configurations
 PROVIDER_CONFIGS = {
@@ -145,6 +152,14 @@ if HAS_GROQ:
     PROVIDER_CONFIGS['groq'] = {
         'name': 'Groq',
         'default_model': 'llama-3.1-8b',
+        'needs_api_key': True,
+    }
+
+# Add AI21 if available
+if HAS_AI21:
+    PROVIDER_CONFIGS['ai21'] = {
+        'name': 'AI21 Labs',
+        'default_model': 'jamba-mini-1.6-2025-03',
         'needs_api_key': True,
     }
 

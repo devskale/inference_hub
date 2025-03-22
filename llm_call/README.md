@@ -285,6 +285,27 @@ This pattern allows UniInfer to work even if the dependency for your provider is
 
 ## Supported Providers
 
+### AI21 Labs
+
+```python
+# Requires ai21 package
+# pip install ai21
+
+provider = ProviderFactory.get_provider("ai21", api_key="your-api-key")
+
+request = ChatCompletionRequest(
+    messages=[
+        ChatMessage(role="system", content="You're a support engineer in a SaaS company"),
+        ChatMessage(role="user", content="Hello, I need help with a signup process.")
+    ],
+    model="jamba-mini-1.6-2025-03",  # AI21's Jamba model
+    temperature=0.7
+)
+
+response = provider.complete(request)
+print(response.message.content)
+```
+
 ### Upstage AI
 
 ```python
