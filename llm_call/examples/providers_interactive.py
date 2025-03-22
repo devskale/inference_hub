@@ -127,6 +127,11 @@ PROVIDER_CONFIGS = {
         'name': 'Upstage AI',
         'default_model': 'solar-pro',
         'needs_api_key': True,
+    },
+    'ngc': {
+        'name': 'NVIDIA GPU Cloud (NGC)',
+        'default_model': 'deepseek-ai/deepseek-r1-distill-llama-8b',
+        'needs_api_key': True,
     }
 }
 

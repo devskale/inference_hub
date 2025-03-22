@@ -11,6 +11,7 @@ from .internlm import InternLMProvider
 from .stepfun import StepFunProvider
 from .sambanova import SambanovaProvider
 from .upstage import UpstageProvider
+from .ngc import NGCProvider
 
 # Import providers with optional dependencies
 try:
@@ -61,7 +62,8 @@ __all__ = [
     'InternLMProvider',
     'StepFunProvider',
     'SambanovaProvider',
-    'UpstageProvider'
+    'UpstageProvider',
+    'NGCProvider'
 ]
 
 # Add optional providers to __all__ if available

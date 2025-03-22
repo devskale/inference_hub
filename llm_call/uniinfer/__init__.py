@@ -11,7 +11,7 @@ from .providers import (
     MistralProvider, AnthropicProvider, OpenAIProvider,
     OllamaProvider, OpenRouterProvider, ArliAIProvider,
     InternLMProvider, StepFunProvider, SambanovaProvider,
-    UpstageProvider
+    UpstageProvider, NGCProvider
 )
 from .errors import (
     UniInferError, ProviderError, AuthenticationError, 
@@ -67,6 +67,7 @@ ProviderFactory.register_provider("internlm", InternLMProvider)
 ProviderFactory.register_provider("stepfun", StepFunProvider)
 ProviderFactory.register_provider("sambanova", SambanovaProvider)
 ProviderFactory.register_provider("upstage", UpstageProvider)
+ProviderFactory.register_provider("ngc", NGCProvider)
 
 # Register optional providers if available
 if HAS_HUGGINGFACE:
@@ -106,6 +107,7 @@ __all__ = [
     'StepFunProvider',
     'SambanovaProvider',
     'UpstageProvider',
+    'NGCProvider',
     'UniInferError',
     'ProviderError',
     'AuthenticationError',
