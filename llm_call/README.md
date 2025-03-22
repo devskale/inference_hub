@@ -285,6 +285,28 @@ This pattern allows UniInfer to work even if the dependency for your provider is
 
 ## Supported Providers
 
+### Groq
+
+```python
+# Requires groq package
+# pip install groq
+
+provider = ProviderFactory.get_provider("groq", api_key="your-api-key")
+
+request = ChatCompletionRequest(
+    messages=[
+        ChatMessage(role="system", content="You are a helpful assistant."),
+        ChatMessage(role="user", content="What makes Groq unique among LLM providers?")
+    ],
+    model="llama-3.1-8b",  # Also supports "llama-3.1-70b", "llama-3.1-405b", etc.
+    temperature=0.7
+)
+
+# Streaming response
+for chunk in provider.stream_complete(request):
+    print(chunk.message.content, end="", flush=True)
+```
+
 ### StepFun AI
 
 ```python
@@ -576,6 +598,7 @@ except ProviderError as e:
 - **CohereProvider**: Provider for Cohere API (requires cohere package)
 - **MoonshotProvider**: Provider for Moonshot AI API (requires openai package)
 - **StepFunProvider**: Provider for StepFun AI API (requires openai package)
+- **GroqProvider**: Provider for Groq API (requires groq package)
 
 ### Strategies
 

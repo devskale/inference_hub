@@ -37,6 +37,12 @@ try:
 except ImportError:
     HAS_MOONSHOT = False
 
+try:
+    from .providers import GroqProvider
+    HAS_GROQ = True
+except ImportError:
+    HAS_GROQ = False
+
 # Register built-in providers
 ProviderFactory.register_provider("mistral", MistralProvider)
 ProviderFactory.register_provider("anthropic", AnthropicProvider)
@@ -56,6 +62,9 @@ if HAS_COHERE:
 
 if HAS_MOONSHOT:
     ProviderFactory.register_provider("moonshot", MoonshotProvider)
+
+if HAS_GROQ:
+    ProviderFactory.register_provider("groq", GroqProvider)
 
 __version__ = "0.1.0"
 
@@ -93,3 +102,6 @@ if HAS_COHERE:
 
 if HAS_MOONSHOT:
     __all__.append('MoonshotProvider')
+
+if HAS_GROQ:
+    __all__.append('GroqProvider')

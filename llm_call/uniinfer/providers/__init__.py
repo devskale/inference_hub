@@ -29,6 +29,12 @@ try:
 except ImportError:
     HAS_MOONSHOT = False
 
+try:
+    from .groq import GroqProvider
+    HAS_GROQ = True
+except ImportError:
+    HAS_GROQ = False
+
 # Import all provider classes here so they can be easily imported from uniinfer.providers
 __all__ = [
     'MistralProvider', 
@@ -50,3 +56,6 @@ if HAS_COHERE:
 
 if HAS_MOONSHOT:
     __all__.append('MoonshotProvider')
+
+if HAS_GROQ:
+    __all__.append('GroqProvider')
