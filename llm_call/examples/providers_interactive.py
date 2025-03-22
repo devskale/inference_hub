@@ -40,6 +40,13 @@ try:
     HAS_MOONSHOT = True
 except ImportError:
     HAS_MOONSHOT = False
+    
+# Check if OpenAI client is available (for StepFun)
+try:
+    from openai import OpenAI
+    HAS_OPENAI = True
+except ImportError:
+    HAS_OPENAI = False
 
 
 # Provider configurations
@@ -84,6 +91,11 @@ PROVIDER_CONFIGS = {
         'extra_params': {
             'top_p': 0.9
         }
+    },
+    'stepfun': {
+        'name': 'StepFun AI',
+        'default_model': 'step-1-8k',
+        'needs_api_key': True,
     }
 }
 

@@ -162,6 +162,26 @@ print(f"Response from {provider_used}: {response.message.content}")
 
 ## Supported Providers
 
+### StepFun AI
+
+```python
+# Requires openai package
+# pip install openai
+
+provider = ProviderFactory.get_provider("stepfun", api_key="your-api-key")
+
+request = ChatCompletionRequest(
+    messages=[
+        ChatMessage(role="system", content="你是由阶跃星辰提供的AI聊天助手，你擅长中文，英文，以及多种其他语言的对话。"),
+        ChatMessage(role="user", content="你好，请介绍一下阶跃星辰的人工智能!")
+    ],
+    model="step-1-8k",  # StepFun model
+    temperature=0.3
+)
+
+response = provider.complete(request)
+```
+
 ### Moonshot AI
 
 ```python
@@ -432,6 +452,7 @@ except ProviderError as e:
 - **InternLMProvider**: Provider for InternLM API
 - **CohereProvider**: Provider for Cohere API (requires cohere package)
 - **MoonshotProvider**: Provider for Moonshot AI API (requires openai package)
+- **StepFunProvider**: Provider for StepFun AI API (requires openai package)
 
 ### Strategies
 

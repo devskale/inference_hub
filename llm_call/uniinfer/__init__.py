@@ -10,7 +10,7 @@ from .factory import ProviderFactory
 from .providers import (
     MistralProvider, AnthropicProvider, OpenAIProvider,
     OllamaProvider, OpenRouterProvider, ArliAIProvider,
-    InternLMProvider
+    InternLMProvider, StepFunProvider
 )
 from .errors import (
     UniInferError, ProviderError, AuthenticationError, 
@@ -45,6 +45,7 @@ ProviderFactory.register_provider("ollama", OllamaProvider)
 ProviderFactory.register_provider("openrouter", OpenRouterProvider)
 ProviderFactory.register_provider("arli", ArliAIProvider)
 ProviderFactory.register_provider("internlm", InternLMProvider)
+ProviderFactory.register_provider("stepfun", StepFunProvider)
 
 # Register optional providers if available
 if HAS_HUGGINGFACE:
@@ -72,6 +73,7 @@ __all__ = [
     'OpenRouterProvider',
     'ArliAIProvider',
     'InternLMProvider',
+    'StepFunProvider',
     'UniInferError',
     'ProviderError',
     'AuthenticationError',

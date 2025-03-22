@@ -8,6 +8,7 @@ from .ollama import OllamaProvider
 from .openrouter import OpenRouterProvider
 from .arli import ArliAIProvider
 from .internlm import InternLMProvider
+from .stepfun import StepFunProvider
 
 # Import providers with optional dependencies
 try:
@@ -36,7 +37,8 @@ __all__ = [
     'OllamaProvider',
     'OpenRouterProvider',
     'ArliAIProvider',
-    'InternLMProvider'
+    'InternLMProvider',
+    'StepFunProvider'
 ]
 
 # Add optional providers to __all__ if available
