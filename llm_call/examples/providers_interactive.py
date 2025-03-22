@@ -62,6 +62,13 @@ try:
 except ImportError:
     HAS_AI21 = False
 
+# Check if Gemini support is available
+try:
+    from uniinfer import GeminiProvider
+    HAS_GENAI = True
+except ImportError:
+    HAS_GENAI = False
+
 
 # Provider configurations
 PROVIDER_CONFIGS = {
@@ -160,6 +167,14 @@ if HAS_AI21:
     PROVIDER_CONFIGS['ai21'] = {
         'name': 'AI21 Labs',
         'default_model': 'jamba-mini-1.6-2025-03',
+        'needs_api_key': True,
+    }
+
+# Add Gemini if available
+if HAS_GENAI:
+    PROVIDER_CONFIGS['gemini'] = {
+        'name': 'Google Gemini',
+        'default_model': 'gemini-1.5-pro',
         'needs_api_key': True,
     }
 

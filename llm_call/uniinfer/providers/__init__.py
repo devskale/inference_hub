@@ -14,6 +14,13 @@ from .upstage import UpstageProvider
 
 # Import providers with optional dependencies
 try:
+    from .gemini import GeminiProvider
+    HAS_GENAI = True
+except ImportError:
+    HAS_GENAI = False
+
+# Import other providers with optional dependencies
+try:
     from .huggingface import HuggingFaceProvider
     HAS_HUGGINGFACE = True
 except ImportError:
@@ -72,3 +79,6 @@ if HAS_GROQ:
 
 if HAS_AI21:
     __all__.append('AI21Provider')
+
+if HAS_GENAI:
+    __all__.append('GeminiProvider')

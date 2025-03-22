@@ -50,6 +50,12 @@ try:
 except ImportError:
     HAS_AI21 = False
 
+try:
+    from .providers import GeminiProvider
+    HAS_GENAI = True
+except ImportError:
+    HAS_GENAI = False
+
 # Register built-in providers
 ProviderFactory.register_provider("mistral", MistralProvider)
 ProviderFactory.register_provider("anthropic", AnthropicProvider)
@@ -77,6 +83,9 @@ if HAS_GROQ:
 
 if HAS_AI21:
     ProviderFactory.register_provider("ai21", AI21Provider)
+
+if HAS_GENAI:
+    ProviderFactory.register_provider("gemini", GeminiProvider)
 
 __version__ = "0.1.0"
 
@@ -122,3 +131,6 @@ if HAS_GROQ:
 
 if HAS_AI21:
     __all__.append('AI21Provider')
+
+if HAS_GENAI:
+    __all__.append('GeminiProvider')
