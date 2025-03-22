@@ -9,6 +9,7 @@ from .openrouter import OpenRouterProvider
 from .arli import ArliAIProvider
 from .internlm import InternLMProvider
 from .stepfun import StepFunProvider
+from .sambanova import SambanovaProvider
 
 # Import providers with optional dependencies
 try:
@@ -44,7 +45,8 @@ __all__ = [
     'OpenRouterProvider',
     'ArliAIProvider',
     'InternLMProvider',
-    'StepFunProvider'
+    'StepFunProvider',
+    'SambanovaProvider'
 ]
 
 # Add optional providers to __all__ if available

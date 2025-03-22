@@ -285,6 +285,27 @@ This pattern allows UniInfer to work even if the dependency for your provider is
 
 ## Supported Providers
 
+### SambaNova
+
+```python
+# Requires openai package
+# pip install openai
+
+provider = ProviderFactory.get_provider("sambanova", api_key="your-api-key")
+
+request = ChatCompletionRequest(
+    messages=[
+        ChatMessage(role="system", content="Answer the question in a couple sentences."),
+        ChatMessage(role="user", content="Share a happy story with me")
+    ],
+    model="Meta-Llama-3.1-8B-Instruct",  # SambaNova's model
+    temperature=0.1
+)
+
+response = provider.complete(request)
+print(response.message.content)
+```
+
 ### Groq
 
 ```python
@@ -599,6 +620,7 @@ except ProviderError as e:
 - **MoonshotProvider**: Provider for Moonshot AI API (requires openai package)
 - **StepFunProvider**: Provider for StepFun AI API (requires openai package)
 - **GroqProvider**: Provider for Groq API (requires groq package)
+- **SambanovaProvider**: Provider for SambaNova AI (requires openai package)
 
 ### Strategies
 

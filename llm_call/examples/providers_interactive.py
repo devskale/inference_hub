@@ -103,6 +103,12 @@ PROVIDER_CONFIGS = {
         'name': 'StepFun AI',
         'default_model': 'step-1-8k',
         'needs_api_key': True,
+    },
+    'sambanova': {
+        'name': 'SambaNova',
+        #        'default_model': 'Meta-Llama-3.1-8B-Instruct',
+        'default_model': 'DeepSeek-R1',
+        'needs_api_key': True,
     }
 }
 
