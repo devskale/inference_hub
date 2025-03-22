@@ -26,6 +26,13 @@ try:
     HAS_HUGGINGFACE = True
 except ImportError:
     HAS_HUGGINGFACE = False
+    
+# Check if Cohere support is available
+try:
+    from uniinfer import CohereProvider
+    HAS_COHERE = True
+except ImportError:
+    HAS_COHERE = False
 
 
 # Provider configurations
@@ -78,6 +85,14 @@ if HAS_HUGGINGFACE:
     PROVIDER_CONFIGS['huggingface'] = {
         'name': 'HuggingFace Inference',
         'default_model': 'mistralai/Mistral-7B-Instruct-v0.3',
+        'needs_api_key': True,
+    }
+
+# Add Cohere if available
+if HAS_COHERE:
+    PROVIDER_CONFIGS['cohere'] = {
+        'name': 'Cohere',
+        'default_model': 'command-r-plus-08-2024',
         'needs_api_key': True,
     }
 

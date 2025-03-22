@@ -18,12 +18,18 @@ from .errors import (
 )
 from .strategies import FallbackStrategy, CostBasedStrategy
 
-# Import HuggingFace provider conditionally (requires huggingface_hub package)
+# Import optional providers conditionally
 try:
     from .providers import HuggingFaceProvider
     HAS_HUGGINGFACE = True
 except ImportError:
     HAS_HUGGINGFACE = False
+
+try:
+    from .providers import CohereProvider
+    HAS_COHERE = True
+except ImportError:
+    HAS_COHERE = False
 
 # Register built-in providers
 ProviderFactory.register_provider("mistral", MistralProvider)
@@ -34,9 +40,12 @@ ProviderFactory.register_provider("openrouter", OpenRouterProvider)
 ProviderFactory.register_provider("arli", ArliAIProvider)
 ProviderFactory.register_provider("internlm", InternLMProvider)
 
-# Register HuggingFace provider if available
+# Register optional providers if available
 if HAS_HUGGINGFACE:
     ProviderFactory.register_provider("huggingface", HuggingFaceProvider)
+
+if HAS_COHERE:
+    ProviderFactory.register_provider("cohere", CohereProvider)
 
 __version__ = "0.1.0"
 
@@ -64,6 +73,9 @@ __all__ = [
     'CostBasedStrategy'
 ]
 
-# Add HuggingFaceProvider to exports if available
+# Add optional providers to exports if available
 if HAS_HUGGINGFACE:
     __all__.append('HuggingFaceProvider')
+
+if HAS_COHERE:
+    __all__.append('CohereProvider')

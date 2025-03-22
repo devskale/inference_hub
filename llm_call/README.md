@@ -162,9 +162,34 @@ print(f"Response from {provider_used}: {response.message.content}")
 
 ## Supported Providers
 
+### Cohere
+
+```python
+# Requires cohere package
+# pip install cohere
+
+provider = ProviderFactory.get_provider("cohere", api_key="your-api-key")
+
+request = ChatCompletionRequest(
+    messages=[messages],
+    model="command-r-plus-08-2024",  # Cohere model
+    temperature=0.8,
+    max_tokens=500
+)
+
+response = provider.complete(request)
+
+# Streaming
+for chunk in provider.stream_complete(request):
+    print(chunk.message.content, end="", flush=True)
+```
+
 ### InternLM
 
 ```python
+# Recommended: Install OpenAI client for better InternLM compatibility
+# pip install openai
+
 provider = ProviderFactory.get_provider("internlm", api_key="your-api-key")
 
 # InternLM-specific parameters
@@ -384,6 +409,7 @@ except ProviderError as e:
 - **ArliAIProvider**: Provider for ArliAI API
 - **HuggingFaceProvider**: Provider for HuggingFace Inference API (requires huggingface_hub package)
 - **InternLMProvider**: Provider for InternLM API
+- **CohereProvider**: Provider for Cohere API (requires cohere package)
 
 ### Strategies
 
