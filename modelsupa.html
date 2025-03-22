@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supabase Query Example - Model Categories and Models</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        #categories, #models {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .category-list, .model-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .category-item {
+            background-color: #3498db;
+            color: white;
+            margin: 5px;
+            padding: 10px 15px;
+            border-radius: 3px;
+            display: inline-block;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .category-item:hover {
+            background-color: #2980b9;
+        }
+        .model-item {
+            margin: 5px;
+            padding: 8px 12px;
+            border-radius: 3px;
+            display: inline-block;
+            font-size: 13px;
+        }
+        .model-link {
+            background-color: #2ecc71;
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        .model-link:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <h1>Model Categories and Models</h1>
+    <div id="categories">Loading categories...</div>
+    <h2>Models</h2>
+    <div id="models">Select a category to view models</div>
+
+    <script>
+        function loadScript(src) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.onload = resolve;
+                script.onerror = reject;
+                document.head.appendChild(script);
+            });
+        }
+
+        let supabaseClient;
+
+        async function initSupabase() {
+            try {
+                await loadScript('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.38.4/dist/umd/supabase.min.js');
+                
+                if (typeof window.supabase === 'undefined') {
+                    throw new Error('Supabase library failed to load properly');
+                }
+
+                const SUPABASE_URL = 'https://cslbcpkvydbyrakvonjw.supabase.co';
+                const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNzbGJjcGt2eWRieXJha3Zvbmp3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjAwMTk0MjEsImV4cCI6MjAzNTU5NTQyMX0.7YEY8ACyp2jo5yx8dE3F05bebo33A1TI5WfIvffAP5w';
+                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+                await queryCategories();
+            } catch (error) {
+                console.error('Error initializing Supabase:', error);
+                document.getElementById('categories').innerHTML = 'Error loading Supabase: ' + error.message;
+            }
+        }
+
+        async function queryCategories() {
+            try {
+                let { data: modelscategory, error } = await supabaseClient
+                    .from('modelscategory')
+                    .select('*')
+                    .order('category', { ascending: true });
+
+                if (error) throw error;
+
+                const categoriesDiv = document.getElementById('categories');
+                if (modelscategory && modelscategory.length > 0) {
+                    const categoryList = document.createElement('ul');
+                    categoryList.className = 'category-list';
+                    
+                    modelscategory.forEach(item => {
+                        const listItem = document.createElement('li');
+                        listItem.className = 'category-item';
+                        listItem.textContent = item.category;
+                        listItem.onclick = () => queryModels(item.category);
+                        categoryList.appendChild(listItem);
+                    });
+
+                    categoriesDiv.innerHTML = '';
+                    categoriesDiv.appendChild(categoryList);
+                } else {
+                    categoriesDiv.innerHTML = 'No categories found.';
+                }
+            } catch (error) {
+                console.error('Error querying categories:', error);
+                document.getElementById('categories').innerHTML = 'Error querying categories: ' + error.message;
+            }
+        }
+
+        async function queryModels(category) {
+            try {
+                let { data: models, error } = await supabaseClient
+                    .from('models')
+                    .select('modelid')
+                    .eq('active', true)
+                    .eq('category', category);
+
+                if (error) throw error;
+
+                const modelsDiv = document.getElementById('models');
+                if (models && models.length > 0) {
+                    const modelList = document.createElement('ul');
+                    modelList.className = 'model-list';
+                    
+                    models.forEach(model => {
+                        const listItem = document.createElement('li');
+                        listItem.className = 'model-item';
+                        
+                        const link = document.createElement('a');
+                        link.href = `https://huggingface.co/${model.modelid}`;
+                        link.className = 'model-link';
+                        link.textContent = model.modelid;
+                        link.target = '_blank'; // Open in new tab
+                        
+                        listItem.appendChild(link);
+                        modelList.appendChild(listItem);
+                    });
+
+                    modelsDiv.innerHTML = `<h3>Models in ${category}:</h3>`;
+                    modelsDiv.appendChild(modelList);
+                } else {
+                    modelsDiv.innerHTML = `No active models found in the ${category} category.`;
+                }
+            } catch (error) {
+                console.error('Error querying models:', error);
+                document.getElementById('models').innerHTML = 'Error querying models: ' + error.message;
+            }
+        }
+
+        // Start the initialization process
+        initSupabase();
+    </script>
+</body>
+</html>

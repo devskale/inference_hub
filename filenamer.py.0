@@ -1,0 +1,87 @@
+import argparse
+from langchain_huggingface.llms import HuggingFaceEndpoint
+from getparams import load_api_credentials
+from langchain_core.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+from huggingface_hub import login
+import re
+
+
+DATEIKLASSEN = [
+    "Angebot", "Produktbeschreibung", "Zertifikat",
+    "Firmenauskunft", "Finanzinformation", "Strafregisterauszug", "Versicherungsvertrag", 
+    "Bestätigung", "Sonstiges"
+]
+
+PROMPTS = {
+    's': """
+    Basierend auf dem folgenden Inhalt, schlage einen prägnanten und beschreibenden Dateinamen (ohne Erweiterung) und eine kurze Zusammenfassung des Dateiinhalts in deutscher Sprache vor. 
+    Formatiere deine Antwort als 'Dateiname: \nZusammenfassung: 
+    \nErsteller des Dokuments: (optional)'
+    """,
+    'k': f"""
+    Basierend auf dem folgenden Inhalt, kategorisiere den Inhalt in eine der folgenden Klassen:
+    {', '.join(DATEIKLASSEN)}
+    Antworte nur mit dem Namen der Klasse. Sollte keine der Klassen passen, antworte mit 'Sonstiges'.
+    """
+}
+
+def read_file_content(filepath, n_chars):
+    with open(filepath, 'r', encoding='utf-8') as file:
+        # Clean content from funky characters
+        # clean content from image references in md style
+        content = re.sub(r'!\[.*?\]\(.*?\)', '', file.read(n_chars))
+
+        content = file.read(n_chars)
+        content = content.encode('ascii', 'ignore').decode()
+        
+        return content
+
+def analyze_content(content, llm, mode):
+    full_prompt = f"{PROMPTS[mode]}\n\nInhalt:\n{content}\n\nAntwort:\n"
+    return llm.invoke(full_prompt)
+
+def setup_llm(api_token):
+    repo_id = "mistralai/Mistral-7B-Instruct-v0.3"
+    return HuggingFaceEndpoint(
+        endpoint_url=repo_id,
+        huggingfacehub_api_token=api_token,
+        max_new_tokens=512,
+        top_k=10,
+        top_p=0.95,
+        typical_p=0.95,
+        temperature=0.01,
+        repetition_penalty=1.03,
+        callbacks=[StreamingStdOutCallbackHandler()],
+        streaming=True
+    )
+
+def parse_arguments():
+    parser = argparse.ArgumentParser(description="Analyze a file and suggest a filename and summary or classify it.")
+    parser.add_argument("filepath", help="Path to the text file to analyze")
+    parser.add_argument("-s", action="store_true", help="Generate filename and summary")
+    parser.add_argument("-k", action="store_true", help="Classify the content")
+    parser.add_argument("-n", type=int, default=1000, help="Number of characters to read from the beginning of the file")
+    args = parser.parse_args()
+    if not (args.s or args.k):
+        parser.error("At least one of -s or -k must be specified")
+    return args
+
+def main():
+    args = parse_arguments()
+    
+    api_token = load_api_credentials('huggingface')
+    login(api_token, add_to_git_credential=True)
+    
+    llm = setup_llm(api_token)
+    content = read_file_content(args.filepath, args.n)
+    
+    for mode, description in [('s', 'filename and summary'), ('k', 'classification')]:
+        if getattr(args, mode):
+            print(f"\nGenerating {description}...")
+#            print(f"\n{description.capitalize()}:")
+            result = analyze_content(content, llm, mode)
+#            print(f"\n{description.capitalize()}:")
+#            print(result)
+
+if __name__ == "__main__":
+    main()

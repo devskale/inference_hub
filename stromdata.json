@@ -1,0 +1,29 @@
+{
+    "success": true,
+    "data": {
+        "url": "https://www.wienenergie.at/privat/produkte/strom/",
+        "Stromtarife": [
+            {
+                "Name": "OPTIMA Entspannt",
+                "Beschreibung": "Unser Standardtarif mit 12 Monaten Preisgarantie, 100 % \u00d6ko-Strom.",
+                "ArbeitspreisNettoEURprokWh": "0,164930 EUR",
+                "GrundpreisproNettoEURproMonat": "1,9142 EUR"
+            },
+            {
+                "Name": "OPTIMA Aktiv",
+                "Beschreibung": "Unser flexibler Tarif ohne Vertragsbindung, mit monatlicher Preisanpassung.",
+                "ArbeitspreisNettoEURprokWh": "0,191737 EUR",
+                "GrundpreisproNettoEURproMonat": "5,3049 EUR"
+            },
+            {
+                "Name": "OPTIMA Voll Aktiv",
+                "Beschreibung": "St\u00fcndliche Preisanpassung, nur f\u00fcr Wien Energie-Bestandskund*innen mit Smart Meter.",
+                "ArbeitspreisNettoEURprokWh": "Basis: B\u00f6rsenpreis/Stunde (heute: 0,140297-0,229228 EUR)",
+                "GrundpreisproNettoEURproMonat": "5,5000 EUR"
+            }
+        ],
+        "Energieanbieter": "Wien Energie"
+    },
+    "status": "completed",
+    "expiresAt": "2025-01-10T11:22:45.000Z"
+}

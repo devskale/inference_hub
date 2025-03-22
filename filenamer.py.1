@@ -1,0 +1,88 @@
+import argparse
+from huggingface_hub import InferenceClient, login
+from getparams import load_api_credentials
+import re
+
+# List of document categories
+DATEIKLASSEN = [
+    "Angebot", "Produktbeschreibung", "Zertifikat",
+    "Firmenauskunft", "Finanzinformation", "Strafregisterauszug", "Versicherungsvertrag", 
+    "Bestätigung", "Sonstiges"
+]
+
+# Prompts for different analysis modes
+PROMPTS = {
+    's': """
+    Basierend auf dem folgenden Inhalt, schlage einen prägnanten und beschreibenden Dateinamen (ohne Erweiterung) und eine kurze Zusammenfassung des Dateiinhalts in deutscher Sprache vor. 
+    Formatiere deine Antwort als 'Dateiname: (Dateiname)
+    \nZusammenfassung: (kurze Zusammenfassung)
+    \nErsteller des Dokuments: (optional wenn bekannt)'
+    """,
+    'k': f"""
+    Basierend auf dem folgenden Inhalt, kategorisiere den Inhalt in eine der folgenden Klassen:
+    {', '.join(DATEIKLASSEN)}
+    Antworte nur mit dem Namen der Klasse. Sollte keine der Klassen passen, antworte mit 'Sonstiges'.
+    """
+}
+
+def read_file_content(filepath, n_chars):
+    with open(filepath, 'r', encoding='utf-8') as file:
+        # Clean content from funky characters and image references in md style
+        content = re.sub(r'!\[.*?\]\(.*?\)', '', file.read(n_chars))
+        content = content.encode('ascii', 'ignore').decode()
+        return content
+
+def analyze_content(content, client, mode):
+    full_prompt = f"{PROMPTS[mode]}\n\nInhalt:\n{content}\n\nAntwort:\n"
+    messages = [{"role": "user", "content": full_prompt}]
+    response = client.chat_completions.create(messages, max_tokens=512, temperature=0.01)
+        for chunk in response.choices[0].message.content:
+            if chunk:
+                print(chunk, end="", flush=True)
+    return response.choices[0].message.content
+
+def setup_client(model_id):
+    return InferenceClient(model_id)
+
+def parse_arguments():
+    parser = argparse.ArgumentParser(description="Analyze a file and suggest a filename and summary or classify it.")
+    parser.add_argument("filepath", help="Path to the text file to analyze")
+    parser.add_argument("-s", action="store_true", help="Generate filename and summary")
+    parser.add_argument("-k", action="store_true", help="Classify the content")
+    parser.add_argument("-n", type=int, default=1000, help="Number of characters to read from the beginning of the file")
+    return parser.parse_args()
+
+def prompt_for_mode():
+    while True:
+        mode = input("Choose mode (s-summary, k-classification): ").lower()
+        if mode in ['s', 'k']:
+            return mode
+        print("Invalid input. Please enter 's' or 'k'.")
+
+def main():
+    args = parse_arguments()
+    
+    api_token = load_api_credentials('huggingface')
+    login(api_token)
+    
+    model_id = "mistralai/Mistral-7B-Instruct-v0.3"
+    client = setup_client(model_id)
+    content = read_file_content(args.filepath, args.n)
+    
+    modes_to_run = []
+    if args.s:
+        modes_to_run.append('s')
+    if args.k:
+        modes_to_run.append('k')
+    
+    if not modes_to_run:
+        modes_to_run.append(prompt_for_mode())
+    
+    for mode in modes_to_run:
+        description = 'filename and summary' if mode == 's' else 'classification'
+        print(f"\nGenerating {description}...")
+        result = analyze_content(content, client, mode)
+        print(result)
+
+if __name__ == "__main__":
+    main()

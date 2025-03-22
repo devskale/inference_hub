@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FileBrowser Auth Demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
+    <script src="filebrowser.js" type="module"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container">
+        <h1>FileBrowser Auth</h1>
+        
+        <div>
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" value="plansky"><br><br>
+            
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" value="plan23"><br><br>
+            
+            <button onclick="handleLogin()">Login</button>
+        </div>
+
+        <div id="resultLogin"></div>
+    </div>
+
+    <div class="container">
+        <h1>Files</h1>
+        <input type="text" id="directory" value="/">
+        <button onclick="handleListDir()">Get Files</button>
+        <div id="fileList"></div>
+    </div>
+
+</body>
+</html>
