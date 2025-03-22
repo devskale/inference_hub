@@ -22,6 +22,12 @@ try:
 except ImportError:
     HAS_COHERE = False
 
+try:
+    from .moonshot import MoonshotProvider
+    HAS_MOONSHOT = True
+except ImportError:
+    HAS_MOONSHOT = False
+
 # Import all provider classes here so they can be easily imported from uniinfer.providers
 __all__ = [
     'MistralProvider', 
@@ -39,3 +45,6 @@ if HAS_HUGGINGFACE:
 
 if HAS_COHERE:
     __all__.append('CohereProvider')
+
+if HAS_MOONSHOT:
+    __all__.append('MoonshotProvider')

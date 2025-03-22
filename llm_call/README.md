@@ -162,6 +162,27 @@ print(f"Response from {provider_used}: {response.message.content}")
 
 ## Supported Providers
 
+### Moonshot AI
+
+```python
+# Requires openai package
+# pip install openai
+
+provider = ProviderFactory.get_provider("moonshot", api_key="your-api-key")
+
+request = ChatCompletionRequest(
+    messages=[
+        ChatMessage(role="system", content="你是 Kimi，由 Moonshot AI 提供的人工智能助手，你更擅长中文和英文的对话。"),
+        ChatMessage(role="user", content="你好，我叫李雷，1+1等于多少？")
+    ],
+    model="moonshot-v1-8k",  # Moonshot model
+    temperature=0.3,
+    max_tokens=500
+)
+
+response = provider.complete(request)
+```
+
 ### Cohere
 
 ```python
@@ -410,6 +431,7 @@ except ProviderError as e:
 - **HuggingFaceProvider**: Provider for HuggingFace Inference API (requires huggingface_hub package)
 - **InternLMProvider**: Provider for InternLM API
 - **CohereProvider**: Provider for Cohere API (requires cohere package)
+- **MoonshotProvider**: Provider for Moonshot AI API (requires openai package)
 
 ### Strategies
 

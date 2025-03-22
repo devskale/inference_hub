@@ -31,6 +31,12 @@ try:
 except ImportError:
     HAS_COHERE = False
 
+try:
+    from .providers import MoonshotProvider
+    HAS_MOONSHOT = True
+except ImportError:
+    HAS_MOONSHOT = False
+
 # Register built-in providers
 ProviderFactory.register_provider("mistral", MistralProvider)
 ProviderFactory.register_provider("anthropic", AnthropicProvider)
@@ -46,6 +52,9 @@ if HAS_HUGGINGFACE:
 
 if HAS_COHERE:
     ProviderFactory.register_provider("cohere", CohereProvider)
+
+if HAS_MOONSHOT:
+    ProviderFactory.register_provider("moonshot", MoonshotProvider)
 
 __version__ = "0.1.0"
 
@@ -79,3 +88,6 @@ if HAS_HUGGINGFACE:
 
 if HAS_COHERE:
     __all__.append('CohereProvider')
+
+if HAS_MOONSHOT:
+    __all__.append('MoonshotProvider')

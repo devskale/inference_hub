@@ -33,6 +33,13 @@ try:
     HAS_COHERE = True
 except ImportError:
     HAS_COHERE = False
+    
+# Check if Moonshot support is available
+try:
+    from uniinfer import MoonshotProvider
+    HAS_MOONSHOT = True
+except ImportError:
+    HAS_MOONSHOT = False
 
 
 # Provider configurations
@@ -93,6 +100,14 @@ if HAS_COHERE:
     PROVIDER_CONFIGS['cohere'] = {
         'name': 'Cohere',
         'default_model': 'command-r-plus-08-2024',
+        'needs_api_key': True,
+    }
+
+# Add Moonshot if available
+if HAS_MOONSHOT:
+    PROVIDER_CONFIGS['moonshot'] = {
+        'name': 'Moonshot AI',
+        'default_model': 'moonshot-v1-8k',
         'needs_api_key': True,
     }
 
