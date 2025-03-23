@@ -4,11 +4,15 @@ Interactive example to select a provider and ask a question with streaming outpu
 This script uses the inquirer library for interactive prompts.
 """
 from uniinfer import ChatMessage, ChatCompletionRequest, ProviderFactory
+from .providers_config import get_all_providers, get_provider_config, add_provider
 import sys
 import os
 import inquirer
 import time
-
+from .providers_config import (
+    HAS_HUGGINGFACE, HAS_COHERE, HAS_MOONSHOT, HAS_OPENAI,
+    HAS_GROQ, HAS_AI21, HAS_GENAI
+)
 # Add the parent directory to the Python path to make the uniinfer package importable
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -19,180 +23,10 @@ except ImportError:
     HAS_CREDGOO = False
     print("Note: credgoo not found, you'll need to provide API keys manually")
 
-
-# Check if HuggingFace support is available
-try:
-    from uniinfer import HuggingFaceProvider
-    HAS_HUGGINGFACE = True
-except ImportError:
-    HAS_HUGGINGFACE = False
-
-# Check if Cohere support is available
-try:
-    from uniinfer import CohereProvider
-    HAS_COHERE = True
-except ImportError:
-    HAS_COHERE = False
-
-# Check if Moonshot support is available
-try:
-    from uniinfer import MoonshotProvider
-    HAS_MOONSHOT = True
-except ImportError:
-    HAS_MOONSHOT = False
-
-# Check if OpenAI client is available (for StepFun)
-try:
-    from openai import OpenAI
-    HAS_OPENAI = True
-except ImportError:
-    HAS_OPENAI = False
-
-# Check if Groq support is available
-try:
-    from uniinfer import GroqProvider
-    HAS_GROQ = True
-except ImportError:
-    HAS_GROQ = False
-
-# Check if AI21 support is available
-try:
-    from uniinfer import AI21Provider
-    HAS_AI21 = True
-except ImportError:
-    HAS_AI21 = False
-
-# Check if Gemini support is available
-try:
-    from uniinfer import GeminiProvider
-    HAS_GENAI = True
-except ImportError:
-    HAS_GENAI = False
-
-
 # Provider configurations
-PROVIDER_CONFIGS = {
-    'mistral': {
-        'name': 'Mistral AI',
-        'default_model': 'mistral-small-latest',
-        'needs_api_key': True,
-    },
-    'anthropic': {
-        'name': 'Anthropic (Claude)',
-        'default_model': 'claude-3-sonnet-20240229',
-        'needs_api_key': True,
-    },
-    'openai': {
-        'name': 'OpenAI',
-        'default_model': 'gpt-3.5-turbo',
-        'needs_api_key': True,
-    },
-    'ollama': {
-        'name': 'Ollama (Local)',
-        'default_model': 'llama2',
-        'needs_api_key': False,
-        'extra_params': {
-            'base_url': 'http://localhost:11434'
-        }
-    },
-    'arli': {
-        'name': 'ArliAI',
-        'default_model': 'Mistral-Nemo-12B-Instruct-2407',
-        'needs_api_key': True,
-    },
-    'openrouter': {
-        'name': 'OpenRouter',
-        'default_model': 'moonshotai/moonlight-16b-a3b-instruct:free',
-        'needs_api_key': True,
-    },
-    'internlm': {
-        'name': 'InternLM',
-        'default_model': 'internlm3-latest',
-        'needs_api_key': True,
-        'extra_params': {
-            'top_p': 0.9
-        }
-    },
-    'stepfun': {
-        'name': 'StepFun AI',
-        'default_model': 'step-1-8k',
-        'needs_api_key': True,
-    },
-    'sambanova': {
-        'name': 'SambaNova',
-        'default_model': 'Meta-Llama-3.1-8B-Instruct',
-        'needs_api_key': True,
-    },
-    'upstage': {
-        'name': 'Upstage AI',
-        'default_model': 'solar-pro',
-        'needs_api_key': True,
-    },
-    'ngc': {
-        'name': 'NVIDIA GPU Cloud (NGC)',
-        'default_model': 'deepseek-ai/deepseek-r1-distill-llama-8b',
-        'needs_api_key': True,
-    },
-    'cloudflare': {
-        'name': 'Cloudflare Workers AI',
-        'default_model': '/meta/llama-3.1-8b-instruct',
-        'needs_api_key': True,
-        'extra_params': {
-            # Will prompt for this during initialization
-            'account_id': '1ee331dfd225ac49d67c521a73ca7fe8'
-        }
-    }
-}
+PROVIDER_CONFIGS = get_all_providers()
 
-# Add HuggingFace if available
-if HAS_HUGGINGFACE:
-    PROVIDER_CONFIGS['huggingface'] = {
-        'name': 'HuggingFace Inference',
-        'default_model': 'mistralai/Mistral-7B-Instruct-v0.3',
-        'needs_api_key': True,
-    }
-
-# Add Cohere if available
-if HAS_COHERE:
-    PROVIDER_CONFIGS['cohere'] = {
-        'name': 'Cohere',
-        'default_model': 'command-r-plus-08-2024',
-        'needs_api_key': True,
-    }
-
-# Add Moonshot if available
-if HAS_MOONSHOT:
-    PROVIDER_CONFIGS['moonshot'] = {
-        'name': 'Moonshot AI',
-        'default_model': 'moonshot-v1-8k',
-        'needs_api_key': True,
-    }
-
-# Add Groq if available
-if HAS_GROQ:
-    PROVIDER_CONFIGS['groq'] = {
-        'name': 'Groq',
-        'default_model': 'llama-3.1-8b',
-        'needs_api_key': True,
-    }
-
-# Add AI21 if available
-if HAS_AI21:
-    PROVIDER_CONFIGS['ai21'] = {
-        'name': 'AI21 Labs',
-        'default_model': 'jamba-mini-1.6-2025-03',
-        'needs_api_key': True,
-    }
-
-# Add Gemini if available
-if HAS_GENAI:
-    PROVIDER_CONFIGS['gemini'] = {
-        'name': 'Google Gemini',
-        'default_model': 'gemini-1.5-pro',
-        'needs_api_key': True,
-    }
-
-DEFAULT_QUESTION = "Explain how transformers work in machine learning in simple terms."
+DEFAULT_QUESTION = "Explain how transformers work in machine learning briefly in simple terms."
 
 
 def select_provider():
@@ -220,16 +54,8 @@ def select_provider():
 
 
 def get_provider_instance(provider_id):
-    """
-    Get a provider instance with the appropriate API key.
-
-    Args:
-        provider_id (str): The provider ID.
-
-    Returns:
-        tuple: (provider, model) - The provider instance and default model.
-    """
-    config = PROVIDER_CONFIGS[provider_id]
+    # Remove the [provider_id] indexing
+    config = get_provider_config(provider_id)
     provider_kwargs = config.get('extra_params', {})
     model = config['default_model']
 
