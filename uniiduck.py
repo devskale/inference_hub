@@ -21,7 +21,7 @@ logging.basicConfig(level=logging.INFO)
 
 
 def summarize_articles(text: str, topic: str, max_length: int = 1000) -> str:
-    provider_name = 'openrouter'
+    provider_name = 'internlm'
     try:
         provider = ProviderFactory.get_provider(
             name=provider_name,
