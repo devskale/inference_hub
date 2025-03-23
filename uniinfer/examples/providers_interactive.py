@@ -4,17 +4,17 @@ Interactive example to select a provider and ask a question with streaming outpu
 This script uses the inquirer library for interactive prompts.
 """
 from uniinfer import ChatMessage, ChatCompletionRequest, ProviderFactory
-from .providers_config import get_all_providers, get_provider_config, add_provider
+from providers_config import get_all_providers, get_provider_config, add_provider
 import sys
 import os
 import inquirer
 import time
-from .providers_config import (
+from providers_config import (
     HAS_HUGGINGFACE, HAS_COHERE, HAS_MOONSHOT, HAS_OPENAI,
     HAS_GROQ, HAS_AI21, HAS_GENAI
 )
 # Add the parent directory to the Python path to make the uniinfer package importable
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 try:
     from credgoo import get_api_key
@@ -26,7 +26,7 @@ except ImportError:
 # Provider configurations
 PROVIDER_CONFIGS = get_all_providers()
 
-DEFAULT_QUESTION = "Explain how transformers work in machine learning briefly in simple terms in 3 sentences."
+DEFAULT_QUESTION = "Explain how transformers work in machine learning in simple terms very briefly."
 
 
 def select_provider():
