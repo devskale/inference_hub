@@ -76,7 +76,7 @@ PROVIDER_CONFIGS = {
         'default_model': '@cf/meta/llama-3.1-8b-instruct',
         'needs_api_key': True,
         'extra_params': {
-            'account_id': '1ee331dfd225ac49d67c521a73ca7fe8'  # Will be prompted during setup
+            'account_id': '1ee331dfd225ac49d67c521a73ca7fe8'
         }
     }
 }
@@ -85,9 +85,7 @@ PROVIDER_CONFIGS = {
 def main():
     # Initialize the provider factory
 
-    provider = "openrouter"
-    ACCOUNT_ID = PROVIDER_CONFIGS[provider].get(
-        'extra_params', {}).get('account_id', None)
+    provider = "stepfun"
 
     # Initialize the provider factory
     uni = ProviderFactory().get_provider(
@@ -96,9 +94,9 @@ def main():
         # account_id=PROVIDER_CONFIGS[provider].get('extra_params', {}).get('account_id', None)
     )
 
-    prompt = "Explain in a few sentences in simple words how transformers work in machine learning."
+    prompt = "Explain how transformers work in machine learning in simple words very briefly."
     print(
-        f"Prompt: {prompt}\ ( {PROVIDER_CONFIGS[provider]['default_model']} )")
+        f"Prompt: {prompt} ( {provider}@{PROVIDER_CONFIGS[provider]['default_model']} )")
     # Create a simple chat request
     messages = [
         ChatMessage(role="user", content=prompt)
@@ -106,11 +104,15 @@ def main():
     request = ChatCompletionRequest(
         messages=messages,
         model=PROVIDER_CONFIGS[provider]['default_model'],
+        streaming=True
     )
     # Make the request
-
-    response = uni.complete(request)
-    print(response.message.content)
+    response_text = ""
+    print("\n=== Response ===\n")
+    for chunk in uni.stream_complete(request):
+        content = chunk.message.content
+        print(content, end="", flush=True)
+        response_text += content
 
 
 if __name__ == "__main__":
