@@ -1,26 +1,31 @@
 import argparse
-import configparser
 import json
-import requests
-from getparams import load_api_credentials, load_model_parameters
+from uniinfer import (
+    ChatMessage,
+    ChatCompletionRequest,
+    ProviderFactory
+)
+from credgoo import get_api_key
+from providers_config import PROVIDER_CONFIGS
 
 
-
-def invoke_api(api_key, api_url, model_parameters, user_input, choice="q"):
+def invoke_api(provider_name, model_parameters, user_input, choice="q"):
     """
-    Makes a POST request to the specified URL with given headers and payload,
-    parsing streaming JSON responses and printing content word by word.
+    Makes a request to the LLM provider using uniinfer and streams the response.
 
     Parameters:
-    - url: API endpoint URL
-    - headers: Dictionary containing request headers
-    - payload: Dictionary containing the request payload
+    - provider_name: Name of the provider to use
+    - model_parameters: Dictionary containing model parameters
+    - user_input: User's input text
+    - choice: Type of prompt to use (q=question, s=summary, etc.)
     """
-    headers = {
-        "Authorization": api_key,
-        "accept": "text/event-stream",
-        "Content-Type": "application/json",
-    }
+    # Initialize the provider using uniinfer
+    uni = ProviderFactory().get_provider(
+        name=provider_name,
+        api_key=get_api_key(provider_name),
+        account_id=PROVIDER_CONFIGS.get(provider_name, {}).get(
+            'extra_params', {}).get('account_id', None)
+    )
     if choice == "q":
         model_input = user_input
     elif choice == "s":
@@ -32,80 +37,55 @@ def invoke_api(api_key, api_url, model_parameters, user_input, choice="q"):
     elif choice == "b":
         model_input = "Write a bullet list summarizing this article in the articles original language: "+user_input
 
+    # Create a chat request
+    messages = [ChatMessage(role="user", content=model_input)]
 
-    payload = {
-        "messages": [{"content": model_input, "role": "user"}],
-        **model_parameters,
-    }
+    # Get the model name from provider config or use a default
+    model_name = PROVIDER_CONFIGS.get(provider_name, {}).get(
+        'default_model', 'default_model')
+
+    # Create the request with model parameters
+    request = ChatCompletionRequest(
+        messages=messages,
+        model=model_name,
+        streaming=True,
+        **model_parameters
+    )
 
     try:
-        response = requests.post(api_url, headers=headers,
-                                 json=payload, stream=True)
-        response.raise_for_status()
-
+        # Stream the response
         buffer = []  # Initialize buffer for accumulating partial words
-        for line in response.iter_lines():
-            if line:
-                # Parse and print each line of content; break if stream is done
-                if not parse_and_print_streaming_response(line, buffer):
-                    break
+        response_text = ""
 
-    except requests.exceptions.HTTPError as err:
-        print(f"HTTP error occurred: {err}")
+        for chunk in uni.stream_complete(request):
+            content = chunk.message.content
+            response_text += content
+
+            # Add new content to the buffer
+            buffer.append(content)
+
+            # Concatenate the buffer to form a complete string and split it by space
+            # This maintains spaces between words and allows us to process complete words
+            full_str = ''.join(buffer)
+            words = full_str.split(' ')
+
+            # Print all but the last word (which might be incomplete)
+            for word in words[:-1]:
+                print(word + ' ', end='', flush=True)
+
+            # The last word becomes the new buffer content
+            buffer[:] = [words[-1]] if words[-1] else []
+
     except Exception as err:
-        print(f"An error occurred: {err}")
-
-
-
-def parse_and_print_streaming_response(line, buffer):
-    usage_info = None  # Initialize a variable to hold the usage data
-
-    try:
-        json_str = line.decode("utf-8").lstrip('data: ').strip()
-        if json_str == "[DONE]":
-            print(''.join(buffer), end='')
-            buffer.clear()
-            print("\nDONE.")
-            return False
-
-        data = json.loads(json_str)
-        
-        # Extract usage part and assign it to the variable
-        usage_info = data.get("usage", None)
-
-        content = data.get("choices", [{}])[0].get("delta", {}).get("content", "")
-
-        # Add new content to the buffer
-        buffer.append(content)
-
-        # Concatenate the buffer to form a complete string and split it by space
-        # This maintains spaces between words and allows us to process complete words
-        full_str = ''.join(buffer)
-        words = full_str.split(' ')
-
-        # Print all but the last word (which might be incomplete)
-        for word in words[:-1]:
-            print(word + ' ', end='')
-
-        # The last word becomes the new buffer content
-        buffer[:] = [words[-1]] if words[-1] else []
-
-        # Optionally, you can handle or print the usage information here
-        if usage_info:
-            print(f"\nUsage Info: {usage_info}")  # This is just an example
-
-        return True  # Continue streaming
-    except json.JSONDecodeError:
-        print("JSON decode error occurred.", end='')
-        return True  # Continue streaming assuming transient error
+        print(f"\nAn error occurred: {err}")
 
 
 def main():
     parser = argparse.ArgumentParser(
         description='Call LLM API with model parameters.')
-    # default llm is mixtral7x8
+    # default llm is ngc
     parser.add_argument('-llm', required=False,
-                        default="ngc_mixtral", help='Name of the LLM model.')
+                        default="ngc", help='Name of the LLM provider.')
     parser.add_argument('-q', '--question', required=False,
                         help='Question to ask the model.')
     parser.add_argument('-f', '--filename', required=False,
@@ -113,31 +93,44 @@ def main():
     args = parser.parse_args()
 
     try:
-        api_key, api_url = load_api_credentials(args.llm)
-        model_parameters = load_model_parameters(args.llm)
-        print(f"model_parameters {args.llm}")
+        # Get the provider name
+        provider_name = args.llm
+
+        # Check if provider exists in config
+        if provider_name not in PROVIDER_CONFIGS:
+            print(f"Provider '{provider_name}' not found in configuration.")
+            return
+
+        # Get model parameters (empty dict as default)
+        model_parameters = {}
+
+        print(
+            f"Using provider: {provider_name} with model: {PROVIDER_CONFIGS[provider_name]['default_model']}")
+
         if args.filename:
             # Read content from the file specified by the user
             with open(args.filename, 'r', encoding='utf-8') as file:
                 user_input = file.read().strip()
-            print(f"\nFile content: {user_input[:50]}...")  # Print the first 50 characters for confirmation
-            invoke_api(api_key, api_url, model_parameters, user_input)
+            # Print the first 50 characters for confirmation
+            print(f"\nFile content: {user_input[:50]}...")
+            invoke_api(provider_name, model_parameters, user_input)
             exit(0)
         elif args.question:
             user_input = args.question
             print(f"\nq: {user_input}")
-            invoke_api(api_key, api_url, model_parameters, user_input)
+            invoke_api(provider_name, model_parameters, user_input)
             exit(0)
         while True:
             # ask for q question, ss short summary, ls long summary, t tweet, b bullet list, or e exit
-            choice = input(f"Enter a question (q), short summary (s), long summary (l), tweet (t), bullet list (b), or exit (e): ")
+            choice = input(
+                f"Enter a question (q), short summary (s), long summary (l), tweet (t), bullet list (b), or exit (e): ")
             if choice == "e":
                 break
             elif choice == "q" or choice == "s" or choice == "l" or choice == "t" or choice == "b":
                 user_input = input(f"{choice}: ")
                 # add 2 newlines to separate the input from the output
                 print(f"\n--\n\n{choice} a: ", end='')
-                invoke_api(api_key, api_url, model_parameters, user_input, choice)
+                invoke_api(provider_name, model_parameters, user_input, choice)
                 print("\n.")
     except ValueError as e:
         print(e)
