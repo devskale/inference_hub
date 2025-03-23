@@ -86,21 +86,26 @@ def main():
     # Initialize the provider factory
 
     provider = "openrouter"
+    ACCOUNT_ID = PROVIDER_CONFIGS[provider].get(
+        'extra_params', {}).get('account_id', None)
 
     # Initialize the provider factory
     uni = ProviderFactory().get_provider(
-        provider,
+        name=provider,
         api_key=get_api_key(provider),
         # account_id=PROVIDER_CONFIGS[provider].get('extra_params', {}).get('account_id', None)
     )
 
     prompt = "Explain in a few sentences in simple words how transformers work in machine learning."
+    print(
+        f"Prompt: {prompt}\ ( {PROVIDER_CONFIGS[provider]['default_model']} )")
     # Create a simple chat request
     messages = [
         ChatMessage(role="user", content=prompt)
     ]
     request = ChatCompletionRequest(
         messages=messages,
+        model=PROVIDER_CONFIGS[provider]['default_model'],
     )
     # Make the request
 
