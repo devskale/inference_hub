@@ -32,11 +32,12 @@ else:
 
 import requests
 import json
-
+from credgoo import get_api_key
 # Cloudflare API Details
-API_URL = "https://api.cloudflare.com/client/v4/accounts/1ee331dfd225ac49d67c521a73ca7fe8/ai/run/"
+ACCOUNT_ID = "1ee331dfd225ac49d67c521a73ca7fe8"
+API_URL = f"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/"
 MODEL_NAME = "@cf/meta/llama-3-8b-instruct"  # Change to the model you need
-API_TOKEN = "kOn01mvCkCLmI3Elu46hhLdInJo3WiZJob9NIPaj"
+API_TOKEN = get_api_key("cloudflare")
 
 headers = {
     "Authorization": f"Bearer {API_TOKEN}",
