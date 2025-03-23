@@ -1,6 +1,6 @@
 # UniInfer · [![PyPI Version](https://img.shields.io/pypi/v/uniinfer.svg)](https://pypi.org/project/uniinfer/)
 
-**Unified LLM Inference Interface for Python**
+**Unified LLM Inference Interface for Python with Seamless API Key Management**
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python Versions](https://img.shields.io/pypi/pyversions/uniinfer.svg)](https://pypi.org/project/uniinfer/)
@@ -9,6 +9,7 @@
 UniInfer provides a consistent Python interface for LLM chat completions across multiple providers with:
 
 - 🚀 Single API for 15+ LLM providers
+- 🔑 Seamless API key management with credgoo integration
 - ⚡ Real-time streaming support
 - 🔄 Automatic fallback strategies
 - 🔧 Extensible provider architecture
@@ -16,6 +17,7 @@ UniInfer provides a consistent Python interface for LLM chat completions across 
 ## Table of Contents
 
 - [Features](#features)
+- [Key Benefits](#key-benefits)
 - [Supported Providers](#supported-providers)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
@@ -33,17 +35,36 @@ UniInfer provides a consistent Python interface for LLM chat completions across 
 - **Streaming** - Real-time token streaming for all providers
 - **Error Resilience** - Automatic retries & fallback strategies
 
-### Advanced Features
+## Key Benefits
 
-- **Credential Management** - Integrated with credgoo for secure key storage
-- **Custom Parameters** - Provider-specific options when needed
-- **Type Safety** - Full Python type hint support
-- **Provider Fallback** - Automatic provider switching on failures
+### Secure API Key Management with credgoo
+
+UniInfer integrates with [credgoo](https://github.com/your-org/credgoo) for secure API key management, offering:
+
+- **Centralized Key Storage** - Store all your provider API keys in a personal Google Sheet
+- **Secure Retrieval** - Keys are encrypted and secured via token authentication
+- **Seamless Provider Switching** - Change providers without managing keys in code
+- **Development Simplicity** - No more hardcoded API keys or environment variables
+
+With credgoo integration, switching between providers becomes trivial:
+
+```python
+from credgoo import get_api_key
+from uniinfer import ProviderFactory
+
+# Get OpenAI provider
+openai_provider = ProviderFactory.get_provider("openai")  # Key retrieved automatically
+
+# Switch to Anthropic with one line
+anthropic_provider = ProviderFactory.get_provider("anthropic")  # Key retrieved automatically
+```
+
+All provider API keys are stored securely in your personal Google Sheet and automatically retrieved when needed, eliminating the need for hardcoded keys or environment variables in your code.
 
 ## Installation
 
 ```bash
-pip install uniinfer
+pip install uniinfer credgoo
 ```
 
 Or install from source:
@@ -52,17 +73,18 @@ Or install from source:
 git clone https://github.com/your-username/uniinfer.git
 cd uniinfer
 pip install -e .
+pip install credgoo  # For seamless API key management
 ```
 
 ## Quick Start
 
-### Basic Usage
+### Basic Usage with Automatic Key Management
 
 ```python
 from uniinfer import ChatMessage, ChatCompletionRequest, ProviderFactory
 
-# Get a provider instance
-provider = ProviderFactory.get_provider("mistral", api_key="your-api-key")
+# Get a provider instance (API key retrieved automatically via credgoo)
+provider = ProviderFactory.get_provider("mistral")
 
 # Create a chat request
 request = ChatCompletionRequest(
@@ -81,17 +103,46 @@ response = provider.complete(request)
 print(response.message.content)
 ```
 
-### With credgoo Integration
+### Easily Switch Between Providers
 
-If you have credgoo installed, you can get API keys automatically:
+One of the biggest advantages of UniInfer with credgoo integration is how easily you can switch between providers:
 
 ```python
-from uniinfer import ProviderFactory
+from uniinfer import ChatMessage, ChatCompletionRequest, ProviderFactory
 
-# API key will be fetched automatically
-provider = ProviderFactory.get_provider("mistral")
+# Create your request once
+request = ChatCompletionRequest(
+    messages=[
+        ChatMessage(role="system", content="You are a helpful assistant."),
+        ChatMessage(role="user", content="Explain how nuclear fusion works.")
+    ],
+    temperature=0.7,
+    max_tokens=500
+)
 
-# ... rest of your code
+# Try different providers with minimal code changes
+# API keys are automatically retrieved from your secure credgoo storage
+
+# Using Anthropic Claude
+claude_provider = ProviderFactory.get_provider("anthropic")
+claude_request = request.copy()
+claude_request.model = "claude-3-sonnet-20240229"
+claude_response = claude_provider.complete(claude_request)
+print(f"Claude response: {claude_response.message.content[:100]}...")
+
+# Using OpenAI
+openai_provider = ProviderFactory.get_provider("openai")
+openai_request = request.copy()
+openai_request.model = "gpt-4"
+openai_response = openai_provider.complete(openai_request)
+print(f"OpenAI response: {openai_response.message.content[:100]}...")
+
+# Using Gemini
+gemini_provider = ProviderFactory.get_provider("gemini")
+gemini_request = request.copy()
+gemini_request.model = "gemini-1.5-pro"
+gemini_response = gemini_provider.complete(gemini_request)
+print(f"Gemini response: {gemini_response.message.content[:100]}...")
 ```
 
 ### Streaming Responses
@@ -99,8 +150,8 @@ provider = ProviderFactory.get_provider("mistral")
 ```python
 from uniinfer import ChatMessage, ChatCompletionRequest, ProviderFactory
 
-# Get a provider instance
-provider = ProviderFactory.get_provider("openai", api_key="your-api-key")
+# Get a provider instance with automatic key management
+provider = ProviderFactory.get_provider("openai")
 
 # Create a chat request with streaming enabled
 request = ChatCompletionRequest(
@@ -124,6 +175,8 @@ You can pass provider-specific parameters when making requests:
 
 ```python
 # For OpenAI with tools/functions
+provider = ProviderFactory.get_provider("openai")  # Key retrieved automatically
+
 response = provider.complete(
     request,
     tools=[
@@ -149,24 +202,9 @@ response = provider.complete(
 )
 ```
 
-### Using System Messages
-
-System messages work across all providers:
-
-```python
-request = ChatCompletionRequest(
-    messages=[
-        ChatMessage(role="system", content="You are a helpful assistant that specializes in science."),
-        ChatMessage(role="user", content="Explain how nuclear fusion works.")
-    ],
-    model="claude-3-sonnet-20240229",
-    temperature=0.7
-)
-```
-
 ### Fallback Between Providers
 
-You can use the built-in FallbackStrategy:
+The combination of UniInfer and credgoo makes provider fallback strategies extremely powerful:
 
 ```python
 from uniinfer import ChatMessage, ChatCompletionRequest, FallbackStrategy
@@ -181,7 +219,8 @@ request = ChatCompletionRequest(
 )
 
 # Create a fallback strategy with providers to try in order
-fallback = FallbackStrategy(["mistral", "anthropic", "openai"])
+# All API keys are retrieved automatically from your secure credgoo storage
+fallback = FallbackStrategy(["mistral", "anthropic", "openai", "gemini", "cohere"])
 
 # Try providers in order until one succeeds
 response, provider_used = fallback.complete(request)
@@ -192,24 +231,24 @@ print(f"Response from {provider_used}: {response.message.content}")
 
 | Provider            | Example Models                     | Streaming | Auth Method       |
 | ------------------- | ---------------------------------- | --------- | ----------------- |
-| **OpenAI**          | GPT-4, GPT-4 Turbo                 | ✅        | API Key           |
-| **Anthropic**       | Claude 3 Opus, Sonnet              | ✅        | API Key           |
-| **Mistral**         | Mistral 8x7B, Mixtral              | ✅        | API Key           |
+| **OpenAI**          | GPT-4, GPT-4 Turbo                 | ✅        | API Key (credgoo) |
+| **Anthropic**       | Claude 3 Opus, Sonnet              | ✅        | API Key (credgoo) |
+| **Mistral**         | Mistral 8x7B, Mixtral              | ✅        | API Key (credgoo) |
 | **Ollama**          | Local/self-hosted models           | ✅        | None              |
-| **OpenRouter**      | 60+ models incl. Claude 2          | ✅        | API Key           |
-| **Google Gemini**   | Gemini Pro, Gemini Flash           | ✅        | API Key           |
-| **HuggingFace**     | Llama 2, Mistral                   | ✅        | API Key/Inference |
-| **Cohere**          | Command R+                         | ✅        | API Key           |
-| **Groq**            | Llama 3.1 8B/70B                   | ✅        | API Key           |
-| **AI21**            | Jamba models                       | ✅        | API Key           |
-| **InternLM**        | InternLM models                    | ✅        | API Key           |
-| **Moonshot**        | Moonshot models                    | ✅        | API Key           |
-| **StepFun**         | Step-1 models                      | ✅        | API Key           |
-| **Upstage**         | Solar models                       | ✅        | API Key           |
-| **NGC**             | NVIDIA GPU Cloud                   | ✅        | API Key           |
-| **Cloudflare**      | Workers AI models                  | ✅        | API Key + Account |
+| **OpenRouter**      | 60+ models incl. Claude 2          | ✅        | API Key (credgoo) |
+| **Google Gemini**   | Gemini Pro, Gemini Flash           | ✅        | API Key (credgoo) |
+| **HuggingFace**     | Llama 2, Mistral                   | ✅        | API Key (credgoo) |
+| **Cohere**          | Command R+                         | ✅        | API Key (credgoo) |
+| **Groq**            | Llama 3.1 8B/70B                   | ✅        | API Key (credgoo) |
+| **AI21**            | Jamba models                       | ✅        | API Key (credgoo) |
+| **InternLM**        | InternLM models                    | ✅        | API Key (credgoo) |
+| **Moonshot**        | Moonshot models                    | ✅        | API Key (credgoo) |
+| **StepFun**         | Step-1 models                      | ✅        | API Key (credgoo) |
+| **Upstage**         | Solar models                       | ✅        | API Key (credgoo) |
+| **NGC**             | NVIDIA GPU Cloud                   | ✅        | API Key (credgoo) |
+| **Cloudflare**      | Workers AI models                  | ✅        | API Key (credgoo) |
 
-Below are examples for some of our newer providers:
+Below are examples for some of our newer providers (all using automatic API key management with credgoo):
 
 ### Gemini (Google)
 
@@ -217,7 +256,7 @@ Below are examples for some of our newer providers:
 # Requires google-generativeai package
 # pip install google-generativeai
 
-provider = ProviderFactory.get_provider("gemini", api_key="your-gemini-api-key")
+provider = ProviderFactory.get_provider("gemini")  # API key retrieved automatically
 
 request = ChatCompletionRequest(
     messages=[
@@ -230,10 +269,6 @@ request = ChatCompletionRequest(
 
 response = provider.complete(request)
 print(response.message.content)
-
-# Or stream the response
-for chunk in provider.stream_complete(request):
-    print(chunk.message.content, end="", flush=True)
 ```
 
 ### NVIDIA GPU Cloud (NGC)
@@ -242,7 +277,7 @@ for chunk in provider.stream_complete(request):
 # Requires openai package
 # pip install openai
 
-provider = ProviderFactory.get_provider("ngc", api_key="your-ngc-api-key")
+provider = ProviderFactory.get_provider("ngc")  # API key retrieved automatically
 
 request = ChatCompletionRequest(
     messages=[
@@ -256,10 +291,6 @@ request = ChatCompletionRequest(
 # Get a completion
 response = provider.complete(request)
 print(response.message.content)
-
-# Or stream the response
-for chunk in provider.stream_complete(request):
-    print(chunk.message.content, end="", flush=True)
 ```
 
 ### Cloudflare Workers AI
@@ -268,10 +299,11 @@ for chunk in provider.stream_complete(request):
 # Requires requests package
 # pip install requests
 
+# With credgoo, your API key is retrieved automatically
+# However, account_id is still required as it's specific to each request
 provider = ProviderFactory.get_provider(
     "cloudflare", 
-    api_key="your-cloudflare-api-token",
-    account_id="your-cloudflare-account-id"
+    account_id="your-cloudflare-account-id"  # API key retrieved automatically
 )
 
 request = ChatCompletionRequest(
@@ -285,10 +317,6 @@ request = ChatCompletionRequest(
 # Get a completion
 response = provider.complete(request)
 print(response.message.content)
-
-# Or stream the response
-for chunk in provider.stream_complete(request):
-    print(chunk.message.content, end="", flush=True)
 ```
 
 ## Adding a New Provider 💻
@@ -353,74 +381,6 @@ class MyProvider(ChatProvider):
         )
 ```
 
-### 2. Update `providers/__init__.py`
-
-Add your provider to the `__init__.py` file in the providers directory:
-
-```python
-from .myprovider import MyProvider
-
-# Add to __all__
-__all__ = [
-    # existing providers
-    'MyProvider'
-]
-```
-
-### 3. Register the Provider in `__init__.py`
-
-Register your provider in the main `__init__.py` file:
-
-```python
-from .providers import MyProvider
-
-# Register the provider
-ProviderFactory.register_provider("myprovider", MyProvider)
-
-# Add to __all__
-__all__ = [
-    # existing exports
-    'MyProvider'
-]
-```
-
-### 4. Use Your Provider
-
-Now you can use your provider with the unified interface:
-
-```python
-from uniinfer import ChatMessage, ChatCompletionRequest, ProviderFactory
-
-provider = ProviderFactory.get_provider("myprovider", api_key="your-api-key")
-
-request = ChatCompletionRequest(
-    messages=[ChatMessage(role="user", content="Hello!")],
-    model="your-model-name"
-)
-
-response = provider.complete(request)
-```
-
-### 5. Advanced: Conditional Dependencies
-
-If your provider requires an optional package, make it conditional:
-
-```python
-# In providers/__init__.py
-try:
-    from .myprovider import MyProvider
-    HAS_MYPROVIDER = True
-except ImportError:
-    HAS_MYPROVIDER = False
-
-# In main __init__.py
-if HAS_MYPROVIDER:
-    ProviderFactory.register_provider("myprovider", MyProvider)
-    __all__.append('MyProvider')
-```
-
-This pattern allows UniInfer to work even if the dependency for your provider isn't installed.
-
 ## Error Handling
 
 UniInfer provides standardized error handling:
@@ -430,7 +390,8 @@ from uniinfer import ProviderFactory
 from uniinfer.errors import AuthenticationError, RateLimitError, TimeoutError, ProviderError
 
 try:
-    provider = ProviderFactory.get_provider("openai", api_key="invalid-key")
+    # Even with wrong API keys, the credgoo integration makes error handling cleaner
+    provider = ProviderFactory.get_provider("openai")
     response = provider.complete(request)
 except AuthenticationError as e:
     print("Authentication error:", str(e))
@@ -470,7 +431,7 @@ except ProviderError as e:
   - `stream_complete(request, **kwargs)`: Stream a chat completion response
 
 - **ProviderFactory**: Factory for creating provider instances
-  - `get_provider(name, api_key=None)`: Get a provider instance
+  - `get_provider(name, api_key=None)`: Get a provider instance (uses credgoo if no key provided)
   - `register_provider(name, provider_class)`: Register a provider
   - `list_providers()`: List all registered providers
 
@@ -503,6 +464,6 @@ Before contributing, please read our [Contribution Guidelines](CONTRIBUTING.md).
 
 ---
 
-**UniInfer** is designed to make working with multiple LLM providers as simple as possible. We're continuously adding support for new providers and features.
+**UniInfer** with credgoo integration is designed to make working with multiple LLM providers as simple and secure as possible. By automatically retrieving API keys from your secure storage, you can focus on building applications instead of managing credentials.
 
 For issues, feature requests, or contributions, please visit our [GitHub repository](https://github.com/your-username/uniinfer).

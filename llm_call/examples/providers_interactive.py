@@ -26,7 +26,7 @@ except ImportError:
 # Provider configurations
 PROVIDER_CONFIGS = get_all_providers()
 
-DEFAULT_QUESTION = "Explain how transformers work in machine learning briefly in simple terms."
+DEFAULT_QUESTION = "Explain how transformers work in machine learning briefly in simple terms in 3 sentences."
 
 
 def select_provider():
@@ -75,9 +75,19 @@ def get_provider_instance(provider_id):
                 message=f"Enter your {config['name']} API key:"
             )
 
-        # Get model options for this provider if desired
-        # For simplicity, we'll use the default model
+    # Handle Cloudflare account ID first
+    if provider_id == 'cloudflare':
+        account_id = config.get('extra_params', {}).get('account_id')
+        if not account_id:
+            raise ValueError("Cloudflare account ID is required")
+        provider_kwargs['account_id'] = account_id
 
+        # Initialize provider for Cloudflare
+        provider = ProviderFactory.get_provider(
+            provider_id, api_key=api_key, **provider_kwargs)
+    # Handle API keys for other providers that require them
+    elif config['needs_api_key']:
+        # Initialize provider for all API key cases
         provider = ProviderFactory.get_provider(
             provider_id, api_key=api_key, **provider_kwargs)
     else:
@@ -116,38 +126,7 @@ def main():
 
     # Get the provider instance
     try:
-        # Special case for Cloudflare which needs account_id
-        if provider_id == 'cloudflare':
-            account_id = config['extra_params']['account_id']
-            provider_kwargs = config.get('extra_params', {}).copy()
-            provider_kwargs['account_id'] = account_id
-            print(f"Using account ID: {account_id}")  # Debugging output
-
-            if HAS_CREDGOO:
-                try:
-                    api_key = get_api_key(provider_id)
-                    print(f"Using API key from credgoo for {config['name']}.")
-                except Exception as e:
-                    print(f"Failed to get API key from credgoo: {str(e)}")
-                    api_key = inquirer.text(
-                        message=f"Enter your {config['name']} API key:"
-                    ).strip()
-            else:
-                api_key = inquirer.text(
-                    message=f"Enter your {config['name']} API key:"
-                ).strip()
-
-            try:
-                provider = ProviderFactory.get_provider(
-                    provider_id, api_key=api_key, **provider_kwargs)
-                model = config['default_model']
-                print("Provider initialized successfully")  # Debugging output
-            except Exception as e:
-                print(
-                    f"Detailed error during provider initialization: {str(e)}")
-                raise
-        else:
-            provider, model = get_provider_instance(provider_id)
+        provider, model = get_provider_instance(provider_id)
     except Exception as e:
         print(f"Error initializing provider: {str(e)}")
         return
