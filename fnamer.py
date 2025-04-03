@@ -9,9 +9,16 @@ import asyncio
 
 # List of document categories
 DATEIKLASSEN = [
-    "Angebot", "Referenzen", "Produktbeschreibung", "Zertifikat",
-    "Firmenauskunft", "Finanzinformation", "Strafregisterauszug", "Versicherungsvertrag", 
-    "Bestätigung", "Sonstiges"
+    "Angebot",
+    "Referenzen",
+    "Produktbeschreibung",
+    "Zertifikat",
+    "Firmenauskunft",
+    "Finanzinformation",
+    "Strafregisterauszug",
+    "Versicherungsvertrag",
+    "Bestätigung",
+    "Sonstiges"
 ]
 
 # Prompts for different analysis modes
@@ -22,16 +29,17 @@ Das Dokument kann aufgrund des Scan Vorgangs einige Textfehler und geschwärzte 
 Beschreibung: (Beschreibe kurz den Inhalt und fasse die Kernaussage zusammen. Nenne wichtige Details und Schlüsselwörter sowie den Dokumentersteller.)
 Dateiname: (beschreibender Dateiname mit Endung .md)
   """,
-    'k0': f"""
-    Basierend auf dem folgenden Inhalt, kategorisiere den Inhalt in eine der folgenden Klassen:
+    'k': f"""
+    Basierend auf dem folgenden Inhalt, kategorisiere den Inhalt in eine der folgenden vorgegebenen Klassen:
     {', '.join(DATEIKLASSEN)}
     Antworte nur mit dem Namen der Klasse. Sollte keine der Klassen passen, antworte mit 'Sonstiges'.
     """,
-    'k': f"""
+    'k0': f"""
     Basierend auf dem folgenden Inhalt, kategorisiere den Inhalt in eine Dokumentenkategorie:
     Antworte nur mit dem Namen der Kategorie.
     """
 }
+
 
 class ModelProvider(ABC):
     @abstractmethod
@@ -41,6 +49,7 @@ class ModelProvider(ABC):
     @abstractmethod
     async def analyze(self, content, mode):
         pass
+
 
 class HuggingFaceProvider(ModelProvider):
     def __init__(self, model_id):
@@ -77,15 +86,15 @@ class HuggingFaceProvider(ModelProvider):
         except Exception as e:
             print(f"Error during HuggingFace analysis: {e}")
             return f"Error: {str(e)}"
-        
+
 
 class OllamaProvider(ModelProvider):
     def __init__(self, model_name):
         self.model_name = model_name
         self.client = AsyncClient(
-            #host='https://amp1.mooo.com:11444'
-            host='http://localhost:11434'
-            )
+            host='https://amp1.mooo.com:11444'
+            # host='http://localhost:11434'
+        )
 
     async def setup(self):
         # AsyncClient doesn't require explicit setup
@@ -110,6 +119,7 @@ class OllamaProvider(ModelProvider):
         except Exception as e:
             print(f"Error during Ollama analysis: {e}")
             return f"Error: {str(e)}"
+
 
 class OpenAIProvider(ModelProvider):
     def __init__(self, model_name):
@@ -139,8 +149,9 @@ class OpenAIProvider(ModelProvider):
             if content:
                 print(content, end="", flush=True)
                 full_response += content
-        print()  # New line after streaming is complete 
+        print()  # New line after streaming is complete
         return full_response
+
 
 class GoogleProvider(ModelProvider):
     def __init__(self, model_name):
@@ -154,22 +165,30 @@ class GoogleProvider(ModelProvider):
         # Implement Google AI-specific analysis logic here
         return "Google AI analysis not implemented yet"
 
+
 def read_file_content(filepath, n_chars):
     with open(filepath, 'r', encoding='utf-8') as file:
         content = re.sub(r'!\[.*?\]\(.*?\)', '', file.read(n_chars))
-        #content = content.encode('ascii', 'ignore').decode()
+        # content = content.encode('ascii', 'ignore').decode()
         return content
 
+
 def parse_arguments():
-    parser = argparse.ArgumentParser(description="Analyze a file and suggest a filename and summary or classify it.")
+    parser = argparse.ArgumentParser(
+        description="Analyze a file and suggest a filename and summary or classify it.")
     parser.add_argument("filepath", help="Path to the text file to analyze")
-    parser.add_argument("-s", action="store_true", help="Generate filename and summary")
+    parser.add_argument("-s", action="store_true",
+                        help="Generate filename and summary")
     parser.add_argument("-k", action="store_true", help="Classify the content")
     parser.add_argument("-v", action="store_true", help="Verbose Mode")
-    parser.add_argument("-n", type=int, default=1000, help="Number of characters to read from the beginning of the file")
-    parser.add_argument("--provider", choices=['huggingface', 'ollama', 'openai', 'google'], default='huggingface', help="Choose the model provider")
-    parser.add_argument("--model", help="Specify the model name for the chosen provider")
+    parser.add_argument("-n", type=int, default=1000,
+                        help="Number of characters to read from the beginning of the file")
+    parser.add_argument("--provider", choices=['huggingface', 'ollama', 'openai',
+                        'google'], default='huggingface', help="Choose the model provider")
+    parser.add_argument(
+        "--model", help="Specify the model name for the chosen provider")
     return parser.parse_args()
+
 
 async def prompt_for_mode():
     return await asyncio.to_thread(input, "Choose analysis mode (s for summary, k for classification): ")
@@ -179,43 +198,43 @@ async def get_model_provider(provider_name, model_name):
     if provider_name == 'huggingface':
         return HuggingFaceProvider(model_name or "mistralai/Mistral-7B-Instruct-v0.3"), model_name or "mistralai/Mistral-7B-Instruct-v0.3"
     elif provider_name == 'ollama':
-        return OllamaProvider(model_name or "llama3.2:3b"), model_name or "lama3.2:3b"
+        return OllamaProvider(model_name or "phi4-mini:latest"), model_name or "phi4-mini:latest"
     elif provider_name == 'openai':
         return OpenAIProvider(model_name or "nousresearch/hermes-3-llama-3.1-405b:free"), model_name or "nousresearch/hermes-3-llama-3.1-405b:free"
     elif provider_name == 'google':
-        return GoogleProvider(model_name or "gemini-pro"), model_name or "gemini-pro"
+        return GoogleProvider(model_name or "gemini-flash"), model_name or "gemini-flash"
     else:
         raise ValueError(f"Unsupported provider: {provider_name}")
 
 
-
 async def main():
     args = parse_arguments()
-    
+
     provider, model_name = await get_model_provider(args.provider, args.model)
     await provider.setup()
-    
+
     content = read_file_content(args.filepath, args.n)
-    
+
     modes_to_run = []
     if args.s:
         modes_to_run.append('s')
     if args.k:
         modes_to_run.append('k')
-    
+
     if not modes_to_run:
         mode = await prompt_for_mode()
         modes_to_run.append(mode.lower())
-    
+
     for mode in modes_to_run:
         description = 'filename and summary' if mode == 's' else 'classification'
         print(f"\nGenerating {description}...")
         if args.v:
-            print(f"Analyzing {args.filepath} with {provider.__class__.__name__}({model_name}):")
-            print(f"Content: {content[:1000]}")
+            print(
+                f"Analyzing {args.filepath} with {provider.__class__.__name__}({model_name}):")
+            print(f"Content: {content[:500]}")
         result = await provider.analyze(content, mode)
 #        print(result)
 
-    
+
 if __name__ == "__main__":
     asyncio.run(main())
