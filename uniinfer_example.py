@@ -6,15 +6,33 @@ from uniinfer import (
     ChatProvider
 )
 from credgoo import get_api_key
+import argparse
 # Cloudflare API Details
 
 from providers_config import PROVIDER_CONFIGS
 
 
 def main():
-    # Initialize the provider factory
+    # Initialize argument parser
+    parser = argparse.ArgumentParser(description='UniInfer example script')
+    parser.add_argument('-l', '--list', action='store_true',
+                        help='List available providers')
+    parser.add_argument('-p', '--provider', type=str, default='stepfun',
+                        help='Specify which provider to use')
+    parser.add_argument('-q', '--query', type=str,
+                        help='Specify the query to send to the provider')
+    parser.add_argument('-m', '--model', type=str,
+                        help='Specify which model to use')
+    args = parser.parse_args()
 
-    provider = "stepfun"
+    if args.list:
+        providers = ProviderFactory.list_providers()
+        print("Available providers:")
+        for provider in providers:
+            print(f"- {provider}")
+        return
+
+    provider = args.provider
 
     # Initialize the provider factory
     uni = ProviderFactory().get_provider(
@@ -23,7 +41,8 @@ def main():
         # account_id=PROVIDER_CONFIGS[provider].get('extra_params', {}).get('account_id', None)
     )
 
-    prompt = "Explain how transformers work in machine learning in simple words very briefly."
+    prompt = args.query if args.query else "Erkläre mir bitte wie Transformer in maschinellem Lernen funktionieren in einfachen Worten und auf deutsch."
+
     print(
         f"Prompt: {prompt} ( {provider}@{PROVIDER_CONFIGS[provider]['default_model']} )")
     # Create a simple chat request
@@ -32,7 +51,7 @@ def main():
     ]
     request = ChatCompletionRequest(
         messages=messages,
-        model=PROVIDER_CONFIGS[provider]['default_model'],
+        model=args.model if args.model else PROVIDER_CONFIGS[provider]['default_model'],
         streaming=True
     )
     # Make the request
