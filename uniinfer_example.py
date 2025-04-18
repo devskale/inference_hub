@@ -23,6 +23,10 @@ def main():
                         help='Specify the query to send to the provider')
     parser.add_argument('-m', '--model', type=str,
                         help='Specify which model to use')
+    parser.add_argument('-f', '--file', type=str,
+                        help='Specify a file to use as context')
+    parser.add_argument('-t', '--tokens', type=int, default=4000,
+                        help='Specify token limit for file context (default: 4000)')
     args = parser.parse_args()
 
     if args.list:
@@ -43,15 +47,28 @@ def main():
 
     prompt = args.query if args.query else "Erkläre mir bitte wie Transformer in maschinellem Lernen funktionieren in einfachen Worten und auf deutsch."
 
+    if args.file:
+        try:
+            with open(args.file, 'r') as f:
+                file_content = f.read()
+                # Simple token estimation (4 chars ~ 1 token)
+                max_chars = args.tokens * 4
+                if len(file_content) > max_chars:
+                    file_content = file_content[:max_chars]
+                prompt = f"File context: {file_content}\n\nUser query: {prompt}"
+        except Exception as e:
+            print(f"Error reading file: {e}")
+
+    model = args.model if args.model else PROVIDER_CONFIGS[provider]['default_model']
     print(
-        f"Prompt: {prompt} ( {provider}@{PROVIDER_CONFIGS[provider]['default_model']} )")
+        f"Prompt: {prompt} ( {provider}@{model} )")
     # Create a simple chat request
     messages = [
         ChatMessage(role="user", content=prompt)
     ]
     request = ChatCompletionRequest(
         messages=messages,
-        model=args.model if args.model else PROVIDER_CONFIGS[provider]['default_model'],
+        model=model,
         streaming=True
     )
     # Make the request
