@@ -1,22 +1,19 @@
 [
     {
+        "default": true,
         "description": "Appicon [OBJECT] in Apple-style",
-        "prompt": "An appicon of [OBJECT] in orthographic style, plain white background, a highly detailed isometric 3D illustration in orthographic view, featuring smooth, rounded edges and realistic miniature clay-like materials. Uses a soft pastel color palette with subtle gradients and gentle shadows. Rendered in a clean, modern Apple-style aesthetic.",
-        "object_name": "mowing_object"
+        "prompt": "An appicon of [OBJECT] in orthographic style, plain white background, a highly detailed isometric 3D illustration in orthographic view, featuring smooth, rounded edges and realistic miniature clay-like materials. Uses a soft pastel color palette with subtle gradients and gentle shadows. Rendered in a clean, modern Apple-style aesthetic."
     },
     {
         "description": "Apple-style isometric object",
-        "prompt": "A [OBJECT] in orthographic style, plain white background, a highly detailed isometric 3D illustration in orthographic view, featuring smooth, rounded edges and realistic miniature plastic-like materials. Uses a soft pastel color palette with subtle gradients and gentle shadows. Rendered in a clean, modern Apple-style aesthetic.",
-        "object_name": "isometric_object"
+        "prompt": "A [OBJECT] in orthographic style, plain white background, a highly detailed isometric 3D illustration in orthographic view, featuring smooth, rounded edges and realistic miniature plastic-like materials. Uses a soft pastel color palette with subtle gradients and gentle shadows. Rendered in a clean, modern Apple-style aesthetic."
     },
     {
-        "description": "Fantasy landscape",
-        "prompt": "A breathtaking fantasy landscape with floating islands and waterfalls, digital art",
-        "object_name": "fantasy_landscape"
+        "description": "Clay Icon",
+        "prompt": "A [OBJECT], designed as a clay-style icon. The illustration features a charming, handcrafted look with soft, matte textures and subtle imperfections to mimic real clay. Rendered in an isometric 3D view with smooth, rounded edges and a warm, pastel color palette. The background is plain white, enhancing the clean, minimalist aesthetic. Gentle shadows and slight indents add depth, creating a playful yet polished appearance in a modern Apple-inspired style."
     },
     {
         "description": "Cyberpunk city night",
-        "prompt": "A rainy night in a cyberpunk city, neon lights reflecting on wet streets, cinematic",
-        "object_name": "cyberpunk_city"
-    },
+        "prompt": "A rainy night in a cyberpunk city, neon lights reflecting on wet streets, cinematic"
+    }
 ]

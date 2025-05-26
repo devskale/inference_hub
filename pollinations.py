@@ -108,41 +108,81 @@ def generate_image(
     """
     final_prompt = prompt
     user_provided_object_name = ""
+    loaded_object_name = ""
 
     if final_prompt is None:
-        try:
-            user_provided_object_name = input(
-                "Enter the object you want to generate (e.g. 'coffee mug', 'robot', 'house'): "
-            ).strip()
-            if not user_provided_object_name:
-                logger.warning(
-                    "No object name provided, using a generic prompt.")
-                # Fallback to a very generic prompt or handle as an error
-                final_prompt = "A beautiful abstract design"
-            else:
-                # Using a default prompt structure if none is selected from library later
-                final_prompt = (
-                    f"A {user_provided_object_name} in orthographic style, plain white background, "
-                    f"a highly detailed isometric 3D illustration in orthographic view, "
-                    f"featuring smooth, rounded edges and realistic miniature plastic-like materials. "
-                    f"Uses a soft pastel color palette with subtle gradients and gentle shadows. "
-                    f"Rendered in a clean, modern Apple-style aesthetic."
-                )
-        except KeyboardInterrupt:
+        prompt_library = load_prompt_library(PROMPT_LIBRARY_FILE)
+        default_prompt_data = next(
+            (p for p in prompt_library if p.get("default") is True), None)
+
+        if default_prompt_data:
             logger.info(
-                "Image generation cancelled by user during object input.")
-            return None
+                f"Using default prompt from library: {default_prompt_data.get('description')}")
+            final_prompt = default_prompt_data.get(
+                "prompt", "A beautiful abstract design")
+            loaded_object_name = default_prompt_data.get("object_name", "")
+            if object_name_for_filename and "[OBJECT]" in final_prompt:
+                final_prompt = final_prompt.replace(
+                    "[OBJECT]", object_name_for_filename)
+                # Use the user-provided name for the filename if [OBJECT] was replaced
+                user_provided_object_name = object_name_for_filename
+            # If no user object name, but prompt has [OBJECT]
+            elif loaded_object_name and "[OBJECT]" in final_prompt:
+                # This case might need refinement: what should [OBJECT] be if not provided by user?
+                # For now, let's assume it might be replaced by a generic term or removed.
+                # Or, we could prompt the user if a default prompt with [OBJECT] is selected.
+                # As a simple first step, we'll use the loaded_object_name if available.
+                final_prompt = final_prompt.replace(
+                    "[OBJECT]", loaded_object_name)
+                user_provided_object_name = loaded_object_name  # for filename consistency
+            elif "[OBJECT]" in final_prompt:  # [OBJECT] present but no replacement found
+                logger.warning(
+                    "Default prompt contains [OBJECT] but no object_name_for_filename or library object_name provided. [OBJECT] will remain.")
+                # If user_provided_object_name is still empty, the generic filename logic will apply
+
+        else:  # No default prompt in library or library not loaded
+            logger.info(
+                "No default prompt found in library or library not loaded. Falling back to user input or hardcoded default.")
+            try:
+                user_provided_object_name_input = input(
+                    "Enter the object you want to generate (e.g. 'coffee mug', 'robot', 'house'): "
+                ).strip()
+                if not user_provided_object_name_input:
+                    logger.warning(
+                        "No object name provided, using a generic prompt.")
+                    final_prompt = "A beautiful abstract design"
+                    user_provided_object_name = "generic_design"  # for filename
+                else:
+                    user_provided_object_name = user_provided_object_name_input
+                    # Using a default prompt structure if none is selected from library later
+                    final_prompt = (
+                        f"A {user_provided_object_name} in orthographic style, plain white background, "
+                        f"a highly detailed isometric 3D illustration in orthographic view, "
+                        f"featuring smooth, rounded edges and realistic miniature plastic-like materials. "
+                        f"Uses a soft pastel color palette with subtle gradients and gentle shadows. "
+                        f"Rendered in a clean, modern Apple-style aesthetic."
+                    )
+            except KeyboardInterrupt:
+                logger.info(
+                    "Image generation cancelled by user during object input.")
+                return None
+    elif object_name_for_filename:  # Prompt is provided, but also object_name_for_filename for filename
+        user_provided_object_name = object_name_for_filename
 
     # Construct save_path if not provided
     if save_path is None:
         # Sanitize object_name for filename
         name_part = "generic"
-        if object_name_for_filename:
-            name_part = "".join(
-                c if c.isalnum() else '_' for c in object_name_for_filename.lower())
-        elif user_provided_object_name:  # if prompt was None and user gave an object name
+        # Prioritize user_provided_object_name (which could come from input, object_name_for_filename, or loaded_object_name)
+        if user_provided_object_name:
             name_part = "".join(
                 c if c.isalnum() else '_' for c in user_provided_object_name.lower())
+        elif object_name_for_filename:  # Fallback if user_provided_object_name wasn't set but this was
+            name_part = "".join(
+                c if c.isalnum() else '_' for c in object_name_for_filename.lower())
+        elif loaded_object_name:  # Fallback to loaded_object_name if others weren't set
+            name_part = "".join(
+                c if c.isalnum() else '_' for c in loaded_object_name.lower())
 
         filename = f"{name_part}_{model}_{int(time.time())}.jpg"
         save_path = os.path.join(DEFAULT_SAVE_DIR, filename)
@@ -184,20 +224,22 @@ def generate_image(
     if referrer:
         params["referrer"] = referrer
 
-    # Build URL with parameters
-    query_string = urllib.parse.urlencode(params)
-    image_url = f"{IMAGE_GENERATION_ENDPOINT}{encoded_prompt}?{query_string}"
-    logger.info(f"Requesting image from: {image_url}")
+    # The prompt itself is part of the URL path, not a query parameter for this API
+    api_url_with_prompt = f"{IMAGE_GENERATION_ENDPOINT}{encoded_prompt}"
+    logger.info(
+        f"Requesting image from: {api_url_with_prompt} with params: {params}")
 
     if test_mode:
         logger.info("TEST MODE: Would request image from:")
-        logger.info(f"URL: {image_url}")
+        logger.info(f"URL: {api_url_with_prompt}")
+        logger.info(f"Params: {params}")
         logger.info(f"Would save to: {save_path}")
         return save_path
 
     try:
         # Increased timeout for image generation
-        response = requests.get(image_url, timeout=60)
+        # Pass parameters directly to requests.get()
+        response = requests.get(api_url_with_prompt, params=params, timeout=60)
         response.raise_for_status()
 
         with open(save_path, 'wb') as file:
