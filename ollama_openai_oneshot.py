@@ -2,11 +2,16 @@
 from openai import OpenAI
 import argparse
 
-model="dolphin-mistral:latest"
+
+base_url = "https://ollama.molodetz.nl/v1"
+#base_url="https://ac45-35-247-183-192.ngrok-free.app/v1"
+model="qwen3:8b"
+
+#model="dolphin-mistral:latest"
 #model="phi3"
 
 # Point to the local server
-client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+client = OpenAI(base_url=base_url, api_key="ollama")
 
 
 history = [

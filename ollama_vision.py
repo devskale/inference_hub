@@ -21,13 +21,14 @@ def describe_image(image_path, idx=None, total=None):
     print(f"{progress}Describing {image_path}...")
 
     res = client.chat(
+        #        model="moondream:v2",
         model="moondream:v2",
         messages=[
-            {a
+            {
                 'role': 'user',
                 'content': 'Describe the image:',
                 'images': [image_path]
-             }
+            }
         ]
     )
     description = res['message']['content']
