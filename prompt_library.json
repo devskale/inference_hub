@@ -13,7 +13,7 @@
         "prompt": "A [OBJECT], designed as a clay-style icon. The illustration features a charming, handcrafted look with soft, matte textures and subtle imperfections to mimic real clay. Rendered in an isometric 3D view with smooth, rounded edges and a warm, pastel color palette. The background is plain white, enhancing the clean, minimalist aesthetic. Gentle shadows and slight indents add depth, creating a playful yet polished appearance in a modern Apple-inspired style."
     },
     {
-        "description": "Cyberpunk city night",
-        "prompt": "A rainy night in a cyberpunk city, neon lights reflecting on wet streets, cinematic"
+        "description": "3D Claymation",
+        "prompt": "a [OBJECT] app icon in 3D claymation style, soft pastel colors, minimal shadows, playful and rounded design, with a slightly matte texture."
     }
 ]

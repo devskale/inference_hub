@@ -25,7 +25,7 @@ defaults = {
     # Consolidated negative prompts
     "negative_prompt": "worst quality, blurry, ugly, deformed",
     "steps": 25,
-    "nologo": False,
+    "nologo": True,
     "private": False,
     "enhance": False,
     "safe": False
