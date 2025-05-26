@@ -17,3 +17,4 @@ data/
 .*
 web_agentic/**/*.md
 !web_agentic/**/*.py
+images/

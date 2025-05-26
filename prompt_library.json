@@ -1,0 +1,22 @@
+[
+    {
+        "description": "Appicon [OBJECT] in Apple-style",
+        "prompt": "An appicon of [OBJECT] in orthographic style, plain white background, a highly detailed isometric 3D illustration in orthographic view, featuring smooth, rounded edges and realistic miniature clay-like materials. Uses a soft pastel color palette with subtle gradients and gentle shadows. Rendered in a clean, modern Apple-style aesthetic.",
+        "object_name": "mowing_object"
+    },
+    {
+        "description": "Apple-style isometric object",
+        "prompt": "A [OBJECT] in orthographic style, plain white background, a highly detailed isometric 3D illustration in orthographic view, featuring smooth, rounded edges and realistic miniature plastic-like materials. Uses a soft pastel color palette with subtle gradients and gentle shadows. Rendered in a clean, modern Apple-style aesthetic.",
+        "object_name": "isometric_object"
+    },
+    {
+        "description": "Fantasy landscape",
+        "prompt": "A breathtaking fantasy landscape with floating islands and waterfalls, digital art",
+        "object_name": "fantasy_landscape"
+    },
+    {
+        "description": "Cyberpunk city night",
+        "prompt": "A rainy night in a cyberpunk city, neon lights reflecting on wet streets, cinematic",
+        "object_name": "cyberpunk_city"
+    },
+]
