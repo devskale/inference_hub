@@ -124,48 +124,21 @@ def generate_image(
             if object_name_for_filename and "[OBJECT]" in final_prompt:
                 final_prompt = final_prompt.replace(
                     "[OBJECT]", object_name_for_filename)
-                # Use the user-provided name for the filename if [OBJECT] was replaced
                 user_provided_object_name = object_name_for_filename
-            # If no user object name, but prompt has [OBJECT]
             elif loaded_object_name and "[OBJECT]" in final_prompt:
-                # This case might need refinement: what should [OBJECT] be if not provided by user?
-                # For now, let's assume it might be replaced by a generic term or removed.
-                # Or, we could prompt the user if a default prompt with [OBJECT] is selected.
-                # As a simple first step, we'll use the loaded_object_name if available.
                 final_prompt = final_prompt.replace(
                     "[OBJECT]", loaded_object_name)
-                user_provided_object_name = loaded_object_name  # for filename consistency
-            elif "[OBJECT]" in final_prompt:  # [OBJECT] present but no replacement found
+                user_provided_object_name = loaded_object_name
+            elif "[OBJECT]" in final_prompt:
                 logger.warning(
-                    "Default prompt contains [OBJECT] but no object_name_for_filename or library object_name provided. [OBJECT] will remain.")
-                # If user_provided_object_name is still empty, the generic filename logic will apply
-
-        else:  # No default prompt in library or library not loaded
-            logger.info(
-                "No default prompt found in library or library not loaded. Falling back to user input or hardcoded default.")
-            try:
-                user_provided_object_name_input = input(
-                    "Enter the object you want to generate (e.g. 'coffee mug', 'robot', 'house'): "
-                ).strip()
-                if not user_provided_object_name_input:
-                    logger.warning(
-                        "No object name provided, using a generic prompt.")
-                    final_prompt = "A beautiful abstract design"
-                    user_provided_object_name = "generic_design"  # for filename
-                else:
-                    user_provided_object_name = user_provided_object_name_input
-                    # Using a default prompt structure if none is selected from library later
-                    final_prompt = (
-                        f"A {user_provided_object_name} in orthographic style, plain white background, "
-                        f"a highly detailed isometric 3D illustration in orthographic view, "
-                        f"featuring smooth, rounded edges and realistic miniature plastic-like materials. "
-                        f"Uses a soft pastel color palette with subtle gradients and gentle shadows. "
-                        f"Rendered in a clean, modern Apple-style aesthetic."
-                    )
-            except KeyboardInterrupt:
-                logger.info(
-                    "Image generation cancelled by user during object input.")
-                return None
+                    "Default prompt contains [OBJECT] but no object_name provided. Using default.")
+                final_prompt = final_prompt.replace(
+                    "[OBJECT]", "object")
+                user_provided_object_name = "object"
+        else:
+            logger.info("Using default prompt")
+            final_prompt = "A beautiful abstract design"
+            user_provided_object_name = "generic_design"
     elif object_name_for_filename:  # Prompt is provided, but also object_name_for_filename for filename
         user_provided_object_name = object_name_for_filename
 
@@ -287,59 +260,86 @@ if __name__ == "__main__":
                 for i, p_info in enumerate(prompt_library):
                     logger.info(f"{i + 1}: {p_info['description']}")
 
-                use_library_prompt = input(
-                    "Do you want to use a prompt from the library? (yes/no, default: yes): ").strip().lower()
-                if use_library_prompt in ["yes", "y", ""]:
-                    while True:
-                        try:
-                            choice_str = input(
-                                f"Enter the number of the prompt you want to use (1-{len(prompt_library)}), or 0 to enter custom prompt: "
-                            ).strip()
-                            if not choice_str:  # Default to first prompt if empty
-                                choice_index = 0
-                                logger.info(
-                                    f"No input, defaulting to prompt 1: {prompt_library[choice_index]['description']}")
-                                break
-                            choice_index = int(choice_str) - 1
-                            if choice_index == -1:  # User chose 0 for custom prompt
-                                selected_prompt_from_lib = None
-                                break
-                            if 0 <= choice_index < len(prompt_library):
-                                selected_prompt_from_lib = prompt_library[choice_index]['prompt']
-                                current_object_name_for_file = prompt_library[choice_index].get(
-                                    'object_name', 'custom_prompt')
-                                break
-                            else:
-                                logger.warning(
-                                    "Invalid choice. Please enter a number within the range or 0.")
-                        except ValueError:
-                            logger.warning(
-                                "Invalid input. Please enter a number.")
-                        except KeyboardInterrupt:
-                            logger.info("Operation cancelled by user.")
-                            exit()
-                else:
-                    selected_prompt_from_lib = None  # User chose not to use library
-                    current_object_name_for_file = "custom_prompt"
+                # Always use first prompt by default
+                choice_index = 0
+                logger.info(
+                    f"Using prompt 1: {prompt_library[choice_index]['description']}")
+                selected_prompt_from_lib = prompt_library[choice_index]['prompt']
+                current_object_name_for_file = prompt_library[choice_index].get(
+                    'object_name', 'custom_prompt')
             else:  # No prompt library loaded
                 selected_prompt_from_lib = None
                 current_object_name_for_file = "custom_prompt"
 
             final_generation_prompt = selected_prompt_from_lib
-            object_name_input = ""
+            object_name_input_str = ""
 
             if selected_prompt_from_lib and "[OBJECT]" in selected_prompt_from_lib:
                 try:
-                    object_name_input = input(
-                        "This prompt requires an object. Enter the object (e.g. 'coffee mug', 'robot'): "
+                    raw_object_input = input(
+                        f"Prompt '{selected_prompt_from_lib.split('[OBJECT]')[0].strip()}' requires an object. Enter object (or p# object to change prompt): "
                     ).strip()
-                    if not object_name_input:
+
+                    if not raw_object_input:
                         logger.warning(
-                            "No object name provided for template, using 'item'.")
-                        object_name_input = "item"
-                    final_generation_prompt = selected_prompt_from_lib.replace(
-                        "[OBJECT]", object_name_input)
-                    current_object_name_for_file = object_name_input  # Update for filename
+                            "No object name provided, using 'item'.")
+                        object_name_input_str = "item"
+                        final_generation_prompt = selected_prompt_from_lib.replace(
+                            "[OBJECT]", object_name_input_str)
+                        current_object_name_for_file = object_name_input_str
+                    elif raw_object_input.startswith('p') and len(raw_object_input) > 1 and raw_object_input[1].isdigit():
+                        parts = raw_object_input.split(' ', 1)
+                        prompt_choice_str = parts[0][1:]
+                        if prompt_choice_str.isdigit():
+                            prompt_choice_idx = int(prompt_choice_str) - 1
+                            if 0 <= prompt_choice_idx < len(prompt_library):
+                                selected_prompt_from_lib = prompt_library[prompt_choice_idx]['prompt']
+                                current_object_name_for_file = prompt_library[prompt_choice_idx].get(
+                                    'object_name', 'custom_prompt')
+                                logger.info(
+                                    f"Switched to prompt {prompt_choice_idx + 1}: {prompt_library[prompt_choice_idx]['description']}")
+                                if "[OBJECT]" in selected_prompt_from_lib:
+                                    if len(parts) > 1 and parts[1].strip():
+                                        object_name_input_str = parts[1].strip(
+                                        )
+                                        final_generation_prompt = selected_prompt_from_lib.replace(
+                                            "[OBJECT]", object_name_input_str)
+                                        current_object_name_for_file = object_name_input_str
+                                    else:
+                                        logger.warning(
+                                            f"Prompt {prompt_choice_idx + 1} requires an object, but none provided after p#. Using 'item'.")
+                                        object_name_input_str = "item"
+                                        final_generation_prompt = selected_prompt_from_lib.replace(
+                                            "[OBJECT]", object_name_input_str)
+                                        current_object_name_for_file = "item_from_p_reselect"
+                                else:  # Selected prompt does not need an object
+                                    final_generation_prompt = selected_prompt_from_lib
+                                    object_name_input_str = ""
+                                    # current_object_name_for_file is already set from prompt library
+                            else:
+                                logger.warning(
+                                    f"Invalid prompt number p{prompt_choice_str}. Using default prompt 1 and full input as object.")
+                                # Fallback to default prompt 1 and use full input as object
+                                choice_index = 0  # Default to first prompt
+                                selected_prompt_from_lib = prompt_library[choice_index]['prompt']
+                                current_object_name_for_file = prompt_library[choice_index].get(
+                                    'object_name', 'custom_prompt')
+                                # use the whole "pX object" as the object
+                                object_name_input_str = raw_object_input
+                                final_generation_prompt = selected_prompt_from_lib.replace(
+                                    "[OBJECT]", object_name_input_str)
+                                current_object_name_for_file = object_name_input_str
+                        else:
+                            # 'p' followed by non-digit, treat as normal object name
+                            object_name_input_str = raw_object_input
+                            final_generation_prompt = selected_prompt_from_lib.replace(
+                                "[OBJECT]", object_name_input_str)
+                            current_object_name_for_file = object_name_input_str
+                    else:
+                        object_name_input_str = raw_object_input
+                        final_generation_prompt = selected_prompt_from_lib.replace(
+                            "[OBJECT]", object_name_input_str)
+                        current_object_name_for_file = object_name_input_str
                 except KeyboardInterrupt:
                     logger.info("Operation cancelled by user.")
                     exit()
