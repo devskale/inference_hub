@@ -1,12 +1,14 @@
 import argparse
 import os
 import requests
-from dotenv import load_dotenv
+from credgoo import get_api_key
 
-load_dotenv()
+# Set your API key
+# genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+#api_key = get_api_key("tu")
 
 API_BASE = "https://aqueduct.ai.datalab.tuwien.ac.at/v1"
-TU_API_KEY = os.getenv("TU_API_KEY")
+TU_API_KEY = get_api_key("tu")
 
 def list_models():
     """Get available models from /v1/models endpoint"""
