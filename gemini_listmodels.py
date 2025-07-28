@@ -1,6 +1,5 @@
 import google.generativeai as genai
 import os
-from dotenv import load_dotenv
 from credgoo import get_api_key
 
 # Set your API key
