@@ -1,0 +1,6 @@
+{
+    "default_provider": "tu",
+    "default_model": "deepseek-r1",
+    "default_baseurl": "https://aqueduct.ai.datalab.tuwien.ac.at/v1",
+    "embedding_model": "e5-mistral-7b"
+}
