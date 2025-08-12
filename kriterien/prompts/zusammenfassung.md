@@ -1,0 +1,1 @@
+Zusammenfassung: Analysieren Sie den folgenden Text und fassen Sie ihn prägnant auf Deutsch zusammen: 

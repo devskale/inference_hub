@@ -1,0 +1,694 @@
+{
+    "schema_version": "2.2-de-unified",
+    "dokument": {
+        "titel": "Allgemeine Ausschreibungsbedingungen für das offene Verfahren im Oberschwellenbereich gemäß BVergG 2018 zum Abschluss eines Rahmenvertrages über die Lieferung von Leuchten, Lichtmasten und Auslegern Lieferauftrag",
+        "sprache": "de",
+        "rechtskreis": "AT",
+        "rechtsgrundlage": "BVergG",
+        "verfahrensart": "offen",
+        "auftragsart": "lieferleistungen",
+        "waehrung": "EUR",
+        "seiten": 193,
+        "veroeffentlichungsdatum": "2025-05-15",
+        "aktenzeichen": "AS 2024.06001"
+    },
+    "akteure": {
+        "auftraggeber": {
+            "name": "Wiener Wohnen Hausbetreuung GmbH",
+            "kennzeichen": null,
+            "anschrift": "Erdbergstraße 200, 1030 Wien"
+        },
+        "lose": [
+            {
+                "id": "los-1",
+                "name": "Los 1 - Aufsatzleuchten",
+                "beschreibung": null
+            },
+            {
+                "id": "los-2",
+                "name": "Los 2 - Lichtmasten",
+                "beschreibung": null
+            },
+            {
+                "id": "los-3",
+                "name": "Los 3 - Niro Leuchtengehäuse",
+                "beschreibung": null
+            },
+            {
+                "id": "los-4",
+                "name": "Los 4 - Mastausleger",
+                "beschreibung": null
+            }
+        ]
+    },
+    "kriterien": [
+        {
+            "id": "eignung-befugnis",
+            "typ": "Eignung",
+            "kategorie": "Befugnis",
+            "name": "Befugnis zur Leistungserbringung",
+            "anforderung": "Teilnahmeberechtigt sind in den EU- bzw. EWR-Mitgliedstaaten ansässige natürliche und juristische Personen, die nachweislich gemäß den jeweils gültigen gesetzlichen Bestimmungen ihres Heimatlandes zur Erbringung der ausgeschriebenen Leistungen befugt sind. Bieter, die im Gebiet einer anderen Vertragspartei des EWR-Abkommens ansässig sind und die für die Ausübung einer Tätigkeit in Österreich eine behördliche Entscheidung betreffend ihre Berufsqualifikation einholen müssen, haben ein darauf gerichtetes Verfahren möglichst umgehend, jedenfalls aber vor Ablauf der Angebotsfrist einzuleiten.",
+            "gewichtung": null,
+            "wertungssystem": null,
+            "geltung": {
+                "fuer": [
+                    "bieter",
+                    "subunternehmer",
+                    "konsortialmitglied"
+                ],
+                "los_ids": [],
+                "stufe": "teilnahme"
+            },
+            "nachweise": [
+                {
+                    "typ": "pflicht",
+                    "dokument": "Auszug aus dem Gewerbeinformationssystem Austria (GISA)",
+                    "herausgeber": "GISA",
+                    "gueltigkeit": "nicht älter als drei Monate",
+                    "hinweis": "Für österreichische Bieter",
+                    "quelle": {
+                        "abschnitt": "5.2. (2)",
+                        "seite": 12,
+                        "zitat": "Österreichische Bieter haben mit Angebotsabgabe ihre Befugnis zur Erbringung der Leistungen durch: · einen Auszug aus dem Gewerbeinformationssystem Austria (GISA) [...] nachzuweisen. Die Nachweise dürfen nicht älter als drei Monate sein."
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "Auszug aus dem Mitgliederverzeichnis der Wirtschaftskammer",
+                    "herausgeber": "Wirtschaftskammer",
+                    "gueltigkeit": "nicht älter als drei Monate",
+                    "hinweis": "Für österreichische Bieter",
+                    "quelle": {
+                        "abschnitt": "5.2. (2)",
+                        "seite": 12,
+                        "zitat": "Österreichische Bieter haben mit Angebotsabgabe ihre Befugnis zur Erbringung der Leistungen durch: [...] · einen Auszug aus dem Mitgliederverzeichnis der Wirtschaftskammer nachzuweisen. Die Nachweise dürfen nicht älter als drei Monate sein."
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "Urkunde über die Eintragung im Berufs- oder Handelsregister des Herkunftslandes",
+                    "herausgeber": null,
+                    "gueltigkeit": null,
+                    "hinweis": "Für ausländische Bieter, die keine einschlägige österreichische Gewerbeberechtigung haben. Welche Nachweise vorzulegen sind, bestimmt sich nach Anhang IX zum BVergG 2018.",
+                    "quelle": {
+                        "abschnitt": "5.2. (3)",
+                        "seite": 12,
+                        "zitat": "Ausländische Bieter, die keine einschlägige österreichische Gewerbeberechtigung haben, haben zum Nachweis ihrer Befugnis zur Erbringung der Leistungen mit der Angebotsabgabe eine entsprechende Urkunde über die Eintragung im Berufsregister oder Handelsregister des Herkunftslandes des Unternehmers oder die dort vorgesehene Bescheinigung oder eidesstattliche Erklärung vorzulegen. Welche Nachweise für ein bestimmtes Herkunftsland vorzulegen sind, bestimmt sich nach dem Anhang IX zum BVergG 2018."
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "Nachweis über die Einleitung eines Verfahrens betreffend Berufsqualifikation",
+                    "herausgeber": null,
+                    "gueltigkeit": null,
+                    "hinweis": "Für Bieter aus dem EWR, die eine behördliche Entscheidung betreffend ihre Berufsqualifikation für Österreich einholen müssen. Verfahren ist vor Ablauf der Angebotsfrist einzuleiten.",
+                    "quelle": {
+                        "abschnitt": "5.2. (4)",
+                        "seite": 12,
+                        "zitat": "Bieter, die im Gebiet einer anderen Vertragspartei des EWR-Abkommens ansässig sind und die für die Ausübung einer Tätigkeit in Österreich eine behördliche Entscheidung betreffend ihre Berufsqualifikation einholen müssen, haben ein darauf gerichtetes Verfahren möglichst umgehend, jedenfalls aber vor Ablauf der Angebotsfrist einzuleiten. Hinweis: Mit dem Angebot haben die Bieter den Nachweis zu erbringen, dass sie vor Ablauf der Angebotsfrist ein entsprechendes Verfahren eingeleitet haben."
+                    }
+                }
+            ],
+            "quelle": {
+                "abschnitt": "5.2.",
+                "seite": 12,
+                "zitat": "Befugnis"
+            },
+            "pruefung": {
+                "status": null,
+                "zeichen": null,
+                "datum": null
+            },
+            "meta": {},
+            "erweiterungen": {}
+        },
+        {
+            "id": "eignung-berufliche-zuverlaessigkeit",
+            "typ": "Eignung",
+            "kategorie": "Berufliche Zuverlässigkeit",
+            "name": "Berufliche Zuverlässigkeit",
+            "anforderung": "Der Bieter muss zuverlässig im Sinne des BVergG 2018 sein. Mit der Abgabe seines Angebotes erklärt der Bieter, dass gegen ihn, seine Subunternehmer und die von ihm genannten sonstigen Dritten kein Ausschlussgrund gemäß § 78 Abs 1 BVergG 2018 vorliegt. Insbesondere erklärt er, seine straf- und arbeitsrechtliche Unbescholtenheit sowie, dass er sich nicht in Liquidation befindet, seine gewerblichen Tätigkeiten nicht eingestellt hat und gegen ihn weder ein Insolvenzverfahren eingeleitet noch die Eröffnung eines Insolvenzverfahrens mangels hinreichenden Vermögens abgewiesen wurde. Dies gilt ebenso für seine Subunternehmer sowie die von ihm genannten sonstigen Dritten.",
+            "gewichtung": null,
+            "wertungssystem": null,
+            "geltung": {
+                "fuer": [
+                    "bieter",
+                    "subunternehmer",
+                    "konsortialmitglied"
+                ],
+                "los_ids": [],
+                "stufe": "teilnahme"
+            },
+            "nachweise": [
+                {
+                    "typ": "pflicht",
+                    "dokument": "Strafregisterbescheinigung gemäß § 10 des Strafregistergesetzes 1968",
+                    "herausgeber": null,
+                    "gueltigkeit": "am Tag der Angebotsöffnung nicht älter als drei Monate",
+                    "hinweis": "Für alle physischen Personen in der Geschäftsführung bei juristischen Personen. Gleichwertige Bescheinigung einer Gerichts- oder Verwaltungsbehörde des Sitzstaates des Unternehmers möglich.",
+                    "quelle": {
+                        "abschnitt": "5.3. (3)",
+                        "seite": 13,
+                        "zitat": "Strafregisterbescheinigung gemäß § 10 des Strafregistergesetzes 1968, BGBl. Nr. 277/1968 [...] oder eine gleichwertige Bescheinigung einer Gerichtsoder Verwaltungsbehörde des Sitzstaates des Unternehmers, aus der hervorgeht, dass die berufliche Zuverlässigkeit nicht in Frage gestellt wird. Handelt es sich beim Bieter um eine juristische Person, sind diese Dokumente für alle physischen Personen vorzulegen, die in der Geschäftsführung tätig sind. [...] Die Strafregisterbescheinigung bzw. die Registerauskunft für Verbände darf am Tag der Angebotsöffnung nicht älter als drei Monate sein."
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "Registerauskunft für Verbände gemäß § 89m des Gerichtsorganisationsgesetzes -GOG",
+                    "herausgeber": null,
+                    "gueltigkeit": "am Tag der Angebotsöffnung nicht älter als drei Monate",
+                    "hinweis": "Bei juristischen Personen. Gleichwertige Bescheinigung einer Gerichts- oder Verwaltungsbehörde des Sitzstaates des Unternehmers möglich.",
+                    "quelle": {
+                        "abschnitt": "5.3. (3)",
+                        "seite": 13,
+                        "zitat": "Registerauskunft für Verbände gemäß § 89m des Gerichtsorganisationsgesetzes -GOG, RGBl. Nr. 217/1896, oder eine gleichwertige Bescheinigung einer Gerichtsoder Verwaltungsbehörde des Sitzstaates des Unternehmers, aus der hervorgeht, dass die berufliche Zuverlässigkeit nicht in Frage gestellt wird. [...] Die Strafregisterbescheinigung bzw. die Registerauskunft für Verbände darf am Tag der Angebotsöffnung nicht älter als drei Monate sein."
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "Firmenbuchauszug",
+                    "herausgeber": null,
+                    "gueltigkeit": "am Tag der Angebotsöffnung nicht älter als drei Monate",
+                    "hinweis": "Erforderlich für juristische Personen, um Personen in der Geschäftsführung zu belegen. Auch für den Nachweis der Vertretungsbefugnis gemäß Punkt 6.8 (2).",
+                    "quelle": {
+                        "abschnitt": "5.3. (3)",
+                        "seite": 13,
+                        "zitat": "Handelt es sich beim Bieter um eine juristische Person, sind diese Dokumente für alle physischen Personen vorzulegen, die in der Geschäftsführung tätig sind. In diesem Fall ist auch ein Firmenbuchauszug oder ein Auszug aus dem Vereinsregister vorzulegen, aus dem ersichtlich ist, welche Personen in der Geschäftsführung tätig sind. [...] Firmenbuchauszug gemäß § 33 des Firmenbuchgesetzes, BGBl. Nr. 10/1991 (am Tag der Angebotsöffnung nicht älter als drei Monate )."
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "Auszug aus dem Vereinsregister",
+                    "herausgeber": null,
+                    "gueltigkeit": "am Tag der Angebotsöffnung nicht älter als drei Monate",
+                    "hinweis": "Erforderlich für juristische Personen, um Personen in der Geschäftsführung zu belegen.",
+                    "quelle": {
+                        "abschnitt": "5.3. (3)",
+                        "seite": 13,
+                        "zitat": "Handelt es sich beim Bieter um eine juristische Person, sind diese Dokumente für alle physischen Personen vorzulegen, die in der Geschäftsführung tätig sind. In diesem Fall ist auch ein Firmenbuchauszug oder ein Auszug aus dem Vereinsregister vorzulegen, aus dem ersichtlich ist, welche Personen in der Geschäftsführung tätig sind."
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "Auszug aus der Insolvenzdatei gemäß § 256 der Insolvenzordnung -IO",
+                    "herausgeber": null,
+                    "gueltigkeit": "am Tag der Angebotsöffnung nicht älter als drei Monate",
+                    "hinweis": null,
+                    "quelle": {
+                        "abschnitt": "5.3. (3)",
+                        "seite": 13,
+                        "zitat": "Auszug aus der Insolvenzdatei gemäß § 256 der Insolvenzordnung -IO, RGBl. Nr. 337/1914 (am Tag der Angebotsöffnung nicht älter als drei Monate );"
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "Kontoauszug oder Unbedenklichkeitsbescheinigung der zuständigen Sozialversicherungsanstalt",
+                    "herausgeber": null,
+                    "gueltigkeit": "am Tag der Angebotsöffnung nicht älter als drei Monate",
+                    "hinweis": "Zum Nachweis der Erfüllung der Verpflichtungen zur Zahlung der Sozialversicherungsbeiträge.",
+                    "quelle": {
+                        "abschnitt": "5.3. (3)",
+                        "seite": 13,
+                        "zitat": "Kontoauszug oder eine Unbedenklichkeitsbescheinigung der zuständigen Sozialversicherungsanstalt (am Tag der Angebotsöffnung nicht älter als drei Monate ) zum Nachweis der Erfüllung der Verpflichtungen zur Zahlung der Sozialversicherungsbeiträge;"
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "Rückstandsbescheinigung gemäß § 229a Bundesabgabenordnung (BAO) oder Auszug aus dem Steuerkonto",
+                    "herausgeber": null,
+                    "gueltigkeit": "am Tag der Angebotsöffnung nicht älter als drei Monate",
+                    "hinweis": "Zum Nachweis der Erfüllung der Verpflichtung zur Zahlung der Steuern und Abgaben.",
+                    "quelle": {
+                        "abschnitt": "5.3. (3)",
+                        "seite": 13,
+                        "zitat": "Rückstandsbescheinigung gemäß § 229a Bundesabgabenordnung ( BAO ), BGBl. Nr. 194/1961 oder Auszug aus dem Steuerkonto (am Tag der Angebotsöffnung nicht älter als drei Monate ) zum Nachweis der Erfüllung der Verpflichtung zur Zahlung der Steuern und Abgaben."
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "Gleichwertige Urkunden oder eidesstattliche Erklärung",
+                    "herausgeber": null,
+                    "gueltigkeit": null,
+                    "hinweis": "Für Bieter aus dem Ausland, falls behördlicher Nachweis nicht möglich ist (glaubhaft zu machen).",
+                    "quelle": {
+                        "abschnitt": "5.3. (4)",
+                        "seite": 14,
+                        "zitat": "Bieter aus dem Ausland haben die oben genannten Nachweise durch die Vorlage gleichwertiger Urkunden zu erbringen. Ist im Herkunftsland des Bieters die Ausstellung eines behördlichen Nachweises nicht möglich, was der Bieter glaubhaft zu machen hat, so tritt an dessen Stelle eine entsprechende eidesstattliche Erklärung des Bieters."
+                    }
+                }
+            ],
+            "quelle": {
+                "abschnitt": "5.3.",
+                "seite": 12,
+                "zitat": "Berufliche Zuverlässigkeit"
+            },
+            "pruefung": {
+                "status": null,
+                "zeichen": null,
+                "datum": null
+            },
+            "meta": {},
+            "erweiterungen": {}
+        },
+        {
+            "id": "eignung-mitarbeiteranzahl",
+            "typ": "Eignung",
+            "kategorie": "Technische Leistungsfähigkeit",
+            "name": "Mindestmitarbeiteranzahl",
+            "anforderung": "Der Bieter muss in den drei Geschäftsjahren 2021, 2022 und 2023 ständig mindestens 10 Dienstnehmer (Vollzeitäquivalente) beschäftigt haben.",
+            "gewichtung": null,
+            "wertungssystem": null,
+            "geltung": {
+                "fuer": [
+                    "bieter",
+                    "subunternehmer"
+                ],
+                "los_ids": [],
+                "stufe": "teilnahme"
+            },
+            "nachweise": [
+                {
+                    "typ": "pflicht",
+                    "dokument": "Formblatt 05 'Leistungsfähigkeit Dienstnehmer und Umsätze'",
+                    "herausgeber": "Steuerberater oder Wirtschaftsprüfer",
+                    "gueltigkeit": null,
+                    "hinweis": "Ausgefüllt und unterfertigt.",
+                    "quelle": {
+                        "abschnitt": "5.4.3.",
+                        "seite": 14,
+                        "zitat": "die in Bezug auf die Anzahl der Dienstnehmer (Vollzeitäquivalente) der oben angeführten Geschäftsjahre ausgefüllte und von einem Steuerberater oder Wirtschaftsprüfer unterfertigte Beilage 05 'Leistungsfähigkeit Dienstnehmer und Umsätze' ;"
+                    }
+                }
+            ],
+            "quelle": {
+                "abschnitt": "5.4.1.",
+                "seite": 14,
+                "zitat": "Mitarbeiteranzahl."
+            },
+            "pruefung": {
+                "status": null,
+                "zeichen": null,
+                "datum": null
+            },
+            "meta": {},
+            "erweiterungen": {}
+        },
+        {
+            "id": "eignung-referenzprojekt",
+            "typ": "Eignung",
+            "kategorie": "Technische Leistungsfähigkeit",
+            "name": "Referenzprojekt für Lieferleistungen",
+            "anforderung": "Der Bewerber muss in den letzten drei Jahren (zurückgerechnet ab dem Datum der Veröffentlichung der Ausschreibung) im Rahmen eines Referenzprojektes Leuchten, Lichtmasten und Auslegern im Wert von mindestens EUR 100.000,00 (exkl. USt.) geliefert haben.",
+            "gewichtung": null,
+            "wertungssystem": null,
+            "geltung": {
+                "fuer": [
+                    "bieter",
+                    "subunternehmer"
+                ],
+                "los_ids": [],
+                "stufe": "teilnahme"
+            },
+            "nachweise": [
+                {
+                    "typ": "pflicht",
+                    "dokument": "Formblatt 06 'Leistungsfähigkeit Referenzen'",
+                    "herausgeber": "Historischer Auftraggeber",
+                    "gueltigkeit": null,
+                    "hinweis": "Muss vom historischen Auftraggeber unterfertigt sein. Falls Unterschrift nicht erhältlich, ist Ersatzunterschrift des Bieters ausreichend mit Begründung. Auskunftsperson des historischen Auftraggebers muss angeführt werden.",
+                    "quelle": {
+                        "abschnitt": "5.4.3.",
+                        "seite": 14,
+                        "zitat": "die in Bezug auf das Referenzprojekt ausgefüllte Beilage 06 'Leistungsfähigkeit Referenzen'. Der Nachweis ist vom historischen Auftraggeber unterfertigen zu lassen. Falls die Unterschrift des historischen Auftraggebers nicht erhältlich ist, ist die Ersatzunterschrift des Bieters ausreichend. In diesem Fall ist anzugeben, weshalb die Unterschrift des historischen Auftraggebers nicht erhältlich war. Jedenfalls ist in den Nachweisen eine Auskunftsperson des historischen Auftraggebers anzuführen. Der Auftraggeber behält sich vor, nähere Auskünfte von dieser einzuholen. Referenzen, die nicht vom historischen Auftraggeber unterfertigt sind und hinsichtlich derer keine näheren Auskünfte von der angeführten Auskunftsperson des historischen Auftraggebers eingeholt werden können, werden vom Auftraggeber nicht berücksichtigt. Sofern bei dem Referenzprojekt Leistungen im Rahmen einer Arbeitsgemeinschaft erbracht wurden, ist maßgeblich, welche Leistungen der Bieter selbst erbracht hat. Sofern bei dem Referenzprojekt Leistungen als Subunternehmer erbracht wurden, ist maßgeblich, welche Leistungen der Bieter selbst erbracht hat."
+                    }
+                }
+            ],
+            "quelle": {
+                "abschnitt": "5.4.2.",
+                "seite": 14,
+                "zitat": "Referenz"
+            },
+            "pruefung": {
+                "status": null,
+                "zeichen": null,
+                "datum": null
+            },
+            "meta": {},
+            "erweiterungen": {}
+        },
+        {
+            "id": "eignung-bonitaetsranking",
+            "typ": "Eignung",
+            "kategorie": "Finanzielle und wirtschaftliche Leistungsfähigkeit",
+            "name": "Bonitätsranking",
+            "anforderung": "Der Bieter hat nachzuweisen, dass er ein KSV-Rating von nicht schlechter als 399 (geringes Risiko) bzw. ein gleichwertiges Rating einer dem KSV 1870 gleichwertigen europäischen Wirtschaftsauskunftsstelle aufweist. Im Falle der Teilnahme als BIEGE hat jedes Mitglied der BIEGE ein entsprechendes Rating nachzuweisen.",
+            "gewichtung": null,
+            "wertungssystem": null,
+            "geltung": {
+                "fuer": [
+                    "bieter",
+                    "subunternehmer",
+                    "konsortialmitglied"
+                ],
+                "los_ids": [],
+                "stufe": "teilnahme"
+            },
+            "nachweise": [
+                {
+                    "typ": "pflicht",
+                    "dokument": "Aktuelle Auskunft des Kreditschutzverbandes von 1870 (KSV)",
+                    "herausgeber": "KSV 1870",
+                    "gueltigkeit": null,
+                    "hinweis": "Oder ein vergleichbares Rating einer europäischen Bonitätsauskunft/Ratingagentur.",
+                    "quelle": {
+                        "abschnitt": "5.5.4.",
+                        "seite": 15,
+                        "zitat": "eine aktuelle Auskunft des Kreditschutzverbandes von 1870 (KSV) oder ein vergleichbares Rating einer europäischen Bonitätsauskunft/Ratingagentur;"
+                    }
+                }
+            ],
+            "quelle": {
+                "abschnitt": "5.5.1.",
+                "seite": 15,
+                "zitat": "Bonitätsranking"
+            },
+            "pruefung": {
+                "status": null,
+                "zeichen": null,
+                "datum": null
+            },
+            "meta": {},
+            "erweiterungen": {}
+        },
+        {
+            "id": "eignung-betriebshaftpflichtversicherung",
+            "typ": "Eignung",
+            "kategorie": "Finanzielle und wirtschaftliche Leistungsfähigkeit",
+            "name": "Betriebshaftpflichtversicherung",
+            "anforderung": "Der Bieter muss über eine Betriebshaftpflichtversicherung mit einer Deckungssumme von mindestens EUR 1.000.000,00 pro Schadenfall verfügen.",
+            "gewichtung": null,
+            "wertungssystem": null,
+            "geltung": {
+                "fuer": [
+                    "bieter",
+                    "subunternehmer"
+                ],
+                "los_ids": [],
+                "stufe": "teilnahme"
+            },
+            "nachweise": [
+                {
+                    "typ": "pflicht",
+                    "dokument": "Nachweise des Abschlusses einer aufrechten Betriebshaftpflichtversicherung",
+                    "herausgeber": null,
+                    "gueltigkeit": "aktuell",
+                    "hinweis": "Z.B. Polizze, Deckungszusage oder Versicherungsbestätigung. Mit einer Deckungssumme von mindestens EUR 1.000.000,00 pro Schadenfall. Nachweis über die Bezahlung der letztfälligen Prämie ist beizulegen.",
+                    "quelle": {
+                        "abschnitt": "5.5.4.",
+                        "seite": 15,
+                        "zitat": "aktuelle Nachweise (z.B. Polizze, Deckungszusage oder Versicherungsbestätigung) des Abschlusses einer aufrechten Betriebshaftpflichtversicherung mit einer Deckungssumme von mindestens EUR 1.000.000,00 pro Schadenfall sowie einen Nachweis über die Bezahlung der letztfälligen Prämie ;"
+                    }
+                }
+            ],
+            "quelle": {
+                "abschnitt": "5.5.2.",
+                "seite": 15,
+                "zitat": "Betriebshaftpflichtversicherung"
+            },
+            "pruefung": {
+                "status": null,
+                "zeichen": null,
+                "datum": null
+            },
+            "meta": {},
+            "erweiterungen": {}
+        },
+        {
+            "id": "eignung-jahresumsatz",
+            "typ": "Eignung",
+            "kategorie": "Finanzielle und wirtschaftliche Leistungsfähigkeit",
+            "name": "Jahresumsatz",
+            "anforderung": "Der Bieter muss in den drei Geschäftsjahren 2021, 2022 und 2023 einen Jahresumsatz von durchschnittlich mindestens EUR 1.000.000,00 erwirtschaftet haben.",
+            "gewichtung": null,
+            "wertungssystem": null,
+            "geltung": {
+                "fuer": [
+                    "bieter",
+                    "subunternehmer"
+                ],
+                "los_ids": [],
+                "stufe": "teilnahme"
+            },
+            "nachweise": [
+                {
+                    "typ": "pflicht",
+                    "dokument": "Formblatt 05 'Leistungsfähigkeit Dienstnehmer und Umsätze'",
+                    "herausgeber": "Steuerberater oder Wirtschaftsprüfer",
+                    "gueltigkeit": null,
+                    "hinweis": "Ausgefüllt und unterfertigt.",
+                    "quelle": {
+                        "abschnitt": "5.5.4.",
+                        "seite": 15,
+                        "zitat": "die in Bezug auf die durchschnittlichen Jahresumsätze der oben angeführten Geschäftsjahre ausgefüllte und von einem Steuerberater oder Wirtschaftsprüfer unterfertigte Beilage 05 'Leistungsfähigkeit Dienstnehmer und Umsätze'."
+                    }
+                }
+            ],
+            "quelle": {
+                "abschnitt": "5.5.3.",
+                "seite": 15,
+                "zitat": "Jahresumsatz"
+            },
+            "pruefung": {
+                "status": null,
+                "zeichen": null,
+                "datum": null
+            },
+            "meta": {},
+            "erweiterungen": {}
+        },
+        {
+            "id": "zuschlag-gesamtpreis",
+            "typ": "Zuschlag",
+            "kategorie": "Preis",
+            "name": "Gesamtpreis",
+            "anforderung": null,
+            "gewichtung": {
+                "wert": 700,
+                "einheit": "punkte"
+            },
+            "wertungssystem": "Das Angebot mit dem niedrigsten bewertungsrelevanten Gesamtpreis (exkl. USt.) erhält die Maximalpunkteanzahl von 700 Punkten. Alle anderen bewertungsrelevanten Angebote erhalten in jenem Ausmaß weniger Punkte, als sie teurer als das günstigste Angebot sind. Formel: niedrigster Gesamtpreis * Maximalpunkteanzahl des Zuschlagskriteriums / zu bewertender Gesamtpreis = erreichte Punkte.",
+            "geltung": {
+                "fuer": [
+                    "bieter"
+                ],
+                "los_ids": [],
+                "stufe": "angebot"
+            },
+            "nachweise": [],
+            "quelle": {
+                "abschnitt": "7.2.",
+                "seite": 20,
+                "zitat": "Bewertung nach dem Zuschlagskriterium 'Gesamtpreis'"
+            },
+            "pruefung": {
+                "status": null,
+                "zeichen": null,
+                "datum": null
+            },
+            "meta": {},
+            "erweiterungen": {}
+        },
+        {
+            "id": "zuschlag-iso-zertifizierungen",
+            "typ": "Zuschlag",
+            "kategorie": "Qualität",
+            "name": "ISO-Zertifizierungen",
+            "anforderung": null,
+            "gewichtung": {
+                "wert": 150,
+                "einheit": "punkte"
+            },
+            "wertungssystem": "Punktevergabe nach Vorliegen folgender ISO-Zertifizierungen zum Zeitpunkt des Ablaufs der Angebotsfrist: ISO 14001 (50 Punkte), ISO 45001 (50 Punkte), ISO 9001 (50 Punkte). Maximal 150 Punkte. Für Bietergemeinschaften sind ausschließlich Zertifizierungen bewertungsrelevant, über die alle Mitglieder der BIEGE verfügen.",
+            "geltung": {
+                "fuer": [
+                    "bieter",
+                    "konsortialmitglied"
+                ],
+                "los_ids": [],
+                "stufe": "angebot"
+            },
+            "nachweise": [
+                {
+                    "typ": "pflicht",
+                    "dokument": "Formblatt 08 'Zuschlagskriterium ISO-Zertifizierungen'",
+                    "herausgeber": null,
+                    "gueltigkeit": null,
+                    "hinweis": "Muss ausgefüllt und dem Angebot beizulegen sein. Die angegebenen Zertifikate sind beizulegen und über die Vertragslaufzeit aufrechtzuerhalten. Im Falle einer BIEGE ist die Beilage 08 für jedes Mitglied ausgefüllt vorzulegen.",
+                    "quelle": {
+                        "abschnitt": "7.3.1. (1), (4), (5)",
+                        "seite": 21,
+                        "zitat": "Der Bieter kann in der Beilage 08 'Zuschlagskriterium ISO-Zertifizierungen' angeben, ob er zum Zeitpunkt des Ablaufs der Angebotsfrist über die in Punkt 7.3.1. (2) aufgelisteten ISO-Zertifizierungen verfügt. [...] Die in der Beilage 08 'Zuschlagskriterium ISO-Zertifizierungen' angegebenen Zertifikate sind dem Angebot beizulegen und über die Vertragslaufzeit aufrechtzuerhalten. Im Falle einer BIEGE muss die Beilage 08 'Zuschlagskriterium ISO-Zertifizierungen' für jedes Mitglied der BIEGE ausgefüllt vorgelegt werden."
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "ISO 14001 Zertifizierung oder gleichwertig",
+                    "herausgeber": null,
+                    "gueltigkeit": null,
+                    "hinweis": "Nachweis für 50 Punkte.",
+                    "quelle": {
+                        "abschnitt": "7.3.1. (2)",
+                        "seite": 21,
+                        "zitat": "ISO 14001 oder eine gleichwertige Zertifizierung"
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "ISO 45001 Zertifizierung oder gleichwertig",
+                    "herausgeber": null,
+                    "gueltigkeit": null,
+                    "hinweis": "Nachweis für 50 Punkte.",
+                    "quelle": {
+                        "abschnitt": "7.3.1. (2)",
+                        "seite": 21,
+                        "zitat": "ISO 45001 oder eine gleichwertige Zertifizierung"
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "ISO 9001 Zertifizierung oder gleichwertig",
+                    "herausgeber": null,
+                    "gueltigkeit": null,
+                    "hinweis": "Nachweis für 50 Punkte.",
+                    "quelle": {
+                        "abschnitt": "7.3.1. (2)",
+                        "seite": 21,
+                        "zitat": "ISO 9001 oder eine gleichwertige Zertifizierung"
+                    }
+                }
+            ],
+            "quelle": {
+                "abschnitt": "7.3.1.",
+                "seite": 21,
+                "zitat": "Bewertung nach dem Zuschlagskriterium Qualität 'ISO Zertifizierungen'"
+            },
+            "pruefung": {
+                "status": null,
+                "zeichen": null,
+                "datum": null
+            },
+            "meta": {},
+            "erweiterungen": {}
+        },
+        {
+            "id": "zuschlag-lieferfrist",
+            "typ": "Zuschlag",
+            "kategorie": "Qualität",
+            "name": "Verkürzung der Lieferfrist",
+            "anforderung": null,
+            "gewichtung": {
+                "wert": 150,
+                "einheit": "punkte"
+            },
+            "wertungssystem": "Punktevergabe basierend auf der Verkürzung der im Rahmenvertrag vorgesehenen Lieferfrist von 8 Kalenderwochen: 1 Kalenderwoche Verkürzung (7 KW) = 50 Punkte, 2 Kalenderwochen Verkürzung (6 KW) = 100 Punkte, 3 Kalenderwochen Verkürzung (5 KW) = 150 Punkte. Die verkürzte Lieferfrist gilt über die gesamte Vertragslaufzeit.",
+            "geltung": {
+                "fuer": [
+                    "bieter"
+                ],
+                "los_ids": [],
+                "stufe": "angebot"
+            },
+            "nachweise": [
+                {
+                    "typ": "pflicht",
+                    "dokument": "Formblatt 09 'Zuschlagskriterium Lieferfrist'",
+                    "herausgeber": null,
+                    "gueltigkeit": null,
+                    "hinweis": "Muss ausgefüllt und dem Angebot beizulegen sein. Eine dort angegebene Verkürzung gilt als vereinbart.",
+                    "quelle": {
+                        "abschnitt": "7.3.2. (1), (4)",
+                        "seite": 21,
+                        "zitat": "Der Bieter kann in der Beilage 09 'Zuschlagskriterium Lieferfrist' angeben, ob er die in Punkt 5.2.(1) des Rahmenvertrages vorgesehene Lieferfrist von 8 Kalenderwochen verkürzen möchte. [...] Gibt der Bieter in der Beilage 09 'Zuschlagskriterium Lieferfrist' eine Verkürzung der Lieferfrist an, gilt abweichend zu Punkt 5.2.(1) des Rahmenvertrages die in der Beilage 09 'Zuschlagskriterium Lieferfrist' angekreuzte kürzere Lieferfrist als vereinbart."
+                    }
+                }
+            ],
+            "quelle": {
+                "abschnitt": "7.3.2.",
+                "seite": 21,
+                "zitat": "Bewertung nach dem Zuschlagskriterium Qualität 'Verkürzung der Lieferfrist'"
+            },
+            "pruefung": {
+                "status": null,
+                "zeichen": null,
+                "datum": null
+            },
+            "meta": {},
+            "erweiterungen": {}
+        }
+    ],
+    "formalien": {
+        "fristen": [
+            {
+                "name": "Angebotsfrist",
+                "zeitpunkt": "2025-06-16T10:00:00Z",
+                "hinweis": "Angebote müssen über die Vergabeplattform eingereicht werden. Das Hochladen allein ist nicht ausreichend, der Abgabeprozess muss vollständig abgeschlossen sein.",
+                "quelle": {
+                    "abschnitt": "6.9. (1), (2)",
+                    "seite": 19
+                }
+            },
+            {
+                "name": "Angebotsbindefrist",
+                "zeitpunkt": null,
+                "hinweis": "Endet fünf Monate nach Ende der Angebotsfrist. Der Auftraggeber beabsichtigt die Entscheidung bis spätestens September 2025 zu treffen. Bei Nachprüfungsverfahren ist die Frist gehemmt.",
+                "quelle": {
+                    "abschnitt": "10. (1), (2)",
+                    "seite": 22
+                }
+            }
+        ],
+        "abgabe": {
+            "plattform": "http://www.vergabeportal.at",
+            "formate": [
+                ".doc",
+                ".docx",
+                ".xls",
+                ".xlsx",
+                ".ppt",
+                ".pptx",
+                ".jpg",
+                ".png",
+                ".bmp",
+                ".pdf",
+                "OpenOffice"
+            ],
+            "signatur": [
+                "qualifizierte_e_signatur",
+                "qualifiziertes_siegel",
+                "amtssignatur"
+            ],
+            "sprachen": [
+                "de"
+            ]
+        },
+        "bietergemeinschaft": [
+            "Angaben zur Auflistung der Mitglieder der BIEGE",
+            "Angaben zu den Gründen für die Bildung der BIEGE",
+            "Angaben zu den Aufgaben der einzelnen Mitglieder der BIEGE sowie die von den einzelnen Mitgliedern der BIEGE zu erbringenden Leistungen im Auftragsfall",
+            "Benennung eines federführenden Mitglieds sowie eines zustell- und verhandlungsbevollmächtigten Vertreters (Beilage 01 'Erklärung für Bewerber- und Arbeitsgemeinschaften')",
+            "Erklärung aller Mitglieder, im Auftragsfall die Leistungen als dem Auftraggeber gegenüber solidarisch haftende ARGE zu erbringen",
+            "Elektronische Unterfertigung des Angebots durch sämtliche Mitglieder der BIEGE in rechtsgültiger Form",
+            "Beilegung der 'Erklärung für Bieter- und Arbeitsgemeinschaften' (Beilage 01)"
+        ],
+        "nachweisregeln_allgemein": [
+            "Sämtliche Nachweise sind in Kopie in deutscher Sprache beizulegen. Soweit sie nicht in deutscher Sprache abgefasst sind, sind diese in beglaubigter deutscher Übersetzung ebenfalls in Kopie vorzulegen.",
+            "Der Auftraggeber behält sich vor, gegebenenfalls die Vorlage von Nachweisen im Original nachzufordern.",
+            "Der Nachweis der Eignung kann auch durch Vorlage einer Einheitlichen Europäischen Eigenerklärung (EEE) erbracht werden. Nachweise sind in diesem Fall nach schriftlicher Aufforderung innerhalb von sieben Kalendertagen zu übermitteln.",
+            "Der Nachweis der Eignung kann durch Hinweis auf eine für den Auftraggeber kostenlos zugängliche Datenbank bzw. einen Katasterdienst eines Dritten (z.B. ANKÖ) geführt werden, sofern dort die geforderten und aktuellen Unterlagen vorliegen. Bieter sind für die Aktualität und Vollständigkeit verantwortlich.",
+            "Nachweise, die dem Auftraggeber bereits in einem früheren Vergabeverfahren im Oberschwellenbereich vorgelegt wurden und geeignet sind, die Eignung nachzuweisen, müssen nicht erneut vorgelegt werden, wenn dies bei Angebotsabgabe mit Auflistung der Nachweise und Bezugnahme auf das Verfahren mitgeteilt wird.",
+            "Sofern nichts Abweichendes geregelt ist, dürfen sämtliche geforderten Nachweise nicht älter als drei Monate sein.",
+            "Der Auftraggeber behält sich vor, gegebenenfalls im Laufe des Vergabeverfahrens vom Bieter weitere Nachweise für das Fortbestehen seiner Eignung zu verlangen."
+        ]
+    },
+    "erweiterungen": {}
+}

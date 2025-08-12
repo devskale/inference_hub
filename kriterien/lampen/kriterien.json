@@ -1,0 +1,858 @@
+{
+    "schema_version": "2.1-de",
+    "dokument": {
+        "titel": "2024_06001_AAB_EV",
+        "sprache": "de",
+        "rechtskreis": "AT",
+        "rechtsgrundlage": "BVergG",
+        "verfahrensart": "offen",
+        "auftragsart": "lieferleistungen",
+        "waehrung": "EUR",
+        "seiten": 193,
+        "veroeffentlichungsdatum": "2025-05-15T15:19:48Z",
+        "aktenzeichen": "AS 2024.06001"
+    },
+    "akteure": {
+        "auftraggeber": {
+            "name": "Wiener Wohnen Hausbetreuung GmbH",
+            "kennzeichen": "AS 2024.06001",
+            "anschrift": "Erdbergstraße 200, 1030 Wien"
+        },
+        "lose": [
+            {
+                "id": "1",
+                "name": "Los 1",
+                "beschreibung": "Aufsatzleuchten"
+            },
+            {
+                "id": "2",
+                "name": "Los 2",
+                "beschreibung": "Lichtmasten"
+            },
+            {
+                "id": "3",
+                "name": "Los 3",
+                "beschreibung": "Niro Leuchtengehäuse"
+            },
+            {
+                "id": "4",
+                "name": "Los 4",
+                "beschreibung": "Mastausleger"
+            }
+        ]
+    },
+    "eignungskriterien": [
+        {
+            "id": "EIK_BEF_1",
+            "kategorie": "befugnis",
+            "bezeichnung": "Befugnis zur Erbringung der Leistungen (EU-/EWR-Mitgliedstaaten)",
+            "anforderung": "Teilnahmeberechtigt sind in den EU- bzw. EWR-Mitgliedstaaten ansässige natürliche und juristische Personen, die nachweislich gemäß den jeweils gültigen gesetzlichen Bestimmungen ihres Heimatlandes zur Erbringung der ausgeschriebenen Leistungen befugt sind.",
+            "geltung": {
+                "fuer": [
+                    "bieter"
+                ],
+                "los_ids": [],
+                "stufe": "angebot"
+            },
+            "nachweise": [
+                {
+                    "typ": "pflicht",
+                    "dokument": "Auszug aus dem Gewerbeinformationssystem Austria (GISA) oder Auszug aus dem Mitgliederverzeichnis der Wirtschaftskammer",
+                    "herausgeber": null,
+                    "gueltigkeit": "nicht älter als drei Monate",
+                    "hinweis": "Für österreichische Bieter",
+                    "quelle": {
+                        "abschnitt": "5.2. (2)",
+                        "seite": 12,
+                        "zitat": "Österreichische Bieter haben mit Angebotsabgabe ihre Befugnis zur Erbringung der Leistungen durch: · einen Auszug aus dem Gewerbeinformationssystem Austria (GISA) oder · einen Auszug aus dem Mitgliederverzeichnis der Wirtschaftskammer nachzuweisen. Die Nachweise dürfen nicht älter als drei Monate sein."
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "Urkunde über die Eintragung im Berufsregister oder Handelsregister des Herkunftslandes oder dort vorgesehene Bescheinigung oder eidesstattliche Erklärung",
+                    "herausgeber": null,
+                    "gueltigkeit": null,
+                    "hinweis": "Für ausländische Bieter, welche keine einschlägige österreichische Gewerbeberechtigung haben. Welche Nachweise vorzulegen sind, bestimmt sich nach dem Anhang IX zum BVergG 2018.",
+                    "quelle": {
+                        "abschnitt": "5.2. (3)",
+                        "seite": 12,
+                        "zitat": "Ausländische Bieter, die keine einschlägige österreichische Gewerbeberechtigung haben, haben zum Nachweis ihrer Befugnis zur Erbringung der Leistungen mit der Angebotsabgabe eine entsprechende Urkunde über die Eintragung im Berufsregister oder Handelsregister des Herkunmers oder die dort vorgesehene Bescheinigung oder eidesstattliche Erklärung vorzulegen. Welche Nachweise für ein bestimmtes Herkunftsland vorzulegen sind, bestimmt sich nach dem Anhang IX zum BVergG 2018."
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "Nachweis der Einleitung eines behördlichen Verfahrens betreffend Berufsqualifikation",
+                    "herausgeber": null,
+                    "gueltigkeit": "vor Ablauf der Angebotsfrist",
+                    "hinweis": "Für Bieter aus anderen Vertragsparteien des EWR-Abkommens, die eine behördliche Entscheidung betreffend ihre Berufsqualifikation einholen müssen.",
+                    "quelle": {
+                        "abschnitt": "5.2. (4) Hinweis",
+                        "seite": 12,
+                        "zitat": "Mit dem Angebot haben die Bieter den Nachweis zu erbringen, dass sie vor Ablauf der Angebotsfrist ein entsprechendes Verfahren eingeleitet haben."
+                    }
+                }
+            ],
+            "quelle": {
+                "abschnitt": "5.2. Befugnis",
+                "seite": 12,
+                "zitat": null
+            },
+            "pruefung": {
+                "status": null,
+                "zeichen": null,
+                "datum": null
+            },
+            "meta": {},
+            "erweiterungen": {}
+        },
+        {
+            "id": "EIK_ZUVE_1",
+            "kategorie": "zuverlaessigkeit",
+            "bezeichnung": "Berufliche Zuverlässigkeit",
+            "anforderung": "Der Bieter muss zuverlässig im Sinne des BVergG 2018 sein und es darf kein Ausschlussgrund gemäß § 78 Abs 1 BVergG 2018 vorliegen. Insbesondere straf- und arbeitsrechtliche Unbescholtenheit, keine Liquidation, keine Einstellung der gewerblichen Tätigkeiten, kein eingeleitetes oder mangels Vermögens abgewiesenes Insolvenzverfahren.",
+            "geltung": {
+                "fuer": [
+                    "bieter",
+                    "subunternehmer",
+                    "sonstige_dritte"
+                ],
+                "los_ids": [],
+                "stufe": "angebot"
+            },
+            "nachweise": [
+                {
+                    "typ": "pflicht",
+                    "dokument": "Strafregisterbescheinigung gemäß § 10 StREG 1968 oder Registerauskunft für Verbände gemäß § 89m GOG oder gleichwertige Bescheinigung",
+                    "herausgeber": "Gerichts- oder Verwaltungsbehörde des Sitzstaates",
+                    "gueltigkeit": "am Tag der Angebotsöffnung nicht älter als drei Monate",
+                    "hinweis": "Für juristische Personen: für alle physischen Personen in der Geschäftsführung und zusätzlich Firmenbuchauszug oder Auszug aus dem Vereinsregister, aus dem die Personen ersichtlich sind.",
+                    "quelle": {
+                        "abschnitt": "5.3. (3)",
+                        "seite": 13,
+                        "zitat": "Strafregisterbescheinigung gemäß § 10 des Strafregistergesetzes 1968, BGBl. Nr. 277/1968 bzw. die Registerauskunft für Verbände gemäß § 89m des Gerichtsorganisationsgesetzes -GOG, RGBl. Nr. 217/1896, oder eine gleichwertige Bescheinigung einer Gerichts- oder Verwaltungsbehörde des Sitzstaates des Unternehmers, aus der hervorgeht, dass die berufliche Zuverlässigkeit nicht in Frage gestellt wird. Handelt es sich beim Bieter um eine juristische Person, sind diese Dokumente für alle physischen Personen vorzulegen, die in der Geschäftsführung tätig sind. In diesem Fall ist auch ein Firmenbuchauszug oder ein Auszug aus dem Vereinsregister vorzulegen, aus dem ersichtlich ist, welche Personen in der Geschäftsführung tätig sind. Die Strafregisterbescheinigung bzw. die Registerauskunft für Verbände darf am Tag der Angebotsöffnung nicht älter als drei Monate sein."
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "Auszug aus der Insolvenzdatei gemäß § 256 IO",
+                    "herausgeber": null,
+                    "gueltigkeit": "am Tag der Angebotsöffnung nicht älter als drei Monate",
+                    "hinweis": null,
+                    "quelle": {
+                        "abschnitt": "5.3. (3)",
+                        "seite": 13,
+                        "zitat": "Auszug aus der Insolvenzdatei gemäß § 256 der Insolvenzordnung -IO, RGBl. Nr. 337/1914 (am Tag der Angebotsöffnung nicht älter als drei Monate);"
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "Firmenbuchauszug gemäß § 33 FBG",
+                    "herausgeber": null,
+                    "gueltigkeit": "am Tag der Angebotsöffnung nicht älter als drei Monate",
+                    "hinweis": null,
+                    "quelle": {
+                        "abschnitt": "5.3. (3)",
+                        "seite": 13,
+                        "zitat": "Firmenbuchauszug gemäß § 33 des Firmenbuchgesetzes, BGBl. Nr. 10/1991 (am Tag der Angebotsöffnung nicht älter als drei Monate);"
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "Kontoauszug oder Unbedenklichkeitsbescheinigung der zuständigen Sozialversicherungsanstalt",
+                    "herausgeber": null,
+                    "gueltigkeit": "am Tag der Angebotsöffnung nicht älter als drei Monate",
+                    "hinweis": "Zum Nachweis der Erfüllung der Verpflichtungen zur Zahlung der Sozialversicherungsbeiträge.",
+                    "quelle": {
+                        "abschnitt": "5.3. (3)",
+                        "seite": 13,
+                        "zitat": "Kontoauszug oder eine Unbedenklichkeitsbescheinigung der zuständigen Sozialversicherungsanstalt (am Tag der Angebotsöffnung nicht älter als drei Monate) zum Nachweis der Erfüllung der Verpflichtungen zur Zahlung der Sozialversicherungsbeiträge;"
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "Rückstandsbescheinigung gemäß § 229a BAO oder Auszug aus dem Steuerkonto",
+                    "herausgeber": null,
+                    "gueltigkeit": "am Tag der Angebotsöffnung nicht älter als drei Monate",
+                    "hinweis": "Zum Nachweis der Erfüllung der Verpflichtung zur Zahlung der Steuern und Abgaben.",
+                    "quelle": {
+                        "abschnitt": "5.3. (3)",
+                        "seite": 13,
+                        "zitat": "Rückstandsbescheinigung gemäß § 229a Bundesabgabenordnung (BAO), BGBl. Nr. 194/1961 oder Auszug aus dem Steuerkonto (am Tag der Angebotsöffnung nicht älter als drei Monate) zum Nachweis der Erfüllung der Verpflichtung zur Zahlung der Steuern und Abgaben."
+                    }
+                },
+                {
+                    "typ": "pflicht",
+                    "dokument": "Gleichwertige Urkunden oder eidesstattliche Erklärung",
+                    "herausgeber": null,
+                    "gueltigkeit": null,
+                    "hinweis": "Für Bieter aus dem Ausland, falls die Ausstellung eines behördlichen Nachweises nicht möglich ist.",
+                    "quelle": {
+                        "abschnitt": "5.3. (4)",
+                        "seite": 14,
+                        "zitat": "Bieter aus dem Ausland haben die oben genannten Nachweise durch die Vorlage gleichwertiger Urkunden zu erbringen. Ist im Herkunftsland des Bieters die Ausstellung eines behördlichen Nachweises nicht möglich, was der Bieter glaubhaft zu machen hat, so tritt an dessen Stelle eine entsprechende eidesstattliche Erklärung des Bieters."
+                    }
+                }
+            ],
+            "quelle": {
+                "abschnitt": "5.3. Berufliche Zuverlässigkeit",
+                "seite": 12,
+                "zitat": null
+            },
+            "pruefung": {
+                "status": null,
+                "zeichen": null,
+                "datum": null
+            },
+            "meta": {},
+            "erweiterungen": {}
+        },
+        {
+            "id": "EIK_TECH_1",
+            "kategorie": "technisch",
+            "bezeichnung": "Mitarbeiteranzahl",
+            "anforderung": "Der Bieter muss in den drei Geschäftsjahren 2021, 2022 und 2023 ständig mindestens 10 Dienstnehmer (Vollzeitäquivalente) beschäftigt haben.",
+            "geltung": {
+                "fuer": [
+                    "bieter"
+                ],
+                "los_ids": [],
+                "stufe": "angebot"
+            },
+            "nachweise": [
+                {
+                    "typ": "pflicht",
+                    "dokument": "Ausgefülltes und von einem Steuerberater oder Wirtschaftsprüfer unterfertigtes Formblatt Beilage 05 'Leistungsfähigkeit Dienstnehmer und Umsätze'",
+                    "herausgeber": null,
+                    "gueltigkeit": null,
+                    "hinweis": null,
+                    "quelle": {
+                        "abschnitt": "5.4.3.",
+                        "seite": 14,
+                        "zitat": "die in Bezug auf die Anzahl der Dienstnehmer (Vollzeitäquivalente) der oben angeführten Geschäftsjahre ausgefüllte und von einem Steuerberater oder Wirtschaftsprüfer unterfertigte Beilage 05 'Leistungsfähigkeit Dienstnehmer und Umsätze';"
+                    }
+                }
+            ],
+            "quelle": {
+                "abschnitt": "5.4.1. Mitarbeiteranzahl",
+                "seite": 14,
+                "zitat": null
+            },
+            "pruefung": {
+                "status": null,
+                "zeichen": null,
+                "datum": null
+            },
+            "meta": {},
+            "erweiterungen": {}
+        },
+        {
+            "id": "EIK_TECH_2",
+            "kategorie": "technisch",
+            "bezeichnung": "Referenzprojekt (Lieferung von Leuchten, Lichtmasten und Auslegern)",
+            "anforderung": "Der Bewerber muss in den letzten drei Jahren (zurückgerechnet ab dem Datum der Veröffentlichung der Ausschreibung) im Rahmen eines Referenzprojektes Leuchten, Lichtmasten und Auslegern im Wert von mindestens EUR 100.000,00 (exkl. USt.) geliefert haben.",
+            "geltung": {
+                "fuer": [
+                    "bieter"
+                ],
+                "los_ids": [],
+                "stufe": "angebot"
+            },
+            "nachweise": [
+                {
+                    "typ": "pflicht",
+                    "dokument": "Ausgefüllte und unterfertigte Beilage 06 'Leistungsfähigkeit Referenzen'",
+                    "herausgeber": "Historischer Auftraggeber oder Bieter (mit Begründung)",
+                    "gueltigkeit": null,
+                    "hinweis": "Der Nachweis ist vom historischen Auftraggeber unterfertigen zu lassen. Falls die Unterschrift des historischen Auftraggebers nicht erhältlich ist, ist die Ersatzunterschrift des Bieters ausreichend, wobei anzugeben ist, weshalb die Unterschrift nicht erhältlich war. Eine Auskunftsperson des historischen Auftraggebers muss angeführt werden.",
+                    "quelle": {
+                        "abschnitt": "5.4.3.",
+                        "seite": 14,
+                        "zitat": "die in Bezug auf das Referenzprojekt ausgefüllte Beilage 06 'Leistungsfähigkeit Referenzen'. Der Nachweis ist vom historischen Auftraggeber unterfertigen zu lassen. Falls die Unterschrift des historischen Auftraggebers nicht erhältlich ist, ist die Ersatzunterschrift des Bieters ausreichend. In diesem Fall ist anzugeben, weshalb die Unterschrift des historischen Auftraggebers nicht erhältlich war. Jedenfalls ist in den Nachweisen eine Auskunftsperson des historischen Auftraggebers anzuführen. Der Auftraggeber behält sich vor, nähere Auskünfte von dieser einzuholen. Referenzen, die nicht vom historischen Auftraggeber unterfertigt sind und hinsichtlich derer keine näheren Auskünfte von der angeführten Auskunftsperson des historischen Auftraggebers eingeholt werden können, werden vom Auftraggeber nicht berücksichtigt. Sofern bei dem Referenzprojekt Leistungen im Rahmen einer Arbeitsgemeinschaft erbracht wurden, ist maßgeblich, welche Leistungen der Bieter selbst erbracht hat. Sofern bei dem Referenzprojekt Leistungen als Subunternehmer erbracht wurden, ist maßgeblich, welche Leistungen der Bieter selbst erbracht hat."
+                    }
+                }
+            ],
+            "quelle": {
+                "abschnitt": "5.4.2. Referenz",
+                "seite": 14,
+                "zitat": null
+            },
+            "pruefung": {
+                "status": null,
+                "zeichen": null,
+                "datum": null
+            },
+            "meta": {},
+            "erweiterungen": {}
+        },
+        {
+            "id": "EIK_WIFI_1",
+            "kategorie": "wirtschaftlich_finanziell",
+            "bezeichnung": "Bonitätsranking",
+            "anforderung": "Der Bieter hat nachzuweisen, dass er ein KSV-Rating von nicht schlechter als 399 (geringes Risiko) bzw. ein gleichwertiges Rating einer dem KSV 1870 gleichwertigen europäischen Wirtschaftsauskunftsstelle aufweist.",
+            "geltung": {
+                "fuer": [
+                    "bieter",
+                    "konsortialmitglied"
+                ],
+                "los_ids": [],
+                "stufe": "angebot"
+            },
+            "nachweise": [
+                {
+                    "typ": "pflicht",
+                    "dokument": "Aktuelle Auskunft des Kreditschutzverbandes von 1870 (KSV) oder ein vergleichbares Rating einer europäischen Bonitätsauskunft/Ratingagentur",
+                    "herausgeber": "KSV 1870 oder vergleichbare europäische Bonitätsauskunft/Ratingagentur",
+                    "gueltigkeit": "aktuell",
+                    "hinweis": "Im Falle der Teilnahme als BIEGE hat jedes Mitglied der BIEGE ein entsprechendes Rating nachzuweisen.",
+                    "quelle": {
+                        "abschnitt": "5.5.4.",
+                        "seite": 15,
+                        "zitat": "eine aktuelle Auskunft des Kreditschutzverbandes von 1870 (KSV) oder ein vergleichbares Rating einer europäischen Bonitätsauskunft/Ratingagentur;"
+                    }
+                }
+            ],
+            "quelle": {
+                "abschnitt": "5.5.1. Bonitätsranking",
+                "seite": 15,
+                "zitat": null
+            },
+            "pruefung": {
+                "status": null,
+                "zeichen": null,
+                "datum": null
+            },
+            "meta": {},
+            "erweiterungen": {}
+        },
+        {
+            "id": "EIK_WIFI_2",
+            "kategorie": "wirtschaftlich_finanziell",
+            "bezeichnung": "Betriebshaftpflichtversicherung",
+            "anforderung": "Der Bieter muss über eine Betriebshaftpflichtversicherung mit einer Deckungssumme von mindestens EUR 1.000.000,00 pro Schadenfall verfügen.",
+            "geltung": {
+                "fuer": [
+                    "bieter",
+                    "subunternehmer"
+                ],
+                "los_ids": [],
+                "stufe": "angebot"
+            },
+            "nachweise": [
+                {
+                    "typ": "pflicht",
+                    "dokument": "Aktuelle Nachweise (z.B. Polizze, Deckungszusage oder Versicherungsbestätigung) des Abschlusses einer aufrechten Betriebshaftpflichtversicherung",
+                    "herausgeber": "Versicherung",
+                    "gueltigkeit": "aufrecht",
+                    "hinweis": "sowie einen Nachweis über die Bezahlung der letztfälligen Prämie.",
+                    "quelle": {
+                        "abschnitt": "5.5.4.",
+                        "seite": 15,
+                        "zitat": "aktuelle Nachweise (z.B. Polizze, Deckungszusage oder Versicherungsbestätigung) des Abschlusses einer aufrechten Betriebshaftpflichtversicherung mit einer Deckungssumme von mindestens EUR 1.000.000,00 pro Schadenfall sowie einen Nachweis über die Bezahlung der letztfälligen Prämie;"
+                    }
+                }
+            ],
+            "quelle": {
+                "abschnitt": "5.5.2. Betriebshaftpflichtversicherung",
+                "seite": 15,
+                "zitat": null
+            },
+            "pruefung": {
+                "status": null,
+                "zeichen": null,
+                "datum": null
+            },
+            "meta": {},
+            "erweiterungen": {}
+        },
+        {
+            "id": "EIK_WIFI_3",
+            "kategorie": "wirtschaftlich_finanziell",
+            "bezeichnung": "Jahresumsatz",
+            "anforderung": "Der Bieter muss in den drei Geschäftsjahren 2021, 2022 und 2023 einen Jahresumsatz von durchschnittlich mindestens EUR 1.000.000,00 erwirtschaftet haben.",
+            "geltung": {
+                "fuer": [
+                    "bieter"
+                ],
+                "los_ids": [],
+                "stufe": "angebot"
+            },
+            "nachweise": [
+                {
+                    "typ": "pflicht",
+                    "dokument": "Ausgefülltes und von einem Steuerberater oder Wirtschaftsprüfer unterfertigtes Formblatt Beilage 05 'Leistungsfähigkeit Dienstnehmer und Umsätze'",
+                    "herausgeber": null,
+                    "gueltigkeit": null,
+                    "hinweis": null,
+                    "quelle": {
+                        "abschnitt": "5.5.4.",
+                        "seite": 15,
+                        "zitat": "die in Bezug auf die durchschnittlichen Jahresumsätze der oben angeführten Geschäftsjahre ausgefüllte und von einem Steuerberater oder Wirtschaftsprüfer unterfertigte Beilage 05 'Leistungsfähigkeit Dienstnehmer und Umsätze'."
+                    }
+                }
+            ],
+            "quelle": {
+                "abschnitt": "5.5.3. Jahresumsatz",
+                "seite": 15,
+                "zitat": null
+            },
+            "pruefung": {
+                "status": null,
+                "zeichen": null,
+                "datum": null
+            },
+            "meta": {},
+            "erweiterungen": {}
+        }
+    ],
+    "zuschlag": {
+        "prinzip": "bestbieter",
+        "bewertungsmethode": "Der Rahmenvertrag soll je Los mit jenem Bieter abgeschlossen werden, der die höchste Punktezahl erzielt. Im Falle eines Punktegleichstands wird der Rahmenvertrag je Los mit dem Bieter abgeschlossen, dessen Angebot im Zuschlagskriterium 'Gesamtpreis' die höhere Punkteanzahl erreicht hat.",
+        "je_los": [
+            {
+                "los_id": null,
+                "prinzip": "bestbieter",
+                "kriterien": [
+                    {
+                        "name": "Gesamtpreis",
+                        "gewichtung": {
+                            "wert": 700,
+                            "einheit": "punkte"
+                        },
+                        "wertungssystem": "Das Angebot mit dem niedrigsten bewertungsrelevanten Gesamtpreis erhält die Maximalpunkteanzahl von 700 Punkten. Alle anderen bewertungsrelevanten Angebote erhalten in jenem Ausmaß weniger Punkte, als sie teurer als das günstigste Angebot sind. Punkteberechnung: niedrigster Gesamtpreis * Maximalpunkteanzahl des Zuschlagskriteriums / zu bewertender Gesamtpreis = erreichte Punkte.",
+                        "quelle": {
+                            "abschnitt": "7.2. (2)",
+                            "seite": 20,
+                            "zitat": "Im Zuschlagskriterium 'Preis' können maximal 700 Punkte erreicht werden. Das Angebot mit dem niedrigsten bewertungsrelevanten Gesamtpreis erhält die Maximalpunkteanzahl von 700 Punkten. Alle anderen bewertungsrelevanten Angebote erhalten in jenem Ausmaß weniger Punkte, als sie teurer als das günstigste Angebot sind. Sofern erforderlich, erfolgt eine kaufmännische Rundung auf zwei Kommastellen. Die Punkteberechnung erfolgt anhand folgender Formel: niedrigster Gesamtpreis * Maximalpunkteanzahl des Zuschlagskriteriums zu bewertender Gesamtpreis = erreichte Punkte"
+                        },
+                        "pruefung": {
+                            "status": null,
+                            "zeichen": null,
+                            "datum": null
+                        },
+                        "meta": {},
+                        "erweiterungen": {}
+                    },
+                    {
+                        "name": "Qualität - ISO-Zertifizierungen",
+                        "gewichtung": {
+                            "wert": 150,
+                            "einheit": "punkte"
+                        },
+                        "wertungssystem": "Punktevergabe gemäß Vorhandensein folgender Zertifizierungen: ISO 14001 (50 Punkte), ISO 45001 (50 Punkte), ISO 9001 (50 Punkte). Maximal 150 Punkte. Für Bietergemeinschaften: Nur Zertifizierungen, über die alle Mitglieder der BIEGE verfügen, sind bewertungsrelevant.",
+                        "quelle": {
+                            "abschnitt": "7.3.1.",
+                            "seite": 21,
+                            "zitat": "Der Bieter kann in der Beilage 08 'Zuschlagskriterium ISO-Zertifizierungen' angeben, ob er zum Zeitpunkt des Ablaufs der Angebotsfrist über die in Punkt 7.3.1. (2) aufgelisteten ISO-Zertifizierungen verfügt. Hierfür erhält der Bieter gemäß den Vorgaben in Punkt 7.3.1. (2) Punkte. [...] Im Zuschlagskriterium Qualität 'ISO Zertifizierungen' -können 0, 50, 100 oder 150 Punkte erreicht werden. [...] Bewertungsrelevant sind ausschließlich Zertifizierungen, über die alle Mitglieder der BIEGE verfügen."
+                        },
+                        "pruefung": {
+                            "status": null,
+                            "zeichen": null,
+                            "datum": null
+                        },
+                        "meta": {},
+                        "erweiterungen": {}
+                    },
+                    {
+                        "name": "Qualität - Verkürzung der Lieferfrist",
+                        "gewichtung": {
+                            "wert": 150,
+                            "einheit": "punkte"
+                        },
+                        "wertungssystem": "Punktevergabe gemäß der angebotenen Verkürzung der Lieferfrist von ursprünglich 8 Kalenderwochen: 1 Kalenderwoche Verkürzung (7 KW Lieferfrist) = 50 Punkte; 2 Kalenderwochen Verkürzung (6 KW Lieferfrist) = 100 Punkte; 3 Kalenderwochen Verkürzung (5 KW Lieferfrist) = 150 Punkte. Bei keiner Angabe oder nicht abgegebener Beilage 09: 0 Punkte.",
+                        "quelle": {
+                            "abschnitt": "7.3.2.",
+                            "seite": 21,
+                            "zitat": "Der Bieter kann in der Beilage 09 'Zuschlagskriterium Lieferfrist' angeben, ob er die in Punkt 5.2.(1) des Rahmenvertrages vorgesehene Lieferfrist von 8 Kalenderwochen verkürzen möchte. Hierfür erhält der Bieter gemäß den Vorgaben in Punkt 7.3.2. (2) Punkte. [...] Im Zuschlagskriterium Qualität 'Verkürzung der Lieferfrist' können 0, 50, 100 oder 150 Punkte erreicht werden. [...] Gibt der Bieter in der Beilage 09 'Zuschlagskriterium Lieferfrist' eine Verkürzung der Lieferfrist an, gilt abweichend zu Punkt 5.2.(1) des Rahmenvertrages die in der Beilage 09 'Zuschlagskriterium Lieferfrist' angekreuzte kürzere Lieferfrist als vereinbart. Die verkürzte Lieferfrist gilt über die gesamte Vertragslaufzeit."
+                        },
+                        "pruefung": {
+                            "status": null,
+                            "zeichen": null,
+                            "datum": null
+                        },
+                        "meta": {},
+                        "erweiterungen": {}
+                    }
+                ],
+                "quelle": {
+                    "abschnitt": "7.1. (2)",
+                    "seite": 20,
+                    "zitat": "Die Bewertung der Angebote erfolgte je Los anhand der nachstehenden unterschiedlich gewichteten Zuschlagskriterien: [Tabelle]"
+                }
+            }
+        ]
+    },
+    "subunternehmer": {
+        "regelungen": [
+            {
+                "text": "Der Bieter kann sich zur Durchführung der ausschreibungsgegenständlichen Leistungen auch Subunternehmern bedienen, soweit diese die für die Ausführung des entsprechenden Teils der Leistung erforderliche Befugnis, technische, finanzielle und wirtschaftliche Leistungsfähigkeit sowie berufliche Zuverlässigkeit gemäß Punkt 5. besitzen.",
+                "quelle": {
+                    "abschnitt": "4.2. (1)",
+                    "seite": 9,
+                    "zitat": "Der Bieter kann sich zur Durchführung der ausschreibungsgegenständlichen Leistungen auch Subunternehmern bedienen, soweit diese die für die Ausführung des entsprechenden Teils der Leistung erforderliche Befugnis, technische, finanzielle und wirtschaftliche Leistungsfähigkeit sowie berufliche Zuverlässigkeit gemäß Punkt 5. besitzen."
+                }
+            },
+            {
+                "text": "Für den Leistungsteil erforderlich sind jedenfalls die berufliche Zuverlässigkeit sowie die Befugnis. Die finanzielle und wirtschaftliche sowie technische Leistungsfähigkeit muss in dem Ausmaß vorliegen, in dem sie in diesen Ausschreibungsunterlagen ausdrücklich einem konkreten Leistungsteil zugeordnet ist.",
+                "quelle": {
+                    "abschnitt": "4.2. (1)",
+                    "seite": 9,
+                    "zitat": "Für den Leistungsteil erforderlich sind jedenfalls die berufliche Zuverlässigkeit sowie die Befugnis. Die finanzielle und wirtschaftliche sowie technische Leistungsfähigkeit muss in dem Ausmaß vorliegen, in dem sie in diesen Ausschreibungsunterlagen ausdrücklich einem konkreten Leistungsteil zugeordnet ist."
+                }
+            },
+            {
+                "text": "Die Weitergabe des gesamten Auftrages an einen oder mehrere Subunternehmer ist unzulässig. Von dieser Bestimmung ausgenommen sind Kaufverträge und die Weitergabe an verbundene Unternehmen gemäß § 2 Z 40 BVergG 2018.",
+                "quelle": {
+                    "abschnitt": "4.2. (1)",
+                    "seite": 9,
+                    "zitat": "Die Weitergabe des gesamten Auftrages an einen oder mehrere Subunternehmer ist unzulässig. Von dieser Bestimmung ausgenommen sind Kaufverträge und die Weitergabe an verbundene Unternehmen gemäß § 2 Z 40 BVergG 2018."
+                }
+            },
+            {
+                "text": "Überdies ist die Weitergabe von Leistungen durch Subunternehmer an weitere Unternehmen (Subsubunternehmen) unzulässig.",
+                "quelle": {
+                    "abschnitt": "4.2. (1)",
+                    "seite": 9,
+                    "zitat": "Überdies ist die Weitergabe von Leistungen durch Subunternehmer an weitere Unternehmen (Subsubunternehmen) unzulässig."
+                }
+            },
+            {
+                "text": "Die Haftung des Auftragnehmers wird durch den Einsatz von Subunternehmern nicht berührt.",
+                "quelle": {
+                    "abschnitt": "4.2. (1)",
+                    "seite": 9,
+                    "zitat": "Die Haftung des Auftragnehmers wird durch den Einsatz von Subunternehmern nicht berührt."
+                }
+            },
+            {
+                "text": "Unternehmen, die für den Nachweis der Eignung erforderlich sind, müssen im Angebot genannt werden, selbst wenn es sich nicht um Subunternehmer handelt oder diese keine wesentlichen Leistungsteile erbringen. Die Regelungen für Subunternehmer gelten daher für diese Unternehmen im vollen Umfang.",
+                "quelle": {
+                    "abschnitt": "4.2. (2)",
+                    "seite": 9,
+                    "zitat": "Unternehmen, die für den Nachweis der Eignung erforderlich sind, müssen im Angebot genannt werden, selbst wenn es sich nicht um Subunternehmer handelt oder diese keine wesentlichen Leistungsteile erbringen. Die Regelungen für Subunternehmer gelten daher für diese Unternehmen im vollen Umfang."
+                }
+            },
+            {
+                "text": "Eine nachträgliche Nennung im Zuge der Angebotsprüfung ist nicht zulässig.",
+                "quelle": {
+                    "abschnitt": "4.2. (3)",
+                    "seite": 10,
+                    "zitat": "Eine nachträgliche Nennung im Zuge der Angebotsprüfung ist nicht zulässig."
+                }
+            },
+            {
+                "text": "Erfüllt ein Subunternehmer nicht die festgelegten Anforderungen wird er bei der Prüfung und Bewertung der Angebote nicht weiter berücksichtigt. Allenfalls vom Subunternehmer zur Verfügung gestellte Kapazitäten können dem Bieter nicht zugerechnet werden. Erfüllt der Bieter ohne diese Subunternehmer die Eignungsanforderungen nicht, ist das Angebot auszuscheiden.",
+                "quelle": {
+                    "abschnitt": "4.2. (3)",
+                    "seite": 10,
+                    "zitat": "Erfüllt ein Subunternehmer nicht die festgelegten Anforderungen wird er bei der Prüfung und Bewertung der Angebote nicht weiter berücksichtigt. Allenfalls vom Subunternehmer zur Verfügung gestellte Kapazitäten können dem Bieter nicht zugerechnet werden. Erfüllt der Bieter ohne diese Subunternehmer die Eignungsanforderungen nicht, ist das Angebot auszuscheiden."
+                }
+            }
+        ],
+        "nachweise": [
+            {
+                "name": "Subunternehmerliste",
+                "typ": "pflicht",
+                "quelle": {
+                    "abschnitt": "4.2. (3)",
+                    "seite": 10
+                }
+            },
+            {
+                "name": "Verpflichtungserklärung Subunternehmer",
+                "typ": "pflicht",
+                "quelle": {
+                    "abschnitt": "4.2. (3)",
+                    "seite": 10
+                }
+            },
+            {
+                "name": "Nachweis der Eignung (analog Punkt 5.)",
+                "typ": "pflicht",
+                "quelle": {
+                    "abschnitt": "4.2. (3)",
+                    "seite": 10
+                }
+            },
+            {
+                "name": "Nachweis der beruflichen Zuverlässigkeit",
+                "typ": "pflicht",
+                "quelle": {
+                    "abschnitt": "4.2. (3)",
+                    "seite": 10
+                }
+            },
+            {
+                "name": "Nachweis der Befugnisse für den zu erbringenden Leistungsteil",
+                "typ": "pflicht",
+                "quelle": {
+                    "abschnitt": "4.2. (3)",
+                    "seite": 10
+                }
+            },
+            {
+                "name": "Nachweis einer Betriebshaftpflichtversicherung im Umfang von mindestens EUR 1.000.000,00 pro Schadenfall",
+                "typ": "pflicht",
+                "quelle": {
+                    "abschnitt": "4.2. (3)",
+                    "seite": 10
+                }
+            },
+            {
+                "name": "Erklärung über die solidarische Haftung der herangezogenen Subunternehmer gegenüber dem Auftraggeber (Beilage 03)",
+                "typ": "pflicht",
+                "quelle": {
+                    "abschnitt": "4.2. (3)",
+                    "seite": 10
+                }
+            }
+        ]
+    },
+    "formalien": {
+        "fristen": [
+            {
+                "name": "Angebotsfrist",
+                "zeitpunkt": "2025-06-16T10:00:00Z",
+                "hinweis": "Angebote müssen bis zu diesem Zeitpunkt über die Vergabeplattform eingereicht werden.",
+                "quelle": {
+                    "abschnitt": "6.9. (1)",
+                    "seite": 19
+                }
+            },
+            {
+                "name": "Angebotsbindefrist",
+                "zeitpunkt": null,
+                "hinweis": "Die Frist zur Entscheidung, mit welchem Unternehmer der Rahmenvertrag abgeschlossen werden soll, endet fünf Monate nach Ende der Angebotsfrist. Die Bieter sind an ihr Angebot bis zum Ende dieser Frist gebunden. Der Auftraggeber beabsichtigt jedoch, die Entscheidung bis spätestens September 2025 zu treffen. Während eines allfälligen Nachprüfungsverfahrens ist diese Entscheidungsfrist gehemmt, wodurch sich der Zeitraum, in welchem die Bieter an ihr Angebot gebunden sind, verlängern kann.",
+                "quelle": {
+                    "abschnitt": "10. (1) & (2)",
+                    "seite": 22
+                }
+            }
+        ],
+        "abgabe": {
+            "plattform": "http://www.vergabeportal.at",
+            "formate": [
+                ".doc",
+                ".docx",
+                ".xls",
+                ".xlsx",
+                ".ppt",
+                ".pptx",
+                ".jpg",
+                ".png",
+                ".bmp",
+                ".pdf",
+                "OpenOffice-Dokumente"
+            ],
+            "signatur": [
+                "qualifizierte_e_signatur",
+                "siegel",
+                "amtssignatur"
+            ],
+            "sprachen": [
+                "de"
+            ]
+        },
+        "bietergemeinschaft": [
+            "Bietergemeinschaften können Angebote einreichen. Sie haben eine Auflistung der Mitglieder, die Gründe für die Bildung und die Aufgaben der einzelnen Mitglieder zu machen (Beilage 01).",
+            "Im Fall der Bildung einer BIEGE haften die beteiligten Unternehmer solidarisch für sämtliche Verpflichtungen.",
+            "Ein federführendes Mitglied sowie einen zustell- und verhandlungsbevollmächtigten Vertreter sind in Beilage 01 zu benennen.",
+            "Die elektronische Unterfertigung des Angebots hat durch sämtliche Mitglieder der BIEGE in rechtsgültiger Form zu erfolgen.",
+            "Der Wechsel von Mitgliedern einer BIEGE oder ARGE nach Angebotsabgabe ist unzulässig. Der Wegfall eines Mitglieds stellt einen Ausscheidensgrund dar.",
+            "Bei Mehrfachbeteiligung (Bieter, BIEGE, ARGE) muss innerhalb von 7 Kalendertagen nach Aufforderung nachgewiesen werden, dass die Zusammenarbeit keine Auswirkung auf das Verhalten im Vergabeverfahren, keine Wettbewerbsbeeinträchtigung und eine völlig unabhängige Angebotserstellung und -kalkulation bewirkt. Andernfalls werden alle betroffenen Angebote ausgeschieden."
+        ],
+        "nachweisregeln_allgemein": [
+            "Sämtliche Nachweise sind in Kopie in deutscher Sprache beizulegen. Soweit sie nicht in deutscher Sprache abgefasst sind, sind diese in beglaubigter deutscher Übersetzung ebenfalls in Kopie vorzulegen.",
+            "Der Auftraggeber behält sich vor, gegebenenfalls die Vorlage von Nachweisen im Original nachzufordern.",
+            "Der Bieter und die Subunternehmer können den Nachweis der Eignung auch durch Vorlage einer einheitlichen europäischen Eigenerklärung (EEE) erbringen. Die Nachweise sind in diesem Fall nur nach schriftlicher Aufforderung des Auftraggebers innerhalb von sieben Kalendertagen zu übermitteln.",
+            "Der Bieter kann den Nachweis seiner Eignung durch den Hinweis auf eine für den Auftraggeber kostenlos zugängliche Datenbank bzw. einem kostenlos zugänglichen Katasterdienst eines Dritten gemäß § 80 Abs 5 BVergG 2018 (z.B. ANKÖ) führen. Die Nachweise sind in diesem Fall nur nach schriftlicher Aufforderung innerhalb von sieben Kalendertagen zu übermitteln.",
+            "Der Bieter muss jene Nachweise nicht vorlegen, die dem Auftraggeber bereits in einem früheren Vergabeverfahren im Oberschwellenbereich vorgelegt wurden und geeignet sind, die Eignung nachzuweisen. Dies ist bei Angebotsabgabe mit Auflistung der Nachweise und Bezeichnung des Bezugsverfahrens mitzuteilen.",
+            "Sofern in den folgenden Bestimmungen nichts Abweichendes geregelt ist, dürfen sämtliche geforderten Nachweise nicht älter als drei Monate sein."
+        ]
+    },
+    "normzitate": [
+        {
+            "gesetz": "Bundesvergabegesetz 2018",
+            "artikel_oder_paragraf": "BVergG 2018",
+            "kontext": "Rechtliche Grundlage, Eignungsprüfung, Subunternehmer, elektronische Einreichung",
+            "quelle": {
+                "abschnitt": "3.1. (1)",
+                "seite": 4
+            }
+        },
+        {
+            "gesetz": "Bundesvergabegesetz 2018",
+            "artikel_oder_paragraf": "§ 82 Abs 2 Z 1 BVergG 2018",
+            "kontext": "Datenschutz",
+            "quelle": {
+                "abschnitt": "3.7. (1)",
+                "seite": 7
+            }
+        },
+        {
+            "gesetz": "Bundesvergabegesetz 2018",
+            "artikel_oder_paragraf": "§ 2 Z 40 BVergG 2018",
+            "kontext": "Subunternehmer (verbundene Unternehmen)",
+            "quelle": {
+                "abschnitt": "4.2. (1)",
+                "seite": 9
+            }
+        },
+        {
+            "gesetz": "Bundesvergabegesetz 2018",
+            "artikel_oder_paragraf": "§ 2 Z 34 BVergG 2018",
+            "kontext": "Subunternehmer (Definition)",
+            "quelle": {
+                "abschnitt": "4.2. (2)",
+                "seite": 9
+            }
+        },
+        {
+            "gesetz": "Bundesvergabegesetz 2018",
+            "artikel_oder_paragraf": "§ 80 Abs 2 BVergG 2018",
+            "kontext": "Eignung (EEE Formerfordernisse)",
+            "quelle": {
+                "abschnitt": "5.1. (6)",
+                "seite": 11
+            }
+        },
+        {
+            "gesetz": "Bundesvergabegesetz 2018",
+            "artikel_oder_paragraf": "§ 80 Abs 5 BVergG 2018",
+            "kontext": "Eignung (Datenbank/Katasterdienst)",
+            "quelle": {
+                "abschnitt": "5.1. (7)",
+                "seite": 11
+            }
+        },
+        {
+            "gesetz": "Bundesvergabegesetz 2018",
+            "artikel_oder_paragraf": "Anhang IX zum BVergG 2018",
+            "kontext": "Befugnis (ausländische Bieter)",
+            "quelle": {
+                "abschnitt": "5.2. (3)",
+                "seite": 12
+            }
+        },
+        {
+            "gesetz": "Bundesvergabegesetz 2018",
+            "artikel_oder_paragraf": "§ 78 Abs 1 BVergG 2018",
+            "kontext": "Berufliche Zuverlässigkeit (Ausschlussgründe)",
+            "quelle": {
+                "abschnitt": "5.3. (2)",
+                "seite": 12
+            }
+        },
+        {
+            "gesetz": "Strafregistergesetz 1968",
+            "artikel_oder_paragraf": "§ 10",
+            "kontext": "Berufliche Zuverlässigkeit (Strafregisterbescheinigung)",
+            "quelle": {
+                "abschnitt": "5.3. (3)",
+                "seite": 13
+            }
+        },
+        {
+            "gesetz": "Gerichtsorganisationsgesetz",
+            "artikel_oder_paragraf": "§ 89m GOG",
+            "kontext": "Berufliche Zuverlässigkeit (Registerauskunft für Verbände)",
+            "quelle": {
+                "abschnitt": "5.3. (3)",
+                "seite": 13
+            }
+        },
+        {
+            "gesetz": "Insolvenzordnung",
+            "artikel_oder_paragraf": "§ 256 IO",
+            "kontext": "Berufliche Zuverlässigkeit (Insolvenzdatei)",
+            "quelle": {
+                "abschnitt": "5.3. (3)",
+                "seite": 13
+            }
+        },
+        {
+            "gesetz": "Firmenbuchgesetz",
+            "artikel_oder_paragraf": "§ 33 FBG",
+            "kontext": "Berufliche Zuverlässigkeit (Firmenbuchauszug)",
+            "quelle": {
+                "abschnitt": "5.3. (3)",
+                "seite": 13
+            }
+        },
+        {
+            "gesetz": "Bundesabgabenordnung",
+            "artikel_oder_paragraf": "§ 229a BAO",
+            "kontext": "Berufliche Zuverlässigkeit (Rückstandsbescheinigung)",
+            "quelle": {
+                "abschnitt": "5.3. (3)",
+                "seite": 13
+            }
+        },
+        {
+            "gesetz": "E-Government-Gesetz",
+            "artikel_oder_paragraf": "§ 19 Abs 1 E-GovG",
+            "kontext": "Unterfertigung des Angebotes (Amtssignatur)",
+            "quelle": {
+                "abschnitt": "6.8. (1)",
+                "seite": 18
+            }
+        },
+        {
+            "gesetz": "Bundesvergabegesetz 2018",
+            "artikel_oder_paragraf": "§ 48 Abs 12 BVergG 2018",
+            "kontext": "Unterfertigung des Angebotes (elektronische Einreichung)",
+            "quelle": {
+                "abschnitt": "6.7. (5)",
+                "seite": 18
+            }
+        },
+        {
+            "gesetz": "Bundesvergabegesetz 2018",
+            "artikel_oder_paragraf": "§ 133 Abs 4 BVergG 2018",
+            "kontext": "Angebotsöffnung",
+            "quelle": {
+                "abschnitt": "6.9. (4)",
+                "seite": 19
+            }
+        },
+        {
+            "gesetz": "Bundesvergabegesetz 2018",
+            "artikel_oder_paragraf": "§ 133 Abs 5 BVergG 2018",
+            "kontext": "Angebotsöffnung (Protokollinhalt)",
+            "quelle": {
+                "abschnitt": "6.9. (4)",
+                "seite": 19
+            }
+        },
+        {
+            "gesetz": "Ausländerbeschäftigungsgesetz",
+            "artikel_oder_paragraf": "§ 28b AuslBG",
+            "kontext": "Eignung (Zentrale Verwaltungsevidenz des BMF)",
+            "quelle": {
+                "abschnitt": "5.1. (10)",
+                "seite": 12
+            }
+        },
+        {
+            "gesetz": "Lohn- und Sozialdumping-Bekämpfungsgesetz",
+            "artikel_oder_paragraf": "§ 35 LSD-BG",
+            "kontext": "Eignung (Verwaltungsstrafevidenz des Kompetenzzentrums LSDB)",
+            "quelle": {
+                "abschnitt": "5.1. (10)",
+                "seite": 12
+            }
+        }
+    ],
+    "taxonomie": {
+        "abbildungen": []
+    },
+    "kompatibilitaet": {
+        "eignungskriterien_alt": {
+            "befugnis": [],
+            "berufliche_zuverlaessigkeit": [],
+            "technische_leistungsfaehigkeit": [],
+            "finanzielle_und_wirtschaftliche_leistungsfaehigkeit": []
+        },
+        "zuschlagskriterien_alt": []
+    },
+    "erweiterungen": {}
+}
