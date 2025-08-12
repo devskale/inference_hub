@@ -1,0 +1,242 @@
+{
+  "extractedCriteria": {
+    "eignungskriterien": {
+      "befugnis": [
+        {
+          "kriterium": "Nachweis der Befugnis zur Erbringung der ausgeschriebenen Leistungen gemäß den jeweils gültigen gesetzlichen Bestimmungen des Heimatlandes.",
+          "nachweise": [
+            {
+              "typ": "PFLICHT",
+              "dokument": "Auszug aus dem Gewerbeinformationssystem Austria (GISA)",
+              "gueltigkeit": "Nicht älter als sechs Monate",
+              "hinweis": "Für österreichische Bieter."
+            },
+            {
+              "typ": "PFLICHT",
+              "dokument": "Auszug aus dem Mitgliederverzeichnis der Wirtschaftskammer",
+              "gueltigkeit": "Nicht älter als sechs Monate",
+              "hinweis": "Für österreichische Bieter."
+            },
+            {
+              "typ": "PFLICHT",
+              "dokument": "Urkunde über die Eintragung im Berufs- oder Handelsregister des Herkunftslandes",
+              "gueltigkeit": null,
+              "hinweis": "Für ausländische Bieter ohne einschlägige österreichische Gewerbeberechtigung. Oder die dort vorgesehene Bescheinigung oder eidesstattliche Erklärung. Welche Nachweise vorzulegen sind, bestimmt sich nach Anhang IX zum BVergG."
+            },
+            {
+              "typ": "PFLICHT",
+              "dokument": "Nachweis über die Einleitung eines Verfahrens zur behördlichen Entscheidung betreffend Berufsqualifikation",
+              "gueltigkeit": "Vor Ablauf der Angebotsfrist einzuleiten",
+              "hinweis": "Für Bieter aus anderen EWR-Vertragsparteien, die für eine Tätigkeit in Österreich eine behördliche Entscheidung zur Berufsqualifikation benötigen."
+            }
+          ]
+        }
+      ],
+      "berufliche_zuverlaessigkeit": [
+        {
+          "kriterium": "Zuverlässigkeit im Sinne des BVergG und keine Ausschlussgründe gemäß § 78 Abs 1 BVergG (straf- und arbeitsrechtliche Unbescholtenheit, keine Liquidation, keine Einstellung gewerblicher Tätigkeiten, kein Insolvenzverfahren oder Abweisung mangels Vermögens).",
+          "nachweise": [
+            {
+              "typ": "PFLICHT",
+              "dokument": "Strafregisterbescheinigung gemäß § 10 des Strafregistergesetzes 1968",
+              "gueltigkeit": "Nicht älter als sechs Monate am Tag der Angebotsöffnung",
+              "hinweis": "Für juristische Personen: für alle physischen Personen in der Geschäftsführung vorzulegen."
+            },
+            {
+              "typ": "PFLICHT",
+              "dokument": "Registerauskunft für Verbände gemäß § 89m des Gerichtsorganisationsgesetzes - GOG",
+              "gueltigkeit": "Nicht älter als sechs Monate am Tag der Angebotsöffnung",
+              "hinweis": "Für juristische Personen."
+            },
+            {
+              "typ": "PFLICHT",
+              "dokument": "Gleichwertige Bescheinigung einer Gerichts- oder Verwaltungsbehörde des Sitzstaates",
+              "gueltigkeit": null,
+              "hinweis": "Für Bieter aus dem Ausland."
+            },
+            {
+              "typ": "PFLICHT",
+              "dokument": "Firmenbuchauszug oder Auszug aus dem Vereinsregister",
+              "gueltigkeit": null,
+              "hinweis": "Für juristische Personen, aus dem ersichtlich ist, welche Personen in der Geschäftsführung tätig sind."
+            },
+            {
+              "typ": "PFLICHT",
+              "dokument": "Auszug aus der Insolvenzdatei gemäß § 256 der Insolvenzordnung - IO",
+              "gueltigkeit": "Nicht älter als drei Monate am Tag der Angebotsöffnung",
+              "hinweis": null
+            },
+            {
+              "typ": "PFLICHT",
+              "dokument": "Firmenbuchauszug gemäß § 33 des Firmenbuchgesetzes",
+              "gueltigkeit": "Nicht älter als sechs Monate am Tag der Angebotsöffnung",
+              "hinweis": null
+            },
+            {
+              "typ": "PFLICHT",
+              "dokument": "Kontoauszug oder Unbedenklichkeitsbescheinigung der zuständigen Sozialversicherungsanstalt",
+              "gueltigkeit": "Nicht älter als drei Monate am Tag der Angebotsöffnung",
+              "hinweis": "Zum Nachweis der Erfüllung der Verpflichtungen zur Zahlung der Sozialversicherungsbeiträge."
+            },
+            {
+              "typ": "PFLICHT",
+              "dokument": "Rückstandsbescheinigung gemäß § 229a Bundesabgabenordnung (BAO) oder Auszug aus dem Steuerkonto",
+              "gueltigkeit": "Nicht älter als drei Monate am Tag der Angebotsöffnung",
+              "hinweis": "Zum Nachweis der Erfüllung der Verpflichtung zur Zahlung der Steuern und Abgaben."
+            },
+            {
+              "typ": "PFLICHT",
+              "dokument": "Gleichwertige Urkunden oder eidesstattliche Erklärung",
+              "gueltigkeit": null,
+              "hinweis": "Für Bieter aus dem Ausland, falls behördlicher Nachweis im Herkunftsland nicht möglich ist (glaubhaft zu machen)."
+            }
+          ]
+        }
+      ],
+      "technische_leistungsfaehigkeit": [
+        {
+          "kriterium": "Ständige Beschäftigung von mindestens 3 Dienstnehmern (Vollzeitäquivalente) in den Geschäftsjahren 2020, 2021 und 2022.",
+          "nachweise": [
+            {
+              "typ": "PFLICHT",
+              "dokument": "Formblatt 'Leistungsfähigkeit Dienstnehmer und Umsätze' (Beilage 05)",
+              "gueltigkeit": null,
+              "hinweis": "Ausgefüllt und von einem Steuerberater oder Wirtschaftsprüfer unterfertigt."
+            }
+          ]
+        }
+      ],
+      "finanzielle_und_wirtschaftliche_leistungsfaehigkeit": [
+        {
+          "kriterium": "Verfügung über eine Betriebshaftpflichtversicherung mit einer Deckungssumme von mindestens EUR 300.000,00 pro Schadenfall.",
+          "nachweise": [
+            {
+              "typ": "PFLICHT",
+              "dokument": "Aktuelle Nachweise (z.B. Polizze, Deckungszusage oder Versicherungsbestätigung) des Abschlusses einer aufrechten Betriebshaftpflichtversicherung",
+              "gueltigkeit": null,
+              "hinweis": "Mit einer Deckungssumme von mindestens EUR 300.000,00 pro Schadenfall."
+            },
+            {
+              "typ": "PFLICHT",
+              "dokument": "Nachweis über die Bezahlung der letztfälligen Prämie",
+              "gueltigkeit": null,
+              "hinweis": null
+            }
+          ]
+        },
+        {
+          "kriterium": "Jahresumsatz von durchschnittlich mindestens EUR 500.000,00 in den Geschäftsjahren 2020, 2021 und 2022.",
+          "nachweise": [
+            {
+              "typ": "PFLICHT",
+              "dokument": "Formblatt 'Leistungsfähigkeit Dienstnehmer und Umsätze' (Beilage 05)",
+              "gueltigkeit": null,
+              "hinweis": "Ausgefüllt und von einem Steuerberater oder Wirtschaftsprüfer unterfertigt, bezogen auf die durchschnittlichen Jahresumsätze."
+            }
+          ]
+        }
+      ]
+    },
+    "zuschlagskriterien": [
+      {
+        "los": {
+          "nummer": null,
+          "bezeichnung": "Los 1: Aufsitzrasenmäher"
+        },
+        "prinzip": "Bestbieterprinzip",
+        "kriterien": [
+          {
+            "name": "Gesamtpreis",
+            "gewichtung": "700 Punkte"
+          },
+          {
+            "name": "Qualität 'Lieferfrist Erstabruf'",
+            "gewichtung": "300 Punkte"
+          }
+        ]
+      },
+      {
+        "los": {
+          "nummer": null,
+          "bezeichnung": "Los 2: Laubbläser und Rasenmäher"
+        },
+        "prinzip": "Billigstbieterprinzip",
+        "kriterien": [
+          {
+            "name": "Gesamtpreis",
+            "gewichtung": "1.000 Punkte"
+          }
+        ]
+      },
+      {
+        "los": {
+          "nummer": null,
+          "bezeichnung": "Los 3: Heckenscheren und Trimmer"
+        },
+        "prinzip": "Billigstbieterprinzip",
+        "kriterien": [
+          {
+            "name": "Gesamtpreis",
+            "gewichtung": "1.000 Punkte"
+          }
+        ]
+      },
+      {
+        "los": {
+          "nummer": null,
+          "bezeichnung": "Los 4: Handkehrmaschinen"
+        },
+        "prinzip": "Billigstbieterprinzip",
+        "kriterien": [
+          {
+            "name": "Gesamtpreis",
+            "gewichtung": "1.000 Punkte"
+          }
+        ]
+      }
+    ],
+    "subunternehmerregelung": [
+      "Bieter können sich zur Durchführung der Leistungen Subunternehmern bedienen, sofern diese die für die Ausführung des entsprechenden Teils der Leistung erforderliche Befugnis, technische, finanzielle und wirtschaftliche Leistungsfähigkeit sowie berufliche Zuverlässigkeit gemäß Punkt 5 besitzen.",
+      "Für den Leistungsteil sind jedenfalls die berufliche Zuverlässigkeit sowie die Befugnis des Subunternehmers erforderlich.",
+      "Die finanzielle und wirtschaftliche sowie technische Leistungsfähigkeit des Subunternehmers muss in dem Ausmaß vorliegen, in dem sie in diesen Ausschreibungsunterlagen ausdrücklich einem konkreten Leistungsteil zugeordnet ist.",
+      "Die Weitergabe des gesamten Auftrages an einen oder mehrere Subunternehmer ist unzulässig. Ausgenommen sind Kaufverträge und die Weitergabe an verbundene Unternehmen gemäß § 2 Z 40 BVergG.",
+      "Die Weitergabe von Leistungen durch Subunternehmer an weitere Unternehmen (Subsubunternehmen) ist unzulässig.",
+      "Die Haftung des Auftragnehmers wird durch den Einsatz von Subunternehmern nicht berührt.",
+      "Alle Teile des Auftrages, die im Wege von Subaufträgen an Subunternehmer vergeben werden sollen, sowie die jeweils in Frage kommenden Subunternehmer sind im Angebot bekannt zu geben. Eine nachträgliche Nennung ist nicht zulässig.",
+      "Die Subunternehmer sind in der Beilage 02 'Subunternehmerliste' unter Angabe des jeweiligen Anteils an der Gesamtleistung (%) anzuführen.",
+      "Die ausgefüllte und vom Subunternehmer unterfertigte Beilage 03 'Verpflichtungserklärung Subunternehmer' ist vorzulegen.",
+      "Die Eignung der Subunternehmer ist in der gleichen Art wie für den Bieter gemäß Punkt 5 nachzuweisen, jedoch nur für den von ihm zu erbringenden Leistungsteil.",
+      "Jeder Subunternehmer muss die berufliche Zuverlässigkeit gemäß Punkt 5.3 erfüllen, über die Befugnisse zur Ausführung des von ihm zu erbringenden Leistungsteiles verfügen und eine Betriebshaftpflichtversicherung im Umfang von mindestens EUR 300.000,00 pro Schadenfall abgeschlossen haben.",
+      "Falls sich der Bieter hinsichtlich der technischen Leistungsfähigkeit (5.4.) und der finanziellen sowie wirtschaftlichen Leistungsfähigkeit (5.5.) auf Kapazitäten von Subunternehmern stützt, ist dem Angebot verpflichtend eine Erklärung über die solidarische Haftung der herangezogenen Subunternehmer gegenüber dem Auftraggeber beizulegen (Beilage 03 'Verpflichtungserklärung Subunternehmer').",
+      "Erfüllt ein Subunternehmer die festgelegten Anforderungen nicht, werden seine Kapazitäten bei der Prüfung und Bewertung der Angebote nicht berücksichtigt. Erfüllt der Bieter ohne diese Subunternehmer die Eignungsanforderungen nicht, ist das Angebot auszuscheiden."
+    ],
+    "formale_anforderungen": [
+      "Verfahrenssprache ist Deutsch.",
+      "Die rechtsgültige Übermittlung von Informationen und Angeboten erfolgt ausschließlich elektronisch über die Plattform www.vergabeportal.at.",
+      "Für die elektronische Signatur wird empfohlen, sich mindestens zwei Kalenderwochen vor Angebotsabgabe um den Erhalt einer qualifizierten elektronischen Signatur (A-Trust, Bürgerkarte) zu kümmern.",
+      "Fragen zu den Ausschreibungsunterlagen sind anonymisiert über die Plattform www.vergabeportal.at zu stellen. Anfragen, die später als sechs Tage vor Ablauf der Angebotsfrist eingebracht werden, müssen nicht beantwortet werden.",
+      "Das Angebot samt Beilagen ist in deutscher Sprache auszufüllen bzw. zu erstellen. Sämtliche weitere Nachweise und Unterlagen müssen ebenfalls in deutscher Sprache verfasst sein oder in beglaubigter deutscher Übersetzung vorgelegt werden.",
+      "Jeder Bieter ist verpflichtet, sämtliche Produkte in der Beilage 04 'Leistungsverzeichnis und Preisblatt' des jeweiligen Loses anzubieten. Werden nicht sämtliche Produkte oder keine ausschreibungskonformen Produkte angeboten, wird das Los-Angebot ausgeschieden.",
+      "Alternativangebote und Abänderungsangebote sind unzulässig.",
+      "Kopplungsangebote und Paketabschläge sind unzulässig. Bei solchen Angeboten wird nur der für das jeweilige Los ohne Bedingung angebotene Gesamtpreis berücksichtigt.",
+      "Angebotspreise sind in der Beilage 04 'Leistungsverzeichnis und Preisblatt' pro Los als Nettopreis in Euro (€) ohne Umsatzsteuer inklusive aller Abgaben und Gebühren anzugeben. Die gesetzlich anfallende Umsatzsteuer ist separat im Angebotshauptteil der Vergabeplattform auszuweisen.",
+      "Eine Gewichtsangabe pro Einheit in Kilogramm (kg) ist in der Beilage 04 'Leistungsverzeichnis und Preisblatt' pro Los anzugeben.",
+      "Das Angebot muss aus dem ausgefüllten und signierten Angebotshauptteil der Vergabeplattform, relevanten Beilagen (01, 02, 03, 04, 05, 06), den geforderten Eignungsnachweisen, Datenblättern zu Produkten, ggf. Sicherheitsdatenblättern und Nachweisen für die rechtsgültige Unterfertigung bestehen.",
+      "Zulässige Dokumentenformate sind: .docx, .doc, .xls, .xlsx, .ppt, .pptx, .jpg, .png, .pdf, .bmp sowie OpenOffice-Dokumente. Es wird empfohlen, keine Scans zu verwenden.",
+      "Das Angebot muss rechtsgültig elektronisch gemäß § 48 Abs 12 BVergG (qualifizierte elektronische Signatur, qualifiziertes Siegel oder Amtssignatur) unterfertigt sein. Nicht rechtsgültig unterfertigte Angebote sind zwingend auszuscheiden.",
+      "Bei Bietergemeinschaften muss das elektronische Angebot von jedem Mitglied der BIEGE rechtsverbindlich unterfertigt werden.",
+      "Zum Beweis der rechtsgeschäftlichen Vertretungsbefugnis der unterfertigenden Person(en) ist ein Auszug aus dem Firmenbuch oder eine gleichwertige Bescheinigung (nicht älter als 6 Monate) vorzulegen.",
+      "Die Angebotsfrist endet am 24.11.2023, 10:00 Uhr. Die Angebote gelten erst als eingereicht, wenn der Abgabeprozess auf der Plattform vollständig abgeschlossen wurde.",
+      "Bietergemeinschaften müssen in ihrem Angebot (Beilage 01) die Mitglieder, Gründe für die Bildung und Aufgaben der einzelnen Unternehmer angeben."
+    ]
+  },
+  "extractionTimestamp": "2025-07-16T13:50:07.803Z",
+  "extractionMethod": "KRITERIEN_EXTRAKTION",
+  "aabFileName": "2023_02002_AAB_EV.pdf",
+  "lastModified": "2025-07-16T13:50:07.803Z",
+  "version": "1.0",
+  "reviewStatus": {
+    "aiReviewed": true,
+    "humanReviewed": false
+  }
+}

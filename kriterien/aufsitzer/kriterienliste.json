@@ -1,0 +1,183 @@
+{
+  "eignungskriterien": {
+    "befugnis": [
+      {
+        "kriterium": "Teilnahmeberechtigt sind in den EU- bzw. EWR-Mitgliedstaaten ansässige natürliche und juristische Personen, die nachweislich gemäß den jeweils gültigen gesetzlichen Bestimmungen ihres Heimatlandes zur Erbringung der ausgeschriebenen Leistungen befugt sind.",
+        "nachweise": [
+          {
+            "dokument": "Auszug aus dem Gewerbeinformationssystem Austria (GISA)",
+            "typ": "Oder",
+            "gueltigkeit": "Nicht älter als 6 Monate",
+            "hinweis": "Gilt für österreichische Bieter."
+          },
+          {
+            "dokument": "Auszug aus dem Mitgliederverzeichnis der Wirtschaftskammer",
+            "typ": "Oder",
+            "gueltigkeit": "Nicht älter als 6 Monate",
+            "hinweis": "Gilt für österreichische Bieter."
+          },
+          {
+            "dokument": "Urkunde über die Eintragung im Berufsregister oder Handelsregister des Herkunftslandes des Unternehmers oder die dort vorgesehene Bescheinigung oder eidesstattliche Erklärung",
+            "typ": "Pflicht",
+            "gueltigkeit": "Nicht spezifiziert",
+            "hinweis": "Gilt für ausländische Bieter, die keine einschlägige österreichische Gewerbeberechtigung haben. Welche Nachweise vorzulegen sind, bestimmt sich nach dem Anhang IX zum BVergG."
+          },
+          {
+            "dokument": "Nachweis der Einleitung eines Verfahrens zur behördlichen Entscheidung betreffend Berufsqualifikation",
+            "typ": "Pflicht",
+            "gueltigkeit": "Vor Ablauf der Angebotsfrist einzuleiten",
+            "hinweis": "Gilt für Bieter aus anderen EWR-Vertragsparteien, die eine behördliche Entscheidung zur Berufsausübung in Österreich benötigen."
+          }
+        ]
+      }
+    ],
+    "berufliche_zuverlaessigkeit": [
+      {
+        "kriterium": "Der Bieter muss zuverlässig im Sinne des BVergG sein und es dürfen keine Ausschlussgründe gemäß § 78 Abs 1 BVergG vorliegen.",
+        "nachweise": [
+          {
+            "dokument": "Strafregisterbescheinigung gemäß § 10 des Strafregistergesetzes 1968 oder gleichwertige Bescheinigung",
+            "typ": "Pflicht",
+            "gueltigkeit": "Nicht älter als 6 Monate am Tag der Angebotsöffnung",
+            "hinweis": "Für juristische Personen sind diese Dokumente für alle physischen Personen vorzulegen, die in der Geschäftsführung tätig sind. Ein Firmenbuchauszug oder Auszug aus dem Vereinsregister ist ebenfalls vorzulegen, um die Geschäftsführung zu identifizieren."
+          },
+          {
+            "dokument": "Registerauskunft für Verbände gemäß § 89m des Gerichtsorganisationsgesetzes - GOG",
+            "typ": "Pflicht",
+            "gueltigkeit": "Nicht älter als 6 Monate am Tag der Angebotsöffnung",
+            "hinweis": "Für juristische Personen (z.B. GmbH) sind die Strafregisterbescheinigung(en) und eine Registerauskunft für Verbände vorzulegen."
+          },
+          {
+            "dokument": "Auszug aus der Insolvenzdatei gemäß § 256 der Insolvenzordnung - IO",
+            "typ": "Pflicht",
+            "gueltigkeit": "Nicht älter als 3 Monate am Tag der Angebotsöffnung",
+            "hinweis": null
+          },
+          {
+            "dokument": "Firmenbuchauszug gemäß § 33 des Firmenbuchgesetzes",
+            "typ": "Pflicht",
+            "gueltigkeit": "Nicht älter als 6 Monate am Tag der Angebotsöffnung",
+            "hinweis": null
+          },
+          {
+            "dokument": "Kontoauszug oder eine Unbedenklichkeitsbescheinigung der zuständigen Sozialversicherungsanstalt",
+            "typ": "Pflicht",
+            "gueltigkeit": "Nicht älter als 3 Monate am Tag der Angebotsöffnung",
+            "hinweis": "Zum Nachweis der Erfüllung der Verpflichtungen zur Zahlung der Sozialversicherungsbeiträge."
+          },
+          {
+            "dokument": "Rückstandsbescheinigung gemäß § 229a Bundesabgabenordnung (BAO) oder Auszug aus dem Steuerkonto",
+            "typ": "Pflicht",
+            "gueltigkeit": "Nicht älter als 3 Monate am Tag der Angebotsöffnung",
+            "hinweis": "Zum Nachweis der Erfüllung der Verpflichtung zur Zahlung der Steuern und Abgaben."
+          }
+        ]
+      }
+    ],
+    "technische_leistungsfaehigkeit": [
+      {
+        "kriterium": "Der Bieter muss die für die Erbringung der Leistung erforderliche technische Leistungsfähigkeit aufweisen. Das Mindesterfordernis ist erfüllt, wenn der Bieter in den drei Geschäftsjahren 2020, 2021 und 2022 ständig mindestens 3 (drei) Dienstnehmer (Vollzeitäquivalente) beschäftigt hat.",
+        "nachweise": [
+          {
+            "dokument": "Beilage 05 'Leistungsfähigkeit Dienstnehmer und Umsätze'",
+            "typ": "Pflicht",
+            "gueltigkeit": "Bezieht sich auf die Geschäftsjahre 2020, 2021 und 2022",
+            "hinweis": "Muss von einem Steuerberater oder Wirtschaftsprüfer unterfertigt sein."
+          }
+        ]
+      }
+    ],
+    "finanzielle_und_wirtschaftliche_leistungsfaehigkeit": [
+      {
+        "kriterium": "Der Bieter muss die für die Erbringung der Leistung erforderliche finanzielle und wirtschaftliche Leistungsfähigkeit aufweisen.",
+        "nachweise": [
+          {
+            "dokument": "Aktuelle Nachweise (z.B. Polizze, Deckungszusage oder Versicherungsbestätigung) des Abschlusses einer aufrechten Betriebshaftpflichtversicherung mit einer Deckungssumme von mindestens EUR 300.000,00 pro Schadenfall",
+            "typ": "Pflicht",
+            "gueltigkeit": "Aktuell",
+            "hinweis": "Nachweis über die Bezahlung der letztfälligen Prämie ist ebenfalls vorzulegen."
+          },
+          {
+            "dokument": "Beilage 05 'Leistungsfähigkeit Dienstnehmer und Umsätze'",
+            "typ": "Pflicht",
+            "gueltigkeit": "Bezieht sich auf die Geschäftsjahre 2020, 2021 und 2022",
+            "hinweis": "Muss die durchschnittlichen Jahresumsätze der oben angeführten Geschäftsjahre enthalten und von einem Steuerberater oder Wirtschaftsprüfer unterfertigt sein. Der Bieter muss einen Jahresumsatz von durchschnittlich mindestens EUR 500.000,00 erwirtschaftet haben."
+          }
+        ]
+      }
+    ]
+  },
+  "zuschlagskriterien": [
+    {
+      "los": {
+        "nummer": 1,
+        "bezeichnung": "Aufsitzrasenmäher"
+      },
+      "prinzip": "Bestbieterprinzip",
+      "kriterien": [
+        { "name": "Gesamtpreis", "gewichtung": "700 Punkte" },
+        { "name": "Qualität 'Lieferfrist Erstabruf'", "gewichtung": "300 Punkte" }
+      ]
+    },
+    {
+      "los": {
+        "nummer": "2, 3 und 4",
+        "bezeichnung": "Laubbläser und Rasenmäher; Heckenscheren und Trimmer; Handkehrmaschinen"
+      },
+      "prinzip": "Billigstbieterprinzip",
+      "kriterien": [
+        { "name": "Gesamtpreis", "gewichtung": "1.000 Punkte" }
+      ]
+    }
+  ],
+  "subunternehmerregelung": [
+    "Der Bieter kann sich zur Durchführung der Leistungen auch Subunternehmern bedienen, soweit diese die erforderliche Befugnis, technische, finanzielle und wirtschaftliche Leistungsfähigkeit sowie berufliche Zuverlässigkeit gemäß Punkt 5. besitzen.",
+    "Die Weitergabe des gesamten Auftrages an einen oder mehrere Subunternehmer ist unzulässig, ausgenommen Kaufverträge und die Weitergabe an verbundene Unternehmen gemäß § 2 Z 40 BVergG.",
+    "Die Weitergabe von Leistungen durch Subunternehmer an weitere Unternehmen (Subsubunternehmen) ist unzulässig.",
+    "Die Haftung des Auftragnehmers wird durch den Einsatz von Subunternehmern nicht berührt.",
+    "Notwendige Subunternehmer (eignungsrelevant) sind jene, die der Bieter benötigt, weil er nicht selbst über die notwendige Befugnis oder technische Leistungsfähigkeit verfügt, oder auf deren finanzielle und wirtschaftliche Leistungsfähigkeit der Bieter verweist.",
+    "Unternehmen, die für den Nachweis der Eignung erforderlich sind, müssen im Angebot genannt werden, selbst wenn es sich nicht um Subunternehmer handelt oder diese keine wesentlichen Leistungsteile erbringen.",
+    "Der Bieter hat alle Teile des Auftrages, die er im Wege von Subaufträgen an Subunternehmer zu vergeben beabsichtigt, sowie die jeweils in Frage kommenden Subunternehmer im Angebot bekannt zu gegeben. Eine nachträgliche Nennung ist nicht zulässig.",
+    "Subunternehmer sind in der Beilage 02 'Subunternehmerliste' unter Angabe des jeweiligen Anteils an der Gesamtleistung (%) anzuführen.",
+    "Die ausgefüllte und vom Subunternehmer unterfertigte Beilage 03 'Verpflichtungserklärung Subunternehmer' ist vorzulegen.",
+    "Die Eignung der Subunternehmer ist in der gleichen Art wie für den Bieter gemäß Punkt 5. nachzuweisen, jedoch nur für den von ihm zu erbringenden Leistungsteil.",
+    "Jedenfalls muss der Subunternehmer die berufliche Zuverlässigkeit gemäß Punkt 5.3. erfüllen, über die Befugnisse zur Ausführung des Leistungsteiles sowie eine Betriebshaftpflichtversicherung im Umfang von mindestens EUR 300.000,00 pro Schadenfall abgeschlossen haben.",
+    "Falls sich der Bieter hinsichtlich der technischen und finanziellen/wirtschaftlichen Leistungsfähigkeit auf Kapazitäten von Subunternehmern stützt, ist eine Erklärung über die solidarische Haftung der Subunternehmer gegenüber dem Auftraggeber beizulegen (Beilage 03 'Verpflichtungserklärung Subunternehmer').",
+    "Erfüllt ein Subunternehmer nicht die festgelegten Anforderungen, wird er bei der Prüfung und Bewertung der Angebote nicht weiter berücksichtigt. Erfüllt der Bieter ohne diese Subunternehmer die Eignungsanforderungen nicht, ist das Angebot auszuscheiden."
+  ],
+  "formale_anforderungen": [
+    "Das Vergabeverfahren wird ausschließlich elektronisch über die Plattform www.vergabeportal.at durchgeführt.",
+    "Das Angebot samt Beilagen ist in deutscher Sprache auszufüllen bzw. zu erstellen. Sämtliche weitere Nachweise und Unterlagen müssen ebenfalls in deutscher Sprache verfasst sein oder in beglaubigter deutscher Übersetzung vorgelegt werden.",
+    "Die angebotenen Geräte müssen gemäß den Vorgaben in den Ausschreibungsunterlagen und im Rahmenvertrag angeboten werden und sämtliche darin definierten Anforderungen (insbesondere Spezifikationen gemäß Beilage 04 'Leistungsverzeichnis und Preisblatt') erfüllen.",
+    "Die in Österreich geltenden arbeits- und sozialrechtlichen Rechtsvorschriften sowie umwelt- und datenschutzrechtlichen Rechtsvorschriften sind bei der Erstellung des Angebotes zwingend zu berücksichtigen und bei Leistungserbringung einzuhalten.",
+    "Es können Angebote für ein Los, für mehrere Lose oder für alle Lose gelegt werden. Die Lose werden unabhängig voneinander angeboten und vergeben.",
+    "Jeder Bieter ist berechtigt und verpflichtet, sämtliche Produkte in der Beilage 04 'Leistungsverzeichnis und Preisblatt' des jeweiligen Loses anzubieten. Werden nicht sämtliche Produkte des jeweiligen Loses bzw. keine ausschreibungskonformen Produkte angeboten, so wird das Los-Angebot ausgeschieden.",
+    "Der Bieter hat ein Hauptangebot nach den Bestimmungen dieser Ausschreibungsunterlage abzugeben. Ein Hauptangebot ist ein Angebot, das alle Anforderungen der Ausschreibungsunterlagen erfüllt.",
+    "Alternativ- und Abänderungsangebote sind unzulässig.",
+    "Kopplungsangebote und Paketabschläge sind unzulässig. Sollte ein Bieter dennoch ein solches Angebot legen, wird für die Bewertung nur der für das jeweilige Los ohne Bedingung angebotene Gesamtpreis berücksichtigt.",
+    "Für die Ausarbeitung des Angebots sowie dafür erforderliche Vorleistungen und Kalkulationen und die Anfertigung sonstiger geforderter Anlagen sowie Nachweise erfolgt keine Vergütung durch den Auftraggeber.",
+    "Der Bieter hat in der Beilage 04 'Leistungsverzeichnis und Preisblatt' pro Los den Einheitspreis jeweils als Nettopreis in Euro (€) ohne Umsatzsteuer inklusive aller Abgaben und Gebühren anzugeben.",
+    "Die auszufüllenden Felder in Beilage 04 sind durch graue Hintergrundfarbe gekennzeichnet.",
+    "Die Summe aller Positionspreise eines Loses ergibt den 'Gesamtpreis Laufzeit', der in den Angebotshauptteil der Vergabeplattform einzutragen ist.",
+    "Gewährt der Bieter im Angebotshauptteil einen Nachlass, so wird dieser Nachlass im gleichen prozentuellen Ausmaß für sämtliche vertragsgegenständlichen Leistungen des jeweiligen Loses herangezogen.",
+    "Die in Beilage 04 in den Spalten 'Geschätzte Jahresabnahme' angeführten Mengen dienen lediglich als Richtwerte; es besteht keine Abnahmeverpflichtung.",
+    "Die gesetzlich anfallende Umsatzsteuer ist separat im Angebotshauptteil der Vergabeplattform auszuweisen.",
+    "Die angebotenen Preise unterliegen der Wertsicherung gemäß Punkt 6. des Rahmenvertrages.",
+    "Für rechnerisch fehlerhafte Angebote gelten die Regelungen des Punktes 6.1 der WD 307.",
+    "Der Bieter hat in der Beilage 04 'Leistungsverzeichnis und Preisblatt' pro Los das Gewicht pro Einheit in Kilogramm (kg) anzugeben.",
+    "Das Angebot hat aus dem ausgefüllten und signierten Angebotshauptteil der Vergabeplattform und den weiteren in Punkt 6.9 (1) genannten Beilagen zu bestehen.",
+    "Das Angebot muss alle in den Ausschreibungsunterlagen geforderten Angaben und Bestandteile enthalten.",
+    "Der Auftraggeber behält sich das Recht vor, Zertifikate, Produktdatenblätter, Sicherheitsdatenblätter, Probeprodukte und weitere Nachweise zu den Geräten von den Bietern zu verlangen.",
+    "Zulässige Dokumentenformate sind: .docx, .doc, .xls, .xlsx, .ppt, .pptx, .jpg, .png, .pdf, .bmp. OpenOffice-Dokumente sind ebenfalls zulässig.",
+    "Das Angebot ist gemäß § 48 Abs 12 BVergG rechtsgültig elektronisch gefertigt über die Plattform www.vergabeportal.at einzureichen. Scans sollten vermieden werden.",
+    "Verwendet der Bieter eine qualifizierte elektronische Signatur, die von der Plattform nicht unterstützt wird, hat er die notwendigen Informationen und Methoden zur Überprüfung der Signatur kostenfrei zur Verfügung zu stellen.",
+    "Das Angebot muss rechtsgültig elektronisch gemäß den Vorgaben des § 48 Abs 12 BVergG unterfertigt sein.",
+    "Rechtsgültige Unterfertigung bedeutet, dass das elektronische Angebot von Personen, welche den Bieter rechtsgeschäftlich wirksam vertreten können, mit einer qualifizierten elektronischen Signatur, einem qualifiziertem Siegel oder einer Amtssignatur gemäß § 19 Abs 1 des E-Government-Gesetzes - E-GovG, BGBl. I Nr. 10/2004 versehen wurde.",
+    "Elektronische Angebote von Bietergemeinschaften (BIEGE) müssen von jedem Mitglied der BIEGE rechtsverbindlich unterfertigt werden.",
+    "Zum Beweis der rechtsgeschäftlichen Vertretungsbefugnis der unterfertigenden Person(en) hat der Bieter einen Auszug aus dem Firmenbuch oder eine gleichwertige Bescheinigung vorzulegen (nicht älter als 6 Monate).",
+    "Falls das Angebot nicht von organschaftlich vertretungsbefugten Personen unterfertigt wurde, ist der Auftraggeber berechtigt, eine Vollmacht zu verlangen, die vor Angebotsunterfertigung von solchen Personen unterfertigt wurde.",
+    "Nicht rechtsgültig unterfertigte Angebote sind zwingend auszuscheiden.",
+    "Die Angebote müssen spätestens bis zum 24.11.2023, 10:00 Uhr über die Plattform www.vergabeportal.at eingereicht werden.",
+    "Die Angebote gelten erst als eingereicht, wenn der Abgabeprozess auf der Plattform vollständig abgeschlossen wurde. Das Hochladen der Angebotsbestandteile auf die Plattform ist nicht ausreichend."
+  ]
+}
