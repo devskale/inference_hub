@@ -37,7 +37,7 @@ Ausgabeformat (Schema)
   "kriterien": [
     {
       "id": "string",
-      "typ": "Eignung|Zuschlag",
+      "typ": "Eignung|Zuschlag|Formal",
       "kategorie": "string",
       "name": "string",
       "anforderung": "string|null",
@@ -48,7 +48,7 @@ Ausgabeformat (Schema)
         "los_ids": ["string"], 
         "stufe": "teilnahme|angebot|nachvergabe|null" 
       },
-      "nachweis_anforderungen": [
+      "nachweise": [
         {
           "logik": "ODER|UND",
           "hinweis": "string|null",
@@ -70,12 +70,6 @@ Ausgabeformat (Schema)
       "erweiterungen": {}
     }
   ],
-  "formalien": {
-    "fristen": [ { "name": "string", "zeitpunkt": "YYYY-MM-DDTHH:mm:ssZ|null", "hinweis": "string|null", "quelle": { "abschnitt": "string|null", "seite": "number|null" } } ],
-    "abgabe": { "plattform": "string|null", "formate": [".pdf", ".docx", "..."], "signatur": ["qualifizierte_e_signatur", "siegel", "sonstiges"], "sprachen": ["de", "en", "..."] },
-    "bietergemeinschaft": [ "string" ],
-    "nachweisregeln_allgemein": [ "string" ]
-  },
   "erweiterungen": {}
 }
 
@@ -83,10 +77,10 @@ Extraktionsregeln
 
 - Nur explizit im Dokument vorhandene Angaben. Keine Interpretationen.
 - Fülle die Kriterien in die einheitliche `kriterien`-Liste.
-- Setze das Feld `typ` auf "Eignung" für Eignungskriterien und "Zuschlag" für Zuschlagskriterien.
-- Nachweise werden in `nachweis_anforderungen` gruppiert. Die Liste der Gruppen ist eine UND-Verknüpfung. Jede Gruppe hat ein `logik`-Feld ('ODER' oder 'UND'). Für alternative Nachweise (‚A oder B‘) wird eine Gruppe mit `logik: "ODER"` und den entsprechenden Nachweisen in der `nachweise`-Liste erstellt. Ein einzelner, obligatorischer Nachweis wird als Gruppe mit `logik: "UND"` und einem Element in der `nachweise`-Liste dargestellt.
-- Bei Eignungskriterien ist `gewichtung` und `wertungssystem` `null`.
-- Bei Zuschlagskriterien ist `anforderung` und `nachweis_anforderungen` in der Regel `null` oder leer.
+- Setze das Feld `typ` auf "Eignung" für Eignungskriterien, "Zuschlag" für Zuschlagskriterien und "Formal" für formale Anforderungen (z.B. Fristen, Formvorschriften).
+- Nachweise werden in `nachweise` gruppiert. Die Liste der Gruppen ist eine UND-Verknüpfung. Jede Gruppe hat ein `logik`-Feld ('ODER' oder 'UND'). Für alternative Nachweise (‚A oder B‘) wird eine Gruppe mit `logik: "ODER"` und den entsprechenden Nachweisen in der `nachweise`-Liste erstellt. Ein einzelner, obligatorischer Nachweis wird als Gruppe mit `logik: "UND"` und einem Element in der `nachweise`-Liste dargestellt.
+- Bei Eignungs- und Formalkriterien ist `gewichtung` und `wertungssystem` `null`.
+- Bei Zuschlagskriterien ist `anforderung` und `nachweise` in der Regel `null` oder leer.
 - Dedupliziere identische Inhalte; konsolidiere Hinweise.
 - Bei Los-spezifischen Angaben `los_ids` füllen. Wenn für alle Lose gültig, leer lassen oder alle IDs eintragen.
 - Datums-/Zeitangaben normieren wie spezifiziert; Zeitzone nur wenn vorhanden.
@@ -95,7 +89,7 @@ Extraktionsregeln
 
 Ausgabe
 
-- Gib ausschließlich das JSON-Objekt gemäß Schema zurück. Kein Fließtext, kein Markdown, keine Erklärungen.
+- Gib ausschließlich das JSON-Objekt gemäß Schema zurück. Kein Fließtext, kein Markdown, keine Erklärungen. Validiere vor der Ausgabe, dass das JSON dem Schema entspricht, insbesondere die Struktur von 'nachweis_anforderungen'. Stelle sicher, dass immer 'nachweis_anforderungen' verwendet wird und nicht direkt 'nachweise'.
 
 Input
 
