@@ -1,0 +1,1207 @@
+{
+    "schema_version": "3.1-ai-optimized",
+    "meta": {
+        "auftraggeber": "Wiener Wohnen Hausbetreuung GmbH",
+        "aktenzeichen": "2023_02002_AAB_EV",
+        "lose": [
+            "Los 1",
+            "Los 2",
+            "Los 3",
+            "Los 4"
+        ]
+    },
+    "kriterien": [
+        {
+            "id": "F_PROD_001",
+            "typ": "Formal",
+            "kategorie": "Angebotsinhalt",
+            "name": "Produktdatenblätter und Muster",
+            "anforderung": "Für jedes angebotene Produkt ist ein entsprechendes Datenblatt sowie gegebenenfalls ein entsprechendes Sicherheitsdatenblatt vorzulegen. Auf Aufforderung des Auftraggebers sind weitere Unterlagen und Musterprodukte zum Nachweis der Übereinstimmung mit den Spezifikationen vorzulegen.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Produktdatenblatt",
+                "Sicherheitsdatenblatt"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 1.(8)"
+        },
+        {
+            "id": "F_KOMM_001",
+            "typ": "Formal",
+            "kategorie": "Kommunikation & Angebotsabgabe",
+            "name": "Elektronische Angebotsabgabe",
+            "anforderung": "Die rechtsgültige Übermittlung von Informationen und die Abgabe von Angeboten müssen ausschließlich elektronisch über die Plattform www.vergabeportal.at erfolgen.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 3.4.(2), 3.4.(3)"
+        },
+        {
+            "id": "F_GEHEIM_001",
+            "typ": "Formal",
+            "kategorie": "Verhalten",
+            "name": "Geheimhaltungsverpflichtung",
+            "anforderung": "Der Bieter sowie alle von ihm benannten Subunternehmer verpflichten sich zur umfassenden und zeitlich unbeschränkten Geheimhaltung der Geschäfts- und Betriebsgeheimnisse des Auftraggebers. Ein Zuwiderhandeln kann zum Ausschluss aus dem Vergabeverfahren berechtigen.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 3.6.(1)"
+        },
+        {
+            "id": "F_BIEGE_002",
+            "typ": "Formal",
+            "kategorie": "Bietergemeinschaft",
+            "name": "Angaben zur Bietergemeinschaft",
+            "anforderung": "Bietergemeinschaften müssen in Beilage 01 'Erklärung für Bieter- und Arbeitsgemeinschaften' die Mitglieder, die Gründe für die Bildung der BIEGE und die Aufgaben der einzelnen Unternehmer auflisten.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Beilage 01"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 4.1.(2)"
+        },
+        {
+            "id": "F_BIEGE_003",
+            "typ": "Formal",
+            "kategorie": "Bietergemeinschaft",
+            "name": "Elektronische Unterfertigung Bietergemeinschaft",
+            "anforderung": "Die elektronische Unterfertigung des Angebots einer Bietergemeinschaft hat durch sämtliche Mitglieder in rechtsgültiger Form zu erfolgen.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 4.1.(4)"
+        },
+        {
+            "id": "F_BIEGE_004",
+            "typ": "Formal",
+            "kategorie": "Bietergemeinschaft",
+            "name": "Stabilität der Bietergemeinschaft",
+            "anforderung": "Der Wechsel von Mitgliedern einer Bietergemeinschaft oder Arbeitsgemeinschaft nach Angebotsabgabe ist unzulässig. Der Wegfall eines Mitglieds während des Vergabeverfahrens stellt einen Ausscheidensgrund dar.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 4.1.(5)"
+        },
+        {
+            "id": "F_BIEGE_005",
+            "typ": "Formal",
+            "kategorie": "Wettbewerb",
+            "name": "Nachweis bei Mehrfachbeteiligung",
+            "anforderung": "Bei Mehrfachbeteiligung als Bieter oder Mitglied einer Bieter-/Arbeitsgemeinschaft ist binnen höchstens sieben Kalendertagen nach Aufforderung nachzuweisen, dass keine Wettbewerbsbeeinträchtigung bewirkt wird und die Angebotserstellung unabhängig erfolgt. Andernfalls werden alle betroffenen Angebote ausgeschieden.",
+            "schwellenwert": "7 Kalendertage",
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 4.1.(6)"
+        },
+        {
+            "id": "E_SUB_001",
+            "typ": "Eignung",
+            "kategorie": "Subunternehmer-Eignung",
+            "name": "Subunternehmer-Befugnis und Leistungsfähigkeit",
+            "anforderung": "Subunternehmer müssen die für die Ausführung des entsprechenden Teils der Leistung erforderliche Befugnis, technische, finanzielle und wirtschaftliche Leistungsfähigkeit sowie berufliche Zuverlässigkeit gemäß Punkt 5 besitzen.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 4.2.(1)"
+        },
+        {
+            "id": "F_SUB_002",
+            "typ": "Formal",
+            "kategorie": "Subunternehmer-Einsatz",
+            "name": "Umfang der Subunternehmerleistungen",
+            "anforderung": "Die Weitergabe des gesamten Auftrages an einen oder mehrere Subunternehmer ist unzulässig. Ebenso ist die Weitergabe von Leistungen durch Subunternehmer an weitere Unternehmen (Subsubunternehmen) unzulässig.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 4.2.(1)"
+        },
+        {
+            "id": "F_SUB_003",
+            "typ": "Formal",
+            "kategorie": "Subunternehmer-Angabe",
+            "name": "Nennung von Subunternehmern im Angebot",
+            "anforderung": "Alle Teile des Auftrages, die an Subunternehmer vergeben werden sollen, sowie die in Frage kommenden Subunternehmer sind im Angebot bekannt zu geben. Eine nachträgliche Nennung ist nicht zulässig.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 4.2.(3)"
+        },
+        {
+            "id": "F_SUB_004",
+            "typ": "Formal",
+            "kategorie": "Subunternehmer-Dokumente",
+            "name": "Subunternehmerliste",
+            "anforderung": "Subunternehmer sind in Beilage 02 'Subunternehmerliste' unter Angabe des jeweiligen Anteils an der Gesamtleistung (%) anzuführen.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Beilage 02"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 4.2.(3)"
+        },
+        {
+            "id": "F_SUB_005",
+            "typ": "Formal",
+            "kategorie": "Subunternehmer-Dokumente",
+            "name": "Verpflichtungserklärung Subunternehmer",
+            "anforderung": "Die ausgefüllte und vom Subunternehmer unterfertigte Beilage 03 'Verpflichtungserklärung Subunternehmer' ist vorzulegen.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Beilage 03"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 4.2.(3)"
+        },
+        {
+            "id": "E_SUB_006",
+            "typ": "Eignung",
+            "kategorie": "Subunternehmer-Eignung",
+            "name": "Subunternehmer-Betriebshaftpflichtversicherung",
+            "anforderung": "Jeder Subunternehmer muss eine Betriebshaftpflichtversicherung im Umfang von mindestens EUR 300.000,00 pro Schadenfall abgeschlossen haben.",
+            "schwellenwert": "EUR 300.000,00",
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 4.2.(3)"
+        },
+        {
+            "id": "F_SUB_007",
+            "typ": "Formal",
+            "kategorie": "Subunternehmer-Dokumente",
+            "name": "Erklärung solidarische Haftung Subunternehmer",
+            "anforderung": "Falls sich der Bieter hinsichtlich der technischen und/oder finanziellen/wirtschaftlichen Leistungsfähigkeit auf Kapazitäten von Subunternehmern stützt, ist eine Erklärung über die solidarische Haftung der herangezogenen Subunternehmer (Beilage 03) beizulegen.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Beilage 03"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 4.2.(3)"
+        },
+        {
+            "id": "E_ALLG_001",
+            "typ": "Eignung",
+            "kategorie": "Allgemeine Eignung",
+            "name": "Nachweis der Eignung",
+            "anforderung": "Der Bieter muss zur Erbringung der angebotenen Leistung geeignet sein (befugt, technisch, finanziell, wirtschaftlich leistungsfähig und beruflich zuverlässig). Die Eignung muss spätestens zum Zeitpunkt der Angebotsöffnung vorliegen und durch die in den Ausschreibungsunterlagen beschriebenen Urkunden belegt werden. Andernfalls wird das Angebot ausgeschieden.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.1.(2)"
+        },
+        {
+            "id": "F_DOK_001",
+            "typ": "Formal",
+            "kategorie": "Dokumentenform",
+            "name": "Sprache und Format der Nachweise",
+            "anforderung": "Sämtliche Nachweise sind in Kopie in deutscher Sprache beizulegen. Soweit sie nicht in deutscher Sprache abgefasst sind, sind diese in beglaubigter deutscher Übersetzung ebenfalls in Kopie vorzulegen.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.1.(5)"
+        },
+        {
+            "id": "F_DOK_002",
+            "typ": "Formal",
+            "kategorie": "Dokumentenform",
+            "name": "EEE-Formular für Eignungsnachweis",
+            "anforderung": "Der Nachweis der Eignung ist durch Vorlage einer Einheitlichen Europäischen Eigenerklärung (EEE) zu erbringen. Eigenerklärungen ohne Verwendung der EEE werden nicht berücksichtigt.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "EEE"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.1.(6)"
+        },
+        {
+            "id": "F_DOK_003",
+            "typ": "Formal",
+            "kategorie": "Dokumentenform",
+            "name": "Eignungsnachweis via Datenbank/Katasterdienst",
+            "anforderung": "Der Nachweis der Eignung kann durch Hinweis auf eine kostenfrei zugängliche Datenbank (z.B. ANKÖ) erfolgen, sofern dort die geforderten und aktuellen Unterlagen vorliegen. Auf schriftliche Aufforderung sind die Nachweise innerhalb von sieben Kalendertagen über die Vergabeplattform zu übermitteln.",
+            "schwellenwert": "7 Kalendertage",
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Mitgliedsnummer/ANKÖ-Firmencode"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.1.(7)"
+        },
+        {
+            "id": "F_DOK_004",
+            "typ": "Formal",
+            "kategorie": "Dokumentenform",
+            "name": "Aktualität von Nachweisen",
+            "anforderung": "Sämtliche geforderten Nachweise dürfen, sofern in den folgenden Bestimmungen nichts Abweichendes geregelt ist, nicht älter als sechs Monate sein.",
+            "schwellenwert": "6 Monate",
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.1.(9)"
+        },
+        {
+            "id": "E_BEF_001",
+            "typ": "Eignung",
+            "kategorie": "Befugnis",
+            "name": "Nachweis der Befugnis (AT)",
+            "anforderung": "Österreichische Bieter haben ihre Befugnis zur Erbringung der Leistungen durch einen Auszug aus dem Gewerbeinformationssystem Austria (GISA) oder einen Auszug aus dem Mitgliederverzeichnis der Wirtschaftskammer nachzuweisen. Die Nachweise dürfen nicht älter als sechs Monate sein.",
+            "schwellenwert": "6 Monate",
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "GISA-Auszug",
+                "Auszug Mitgliederverzeichnis Wirtschaftskammer"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.2.(2)"
+        },
+        {
+            "id": "E_BEF_002",
+            "typ": "Eignung",
+            "kategorie": "Befugnis",
+            "name": "Nachweis der Befugnis (Ausland)",
+            "anforderung": "Ausländische Bieter, die keine einschlägige österreichische Gewerbeberechtigung haben, müssen eine Urkunde über die Eintragung im Berufs- oder Handelsregister des Herkunftslandes oder die dort vorgesehene Bescheinigung/eidesstattliche Erklärung vorlegen.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Urkunde Berufs-/Handelsregister",
+                "Bescheinigung",
+                "Eidesstattliche Erklärung"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.2.(3)"
+        },
+        {
+            "id": "E_BEF_003",
+            "typ": "Eignung",
+            "kategorie": "Befugnis",
+            "name": "Einleitung Berufsqualifikationsverfahren (EWR)",
+            "anforderung": "Bieter aus EWR-Ländern, die eine behördliche Entscheidung betreffend ihre Berufsqualifikation in Österreich benötigen, müssen nachweisen, dass ein darauf gerichtetes Verfahren vor Ablauf der Angebotsfrist eingeleitet wurde.",
+            "schwellenwert": "vor Ablauf der Angebotsfrist",
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Nachweis Einleitung Verfahren"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.2.(4)"
+        },
+        {
+            "id": "E_ZUVER_001",
+            "typ": "Eignung",
+            "kategorie": "Berufliche Zuverlässigkeit",
+            "name": "Erklärung keine Ausschlussgründe",
+            "anforderung": "Mit Angebotsabgabe erklärt der Bieter, dass gegen ihn, seine Subunternehmer und die von ihm genannten sonstigen Dritten kein Ausschlussgrund gemäß § 78 Abs 1 BVergG vorliegt (insbesondere straf- und arbeitsrechtliche Unbescholtenheit, keine Liquidation, keine Einstellung gewerblicher Tätigkeiten, keine Insolvenzverfahren oder deren Abweisung mangels Vermögens).",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.3.(2)"
+        },
+        {
+            "id": "E_ZUVER_002",
+            "typ": "Eignung",
+            "kategorie": "Berufliche Zuverlässigkeit",
+            "name": "Strafregisterbescheinigung/Registerauskunft",
+            "anforderung": "Strafregisterbescheinigung gemäß § 10 StRegG 1968 bzw. Registerauskunft für Verbände gemäß § 89m GOG oder eine gleichwertige Bescheinigung (nicht älter als sechs Monate am Tag der Angebotsöffnung) ist vorzulegen. Bei juristischen Personen zusätzlich ein Firmenbuchauszug oder Auszug aus dem Vereinsregister zur Identifikation der Geschäftsführung, für die die Dokumente ebenfalls vorzulegen sind.",
+            "schwellenwert": "6 Monate",
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Strafregisterbescheinigung",
+                "Registerauskunft für Verbände",
+                "Firmenbuchauszug",
+                "Auszug Vereinsregister"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.3.(3)"
+        },
+        {
+            "id": "E_ZUVER_003",
+            "typ": "Eignung",
+            "kategorie": "Berufliche Zuverlässigkeit",
+            "name": "Auszug Insolvenzdatei",
+            "anforderung": "Auszug aus der Insolvenzdatei gemäß § 256 IO (nicht älter als drei Monate am Tag der Angebotsöffnung) ist vorzulegen.",
+            "schwellenwert": "3 Monate",
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Auszug Insolvenzdatei"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.3.(3)"
+        },
+        {
+            "id": "E_ZUVER_004",
+            "typ": "Eignung",
+            "kategorie": "Berufliche Zuverlässigkeit",
+            "name": "Firmenbuchauszug (Zuverlässigkeit)",
+            "anforderung": "Firmenbuchauszug gemäß § 33 FBG (nicht älter als sechs Monate am Tag der Angebotsöffnung) ist vorzulegen.",
+            "schwellenwert": "6 Monate",
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Firmenbuchauszug"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.3.(3)"
+        },
+        {
+            "id": "E_ZUVER_005",
+            "typ": "Eignung",
+            "kategorie": "Berufliche Zuverlässigkeit",
+            "name": "Nachweis Sozialversicherungsbeiträge",
+            "anforderung": "Kontoauszug oder eine Unbedenklichkeitsbescheinigung der zuständigen Sozialversicherungsanstalt (nicht älter als drei Monate am Tag der Angebotsöffnung) zum Nachweis der Erfüllung der Verpflichtungen zur Zahlung der Sozialversicherungsbeiträge ist vorzulegen.",
+            "schwellenwert": "3 Monate",
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Kontoauszug Sozialversicherungsanstalt",
+                "Unbedenklichkeitsbescheinigung Sozialversicherungsanstalt"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.3.(3)"
+        },
+        {
+            "id": "E_ZUVER_006",
+            "typ": "Eignung",
+            "kategorie": "Berufliche Zuverlässigkeit",
+            "name": "Nachweis Steuern und Abgaben",
+            "anforderung": "Rückstandsbescheinigung gemäß § 229a BAO oder Auszug aus dem Steuerkonto (nicht älter als drei Monate am Tag der Angebotsöffnung) zum Nachweis der Erfüllung der Verpflichtung zur Zahlung der Steuern und Abgaben ist vorzulegen.",
+            "schwellenwert": "3 Monate",
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Rückstandsbescheinigung BAO",
+                "Auszug Steuerkonto"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.3.(3)"
+        },
+        {
+            "id": "E_ZUVER_007",
+            "typ": "Eignung",
+            "kategorie": "Berufliche Zuverlässigkeit",
+            "name": "Nachweis Zuverlässigkeit (Ausland)",
+            "anforderung": "Bieter aus dem Ausland haben die geforderten Nachweise zur beruflichen Zuverlässigkeit durch die Vorlage gleichwertiger Urkunden zu erbringen. Ist die Ausstellung eines behördlichen Nachweises im Herkunftsland nicht möglich (glaubhaft zu machen), tritt an dessen Stelle eine entsprechende eidesstattliche Erklärung des Bieters.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Gleichwertige Urkunden",
+                "Eidesstattliche Erklärung"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.3.(4)"
+        },
+        {
+            "id": "E_TECH_002",
+            "typ": "Eignung",
+            "kategorie": "Technische Leistungsfähigkeit",
+            "name": "Mindest-Dienstnehmerzahl",
+            "anforderung": "Der Bieter muss in den drei Geschäftsjahren 2020, 2021 und 2022 ständig mindestens 3 (drei) Dienstnehmer (Vollzeitäquivalente) beschäftigt haben.",
+            "schwellenwert": "3 Vollzeitäquivalente",
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.4.(1)"
+        },
+        {
+            "id": "F_DOK_005",
+            "typ": "Formal",
+            "kategorie": "Dokumentenform",
+            "name": "Nachweis Dienstnehmerzahl",
+            "anforderung": "Die Beilage 05 'Leistungsfähigkeit Dienstnehmer und Umsätze' ist in Bezug auf die Anzahl der Dienstnehmer (Vollzeitäquivalente) der Geschäftsjahre 2020, 2021 und 2022 auszufüllen und von einem Steuerberater oder Wirtschaftsprüfer unterfertigen zu lassen.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Beilage 05"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.4.(2)"
+        },
+        {
+            "id": "E_FIN_001",
+            "typ": "Eignung",
+            "kategorie": "Finanzielle Leistungsfähigkeit",
+            "name": "Betriebshaftpflichtversicherung",
+            "anforderung": "Der Bieter muss über eine Betriebshaftpflichtversicherung mit einer Deckungssumme von mindestens EUR 300.000,00 pro Schadenfall verfügen.",
+            "schwellenwert": "EUR 300.000,00",
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.5.(1)"
+        },
+        {
+            "id": "F_DOK_006",
+            "typ": "Formal",
+            "kategorie": "Dokumentenform",
+            "name": "Nachweis Betriebshaftpflichtversicherung",
+            "anforderung": "Aktuelle Nachweise (Polizze, Deckungszusage oder Versicherungsbestätigung) des Abschlusses einer aufrechten Betriebshaftpflichtversicherung mit einer Deckungssumme von mindestens EUR 300.000,00 pro Schadenfall sowie ein Nachweis über die Bezahlung der letztfälligen Prämie sind vorzulegen.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Polizze/Deckungszusage/Versicherungsbestätigung",
+                "Nachweis Prämienzahlung"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.5.(2)"
+        },
+        {
+            "id": "E_FIN_002",
+            "typ": "Eignung",
+            "kategorie": "Finanzielle Leistungsfähigkeit",
+            "name": "Mindest-Jahresumsatz",
+            "anforderung": "Der Bieter muss in den drei Geschäftsjahren 2020, 2021 und 2022 einen Jahresumsatz von durchschnittlich mindestens EUR 500.000,00 erwirtschaftet haben.",
+            "schwellenwert": "EUR 500.000,00 durchschnittlich (2020-2022)",
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.5.(1)"
+        },
+        {
+            "id": "F_DOK_007",
+            "typ": "Formal",
+            "kategorie": "Dokumentenform",
+            "name": "Nachweis Jahresumsatz",
+            "anforderung": "Die Beilage 05 'Leistungsfähigkeit Dienstnehmer und Umsätze' ist in Bezug auf die durchschnittlichen Jahresumsätze der Geschäftsjahre 2020, 2021 und 2022 auszufüllen und von einem Steuerberater oder Wirtschaftsprüfer unterfertigen zu lassen.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Beilage 05"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 5.5.(3)"
+        },
+        {
+            "id": "F_OFFER_001",
+            "typ": "Formal",
+            "kategorie": "Angebotsform",
+            "name": "Sprache des Angebots",
+            "anforderung": "Das Angebot samt Beilagen ist in deutscher Sprache auszufüllen bzw. zu erstellen. Sämtliche weiteren Nachweise und Unterlagen müssen ebenfalls in deutscher Sprache verfasst sein oder in beglaubigter deutscher Übersetzung vorgelegt werden.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 6.1.(2)"
+        },
+        {
+            "id": "F_OFFER_002",
+            "typ": "Formal",
+            "kategorie": "Angebotsinhalt",
+            "name": "Konformität der Produkte/Spezifikationen",
+            "anforderung": "Die angebotenen Geräte müssen gemäß den Vorgaben in den Ausschreibungsunterlagen und sämtliche darin definierten Anforderungen (insbesondere Spezifikationen gemäß Beilage 04 'Leistungsverzeichnis und Preisblatt') erfüllen.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Beilage 04"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 6.1.(3)"
+        },
+        {
+            "id": "F_GESETZ_001",
+            "typ": "Formal",
+            "kategorie": "Rechtskonformität",
+            "name": "Einhaltung von Rechtsvorschriften",
+            "anforderung": "Die in Österreich geltenden arbeits- und sozialrechtlichen sowie umwelt- und datenschutzrechtlichen Rechtsvorschriften sind bei der Erstellung des Angebotes zwingend zu berücksichtigen und bei einer Leistungserbringung in Österreich einzuhalten.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 6.1.(4)"
+        },
+        {
+            "id": "F_OFFER_003",
+            "typ": "Formal",
+            "kategorie": "Angebotsumfang",
+            "name": "Angebot aller Produkte pro Los",
+            "anforderung": "Jeder Bieter ist verpflichtet, sämtliche Produkte in der Beilage 04 'Leistungsverzeichnis und Preisblatt' des jeweiligen Loses anzubieten. Werden nicht sämtliche Produkte des jeweiligen Loses bzw. keine ausschreibungskonformen Produkte angeboten, so wird das Los-Angebot des Bieters ausgeschieden.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Beilage 04"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 6.2.(2)"
+        },
+        {
+            "id": "F_OFFER_004",
+            "typ": "Formal",
+            "kategorie": "Angebotsform",
+            "name": "Zulässigkeit von Alternativ-/Abänderungsangeboten",
+            "anforderung": "Alternativ- und Abänderungsangebote sind unzulässig.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 6.4."
+        },
+        {
+            "id": "F_OFFER_005",
+            "typ": "Formal",
+            "kategorie": "Angebotsform",
+            "name": "Zulässigkeit von Kopplungs-/Paketangeboten",
+            "anforderung": "Kopplungsangebote und Paketabschläge sind unzulässig.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 6.5."
+        },
+        {
+            "id": "F_PRICE_001",
+            "typ": "Formal",
+            "kategorie": "Preisangabe",
+            "name": "Preisangabe im Leistungsverzeichnis",
+            "anforderung": "Der Bieter hat in der Beilage 04 'Leistungsverzeichnis und Preisblatt' pro Los den Einheitspreis als Nettopreis in Euro (€) ohne Umsatzsteuer inklusive aller Abgaben und Gebühren anzugeben. Der sich daraus ergebende 'Gesamtpreis Laufzeit' des jeweiligen Loses ist im Angebotshauptteil der Vergabeplattform einzutragen.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Beilage 04"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 6.7.(1)"
+        },
+        {
+            "id": "F_PRICE_002",
+            "typ": "Formal",
+            "kategorie": "Preisangabe",
+            "name": "Ausweis der Umsatzsteuer",
+            "anforderung": "Die gesetzlich anfallende Umsatzsteuer ist separat im Angebotshauptteil der Vergabeplattform auszuweisen.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 6.7.(3)"
+        },
+        {
+            "id": "F_SPEC_001",
+            "typ": "Formal",
+            "kategorie": "Angebotsinhalt",
+            "name": "Gewichtsangabe pro Einheit",
+            "anforderung": "Der Bieter hat in der Beilage 04 'Leistungsverzeichnis und Preisblatt' pro Los das Gewicht pro Einheit in Kilogramm (kg) anzugeben.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Beilage 04"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 6.8."
+        },
+        {
+            "id": "F_DOK_008",
+            "typ": "Formal",
+            "kategorie": "Dokumentenform",
+            "name": "Erklärung SanktionenVO",
+            "anforderung": "Das unterfertigte Formblatt 'Erklärung SanktionenVO' (Beilage 06) ist vorzulegen.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Beilage 06"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 6.9.(1)"
+        },
+        {
+            "id": "F_SIG_001",
+            "typ": "Formal",
+            "kategorie": "Angebotsform",
+            "name": "Rechtsgültige elektronische Unterfertigung",
+            "anforderung": "Das Angebot muss rechtsgültig elektronisch gemäß § 48 Abs 12 BVergG (qualifizierte elektronische Signatur, qualifiziertes Siegel oder Amtssignatur) von rechtsgeschäftlich wirksam vertretungsbefugten Personen unterfertigt sein. Elektronische Angebote von Bietergemeinschaften müssen von jedem Mitglied rechtsverbindlich unterfertigt werden. Nicht rechtsgültig unterfertigte Angebote sind zwingend auszuscheiden.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 6.10.(1)"
+        },
+        {
+            "id": "F_SIG_002",
+            "typ": "Formal",
+            "kategorie": "Dokumentenform",
+            "name": "Nachweis Vertretungsbefugnis",
+            "anforderung": "Zum Beweis der rechtsgeschäftlichen Vertretungsbefugnis der unterfertigenden Person(en) ist ein Auszug aus dem Firmenbuch oder eine gleichwertige Bescheinigung eines Gerichtes oder einer Verwaltungsbehörde vorzulegen, die nicht älter als 6 Monate ist.",
+            "schwellenwert": "6 Monate",
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Firmenbuchauszug",
+                "Gleichwertige Bescheinigung"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 6.10.(2)"
+        },
+        {
+            "id": "F_SIG_003",
+            "typ": "Formal",
+            "kategorie": "Dokumentenform",
+            "name": "Vollmacht bei Nicht-Organunterfertigung",
+            "anforderung": "Falls das Angebot nicht von im Auszug genannten organschaftlich vertretungsbefugten Personen unterfertigt wurde, kann eine vor Angebotsunterfertigung unterfertigte Vollmacht für die das Angebot unterfertigenden Personen verlangt werden. Der/die Name/n der unterfertigenden Person/en ist/sind in Blockschrift anzuführen.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [
+                "Vollmacht"
+            ],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 6.10.(3)"
+        },
+        {
+            "id": "F_DEADLINE_001",
+            "typ": "Formal",
+            "kategorie": "Frist",
+            "name": "Angebotsfrist",
+            "anforderung": "Die Angebote müssen spätestens bis zum 24.11.2023, 10:00 Uhr über die Plattform www.vergabeportal.at eingereicht werden.",
+            "schwellenwert": "2023-11-24 10:00",
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 6.11.(1)"
+        },
+        {
+            "id": "F_DEADLINE_002",
+            "typ": "Formal",
+            "kategorie": "Frist",
+            "name": "Abschluss des Abgabeprozesses",
+            "anforderung": "Die Angebote gelten erst als eingereicht, wenn der Abgabeprozess auf der Plattform www.vergabeportal.at vollständig abgeschlossen wurde.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 6.11.(2)"
+        },
+        {
+            "id": "Z_PRICE_001",
+            "typ": "Zuschlag",
+            "kategorie": "Preis",
+            "name": "Gesamtpreis (Los 1)",
+            "anforderung": "Bewertung des Gesamtpreises (exkl. USt.) gemäß Berechnungsformel, wobei der Bieter mit dem niedrigsten Gesamtpreis die Maximalpunktzahl erhält.",
+            "schwellenwert": null,
+            "gewichtung_punkte": 700,
+            "dokumente": [
+                "Beilage 04"
+            ],
+            "geltung_lose": [
+                "Los 1"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 7.1.(1), 7.2."
+        },
+        {
+            "id": "Z_QUAL_001",
+            "typ": "Zuschlag",
+            "kategorie": "Qualität/Lieferzeit",
+            "name": "Lieferfrist Erstabruf (Los 1)",
+            "anforderung": "Verbindliche Lieferfrist für den Erstabruf (ein Stück Aufsitzrasenmäher unverzüglich nach Zuschlagserteilung) ist in Beilage 04 'Leistungsverzeichnis und Preisblatt' anzugeben. Der Bieter mit der niedrigsten Lieferfrist erhält die Maximalpunktzahl.",
+            "schwellenwert": null,
+            "gewichtung_punkte": 300,
+            "dokumente": [
+                "Beilage 04"
+            ],
+            "geltung_lose": [
+                "Los 1"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 7.1.(1), 7.3."
+        },
+        {
+            "id": "Z_PRICE_002",
+            "typ": "Zuschlag",
+            "kategorie": "Preis",
+            "name": "Gesamtpreis (Lose 2, 3, 4)",
+            "anforderung": "Bewertung des Gesamtpreises (exkl. USt.) gemäß Berechnungsformel, wobei der Bieter mit dem niedrigsten Gesamtpreis die Maximalpunktzahl erhält.",
+            "schwellenwert": null,
+            "gewichtung_punkte": 1000,
+            "dokumente": [
+                "Beilage 04"
+            ],
+            "geltung_lose": [
+                "Los 2",
+                "Los 3",
+                "Los 4"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 7.1.(1), 7.2."
+        },
+        {
+            "id": "F_ZUSCHLAG_001",
+            "typ": "Formal",
+            "kategorie": "Angebotsinhalt Zuschlag",
+            "name": "Vollständigkeit Zuschlagskriterien-Unterlagen",
+            "anforderung": "Sämtliche im Zusammenhang mit den Zuschlagskriterien vorgelegten Unterlagen der Bieter müssen im Angebot enthalten sein. Eine nachträgliche Bekanntgabe oder Änderung ist unzulässig.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 7.1.(3)"
+        },
+        {
+            "id": "F_OFFER_006",
+            "typ": "Formal",
+            "kategorie": "Angebotsform",
+            "name": "Unzulässigkeit von Änderungen der Ausschreibungsunterlagen",
+            "anforderung": "Eigenmächtige Veränderungen des Textes der Ausschreibungsunterlagen sind unzulässig und werden vom Auftraggeber nicht beachtet.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 11.(1)"
+        },
+        {
+            "id": "F_WETTBEW_001",
+            "typ": "Formal",
+            "kategorie": "Wettbewerb",
+            "name": "Keine Bieterabsprachen",
+            "anforderung": "Nachweisbare Absprachen zwischen Bietern führen zum sofortigen Ausscheiden der betroffenen Bieter.",
+            "schwellenwert": null,
+            "gewichtung_punkte": null,
+            "dokumente": [],
+            "geltung_lose": [
+                "alle"
+            ],
+            "pruefung": {
+                "status": null,
+                "bemerkung": null,
+                "pruefer": null,
+                "datum": null
+            },
+            "quelle": "Punkt 11.(2)"
+        }
+    ]
+}
