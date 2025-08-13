@@ -101,15 +101,57 @@ def display_kriterien_tree(data: Dict[str, Any]):
             print()
 
 
+def list_all_tags(data: Dict[str, Any]):
+    """List all available criterion tags sorted by ID."""
+    kriterien = data.get('kriterien', [])
+    if not kriterien:
+        print("No criteria found in the data.")
+        return
+    
+    # Sort criteria by ID
+    sorted_kriterien = sorted(kriterien, key=lambda k: k.get('id', ''))
+    
+    print(f"\nAll available criterion tags ({len(sorted_kriterien)} total):")
+    print("=" * 80)
+    for kriterium in sorted_kriterien:
+        tag_id = kriterium.get('id', 'N/A')
+        name = kriterium.get('name', 'N/A')
+        print(f"  • {tag_id}: {name}")
+    print("=" * 80)
+
+
+def display_kriterium_by_tag(data: Dict[str, Any], tag_id: str):
+    """Display the full JSON data for a specific criterion by its ID tag."""
+    # If no tag_id provided (empty string), list all tags
+    if not tag_id:
+        list_all_tags(data)
+        return
+    
+    for kriterium in data.get('kriterien', []):
+        if kriterium.get('id') == tag_id:
+            print(f"\nKriterium found: {tag_id}")
+            print("=" * 80)
+            print(json.dumps(kriterium, indent=2, ensure_ascii=False))
+            print("=" * 80)
+            return
+    
+    print(f"\nError: Kriterium with ID '{tag_id}' not found.")
+    print("Available IDs:")
+    for kriterium in data.get('kriterien', []):
+        print(f"  • {kriterium.get('id', 'N/A')}: {kriterium.get('name', 'N/A')}")
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Parse and analyze criteria from JSON files",
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-Examples:
+        epilog="""Examples:
   python kriterien.py -f kriterien/lampen/kriterienv3simple.json --pop 5
   python kriterien.py -f kriterien/lampen/kriterienv3simple.json --tree
   python kriterien.py -f kriterien/lampen/kriterienv3simple.json --pop 3 --tree
+  python kriterien.py -f kriterien/lampen/kriterienv3simple.json --tag
+  python kriterien.py -f kriterien/lampen/kriterienv3simple.json --tag F_SUB_001
+  python kriterien.py -f kriterien/lampen/kriterienv3simple.json --tag E_BEFUGNIS_001
         """
     )
     
@@ -132,10 +174,23 @@ Examples:
         help='Show criteria tree sorted by typ and kategorie'
     )
     
+    parser.add_argument(
+        '--tag',
+        type=str,
+        nargs='?',
+        const='',
+        help='Display the full JSON data for a specific criterion by its ID tag (e.g., F_SUB_001, E_BEFUGNIS_001). If no tag is provided, list all available tags sorted.'
+    )
+    
     args = parser.parse_args()
     
     # Load the criteria data
     data = load_kriterien(args.file)
+    
+    # Handle --tag option first (exclusive operation)
+    if args.tag is not None:
+        display_kriterium_by_tag(data, args.tag)
+        return
     
     # Get unproven criteria
     unproven_kriterien = get_unproven_kriterien(data)

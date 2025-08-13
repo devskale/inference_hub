@@ -38,6 +38,32 @@ class Spinner:
         sys.stdout.flush()
 
 
+def load_existing_json(file_path):
+    """Load existing JSON file if it exists, otherwise return empty dict."""
+    if os.path.exists(file_path):
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except (json.JSONDecodeError, FileNotFoundError):
+            return {}
+    return {}
+
+
+def merge_json_with_insert(existing_data, new_data, insert_key):
+    """Merge new data into existing JSON, clearing only the specified key."""
+    if insert_key:
+        # Clear only the specified key and replace with new data
+        if insert_key in new_data:
+            existing_data[insert_key] = new_data[insert_key]
+            print(f"🔄 Cleared and updated '{insert_key}' section")
+        else:
+            print(f"⚠️  Warning: Key '{insert_key}' not found in new data")
+    else:
+        # Replace entire structure
+        existing_data.update(new_data)
+    return existing_data
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Analyze a file using a prompt with Google's Gemini model.")
@@ -47,6 +73,8 @@ def main():
                         help="Path to the file to analyze.")
     parser.add_argument("-o", "--output", required=True,
                         help="Path to the output JSON file.")
+    parser.add_argument("-i", "--insert", type=str,
+                        help="Insert mode: specify JSON key to clear and replace (e.g., 'meta', 'kriterien')")
     args = parser.parse_args()
 
     try:
@@ -97,26 +125,36 @@ def main():
         spinner = Spinner("📊 Cleaning JSON")
         spinner.start()
         try:
-            output_data = cleanify_json(response.text)
+            new_data = cleanify_json(response.text)
         finally:
             spinner.stop()
     else:
-        output_data = {"analysis_result": response.text}
+        new_data = {"analysis_result": response.text}
 
     # Ensure the output directory exists
     output_dir = os.path.dirname(args.output)
     if output_dir:
         os.makedirs(output_dir, exist_ok=True)
 
-    print(f"💾 Saving to {args.output}...")
+    # Handle insert mode vs overwrite mode
+    if args.insert:
+        print(f"🔄 Insert mode: updating '{args.insert}' section...")
+        existing_data = load_existing_json(args.output)
+        final_data = merge_json_with_insert(existing_data, new_data, args.insert)
+        print(f"💾 Updating {args.output}...")
+    else:
+        print(f"🆕 Overwrite mode: creating new file...")
+        final_data = new_data
+        print(f"💾 Saving to {args.output}...")
+
     with open(args.output, 'w', encoding='utf-8') as f:
-        json.dump(output_data, f, ensure_ascii=False, indent=4)
+        json.dump(final_data, f, ensure_ascii=False, indent=4)
 
     print(f"🎉 Analysis complete! Output saved to {args.output}")
 
     # Show some stats
-    if isinstance(output_data, dict) and 'kriterien' in output_data:
-        criteria_count = len(output_data['kriterien'])
+    if isinstance(final_data, dict) and 'kriterien' in final_data:
+        criteria_count = len(final_data['kriterien'])
         print(f"📊 Extracted {criteria_count} criteria")
 
     print(f"📁 File size: {os.path.getsize(args.output):,} bytes")
