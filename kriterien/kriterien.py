@@ -36,8 +36,8 @@ def get_unproven_kriterien(data: Dict[str, Any]) -> List[Dict[str, Any]]:
     return unproven
 
 
-def display_kriterien_list(kriterien: List[Dict[str, Any]], limit: Optional[int] = None):
-    """Display a list of criteria with basic information."""
+def display_kriterien_list(kriterien: List[Dict[str, Any]], limit: Optional[int] = None, total_kriterien: int = 0, proven_count: int = 0):
+    """Display a list of criteria with complete JSON data."""
     if limit is not None:
         kriterien = kriterien[:limit]
     
@@ -45,16 +45,19 @@ def display_kriterien_list(kriterien: List[Dict[str, Any]], limit: Optional[int]
         print("No unproven criteria found.")
         return
     
-    print(f"\nFound {len(kriterien)} unproven criteria:")
+    # Calculate checked and remaining numbers
+    checked_num = proven_count
+    total_num = total_kriterien
+    
+    print(f"\n{total_num - checked_num} von {total_num} Kriterien verbleiben zur Prüfung.")
     print("=" * 80)
     
     for i, kriterium in enumerate(kriterien, 1):
-        print(f"{i:2d}. ID: {kriterium['id']}")
-        print(f"    Typ: {kriterium['typ']}")
-        print(f"    Kategorie: {kriterium['kategorie']}")
-        print(f"    Name: {kriterium['name']}")
-        print(f"    Quelle: {kriterium['quelle']}")
-        print(f"    Status: Unproven")
+        print(f"{i:2d}. Complete Kriterium Data:")
+        print("-" * 80)
+        # Print the complete JSON data in a readable format
+        import json
+        print(json.dumps(kriterium, indent=2, ensure_ascii=False))
         print("-" * 80)
 
 
@@ -144,16 +147,18 @@ Examples:
         # Also show the requested number of unproven criteria
         if unproven_kriterien:
             print(f"\nNext {args.pop} unproven criteria:")
-            display_kriterien_list(unproven_kriterien, args.pop)
+            total_kriterien = len(data.get('kriterien', []))
+            proven_count = total_kriterien - len(unproven_kriterien)
+            display_kriterien_list(unproven_kriterien, args.pop, total_kriterien, proven_count)
         else:
             print("\nNo unproven criteria found.")
     else:
         # Show only the requested number of unproven criteria
-        display_kriterien_list(unproven_kriterien, args.pop)
-        
-        # Show summary
         total_kriterien = len(data.get('kriterien', []))
         proven_count = total_kriterien - len(unproven_kriterien)
+        display_kriterien_list(unproven_kriterien, args.pop, total_kriterien, proven_count)
+        
+        # Show summary
         print(f"\nSummary: {total_kriterien} total criteria, {proven_count} proven, {len(unproven_kriterien)} unproven")
 
 
